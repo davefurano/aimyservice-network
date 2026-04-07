@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI My Service — The AI Network — Hosted Properties</title>
+<meta name="description" content="All domains hosted on the AIMyService VPS — AI tools, hospitality platforms, career services, music, personal sites, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand: #534AB7;
+  --brand2: #3C3489;
+  --accent: #D4537E;
+  --text: #0f0f0f;
+  --muted: #666;
+  --border: #e8e8e8;
+  --bg: #f7f7f6;
+  --white: #fff;
+  --radius: 12px;
+  --max: 1200px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:200}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:var(--brand);display:flex;align-items:center;gap:.5rem;letter-spacing:-.01em}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;font-size:.875rem;color:var(--muted)}
+.nav-links a:hover{color:var(--brand)}
+.nav-btn{background:var(--brand);color:var(--white);padding:.5rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:500}
+.nav-btn:hover{background:var(--brand2);color:var(--white)}
+.hero{background:var(--brand);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(255,255,255,.05) 0%,transparent 60%),radial-gradient(circle at 80% 20%,rgba(255,255,255,.08) 0%,transparent 50%)}
+.hero-inner{position:relative;max-width:720px;margin:0 auto}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border-radius:20px;border:1px solid rgba(255,255,255,.2);margin-bottom:1.5rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:var(--white);line-height:1.1;margin-bottom:1rem;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:rgba(255,255,255,.6)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 2.5rem}
+.hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--white);line-height:1}
+.stat-label{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:.25rem;letter-spacing:.04em}
+.toolbar-wrap{background:var(--white);border-bottom:1px solid var(--border);padding:1rem 2rem;position:sticky;top:64px;z-index:100}
+.toolbar{max-width:var(--max);margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search-wrap{flex:1;min-width:200px;position:relative}
+#search{width:100%;padding:.6rem 1rem .6rem 1rem;border:1px solid var(--border);border-radius:8px;font-size:.875rem;font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);outline:none;transition:border-color .15s}
+#search:focus{border-color:var(--brand)}
+.filter-pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{padding:.45rem 1rem;border-radius:20px;font-size:.78rem;font-weight:500;border:1px solid var(--border);background:var(--white);color:var(--muted);cursor:pointer;transition:all .12s;white-space:nowrap}
+.pill:hover{border-color:var(--brand);color:var(--brand)}
+.pill.active{background:var(--brand);color:var(--white);border-color:var(--brand)}
+.count-badge{font-size:.8rem;color:var(--muted);white-space:nowrap;margin-left:auto;align-self:center}
+.grid-wrap{max-width:var(--max);margin:0 auto;padding:2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:#ccc}
+.thumb{height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.thumb-pattern{position:absolute;inset:0;opacity:.07;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,1) 0px,rgba(255,255,255,1) 1px,transparent 1px,transparent 12px)}
+.thumb-icon{font-size:2rem;line-height:1;margin-bottom:8px;position:relative}
+.thumb-name{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.02em;position:relative;text-align:center;padding:0 .75rem;line-height:1.25;opacity:1}
+.thumb-status{position:absolute;top:8px;right:8px;font-size:.62rem;font-weight:600;padding:.2rem .55rem;border-radius:12px;letter-spacing:.04em;text-transform:uppercase}
+.status-live{background:rgba(99,153,34,.18);color:#3B6D11}
+.status-stub{background:rgba(239,159,39,.18);color:#854F0B}
+.status-empty{background:rgba(226,75,74,.15);color:#A32D2D}
+.card-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
+.card-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-desc{font-size:.8rem;color:var(--muted);line-height:1.5;flex:1;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cat-pill{font-size:.65rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.2rem .55rem;border-radius:10px}
+.card-visit{font-size:.75rem;font-weight:500;color:var(--brand);border:1px solid var(--border);padding:.25rem .75rem;border-radius:8px;transition:background .12s;white-space:nowrap}
+.card-visit:hover{background:var(--brand);color:var(--white);border-color:var(--brand)}
+.empty-state{grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--muted);font-size:.95rem}
+.legend{max-width:var(--max);margin:0 auto;padding:0 2rem 2rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
+.legend-item{display:flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-live{background:#639922}.dot-stub{background:#EF9F27}.dot-empty{background:#E24B4A}
+footer{background:var(--text);color:rgba(255,255,255,.5);padding:3rem 2rem;text-align:center}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;color:var(--white);margin-bottom:.75rem}
+.footer-logo span{color:rgba(255,255,255,.4)}
+.footer-tagline{font-size:.85rem;margin-bottom:1.5rem}
+.footer-links{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;font-size:.8rem}
+.footer-links a{color:rgba(255,255,255,.45);transition:color .12s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{margin-top:2rem;font-size:.75rem;opacity:.4}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">AI<span> </span>My Service</div>
+  <div class="nav-links">
+    <a href="#directory">Directory</a>
+    <a href="https://aimyservice.com">AI My Service</a>
+    <a href="https://downloadlounge.com">Download Lounge</a>
+  </div>
+  <a href="https://aimyservice.com" class="nav-btn">Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">AIMyService VPS — Hosted Properties</div>
+    <h1>AI My Service <em>Network</em></h1>
+    <p class="hero-sub">All domains hosted on the AIMyService VPS — AI tools, hospitality platforms, career services, music, personal sites, and more.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">48</div><div class="stat-label">Domains</div></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Categories</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Live</div></div>
+      <div class="stat"><div class="stat-num">44</div><div class="stat-label">In progress</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="toolbar-wrap" id="directory">
+  <div class="toolbar">
+    <div class="search-wrap">
+      <input type="text" id="search" placeholder="Search domains, names, categories..." oninput="render()">
+    </div>
+    <div class="filter-pills">
+      <button class="pill active" onclick="setFilter(this,'all')">All</button>
+      <button class="pill" onclick="setFilter(this,'live')">Live</button>
+      <button class="pill" onclick="setFilter(this,'stub')">Coming soon</button>
+      <button class="pill" onclick="setFilter(this,'empty')">Planned</button>
+      <button class="pill" onclick="setFilter(this,'ai')">Ai</button><button class="pill" onclick="setFilter(this,'career')">Career</button><button class="pill" onclick="setFilter(this,'community')">Community</button><button class="pill" onclick="setFilter(this,'entertainment')">Entertainment</button><button class="pill" onclick="setFilter(this,'health')">Health</button><button class="pill" onclick="setFilter(this,'hospitality')">Hospitality</button><button class="pill" onclick="setFilter(this,'music')">Music</button><button class="pill" onclick="setFilter(this,'personal')">Personal</button>
+    </div>
+    <span class="count-badge" id="count">48 properties</span>
+  </div>
+</div>
+
+<div class="grid-wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="dot dot-live"></div> Live — active site</div>
+  <div class="legend-item"><div class="dot dot-stub"></div> Coming soon — in development</div>
+  <div class="legend-item"><div class="dot dot-empty"></div> Planned — domain reserved</div>
+</div>
+
+<footer>
+  <div class="footer-logo">AI My Service</div>
+  <div class="footer-tagline">Every AI tool, one server</div>
+  <div class="footer-links">
+    <a href="https://aimyservice.com">AI My Service</a>
+    <a href="https://downloadlounge.com">Download Lounge</a>
+    <a href="https://aiintelligencefactory.com">AI Intelligence Factory</a>
+    <a href="https://avatarhouseband.com">Avatar House Band</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 aimyservice.com — All rights reserved</div>
+</footer>
+
+<script>
+const CAT_COLORS = {"ai": "#534AB7", "career": "#185FA5", "hospitality": "#993C1D", "health": "#0F6E56", "music": "#993556", "personal": "#444441", "community": "#3B6D11", "entertainment": "#26215C", "media": "#185FA5", "education": "#D85A30", "real estate": "#444441"};
+const CAT_BG = {"ai": "#EEEDFE", "career": "#E6F1FB", "hospitality": "#FAECE7", "health": "#E1F5EE", "music": "#FBEAF0", "personal": "#F1EFE8", "community": "#EAF3DE", "entertainment": "#EEEDFE", "media": "#E6F1FB", "education": "#FAECE7", "real estate": "#F1EFE8"};
+const DOMAINS = [{"server": "AIMyService", "domain": "aaifactory.com", "name": "AAI Factory", "tagline": "Agentic AI Factory", "desc": "Production-ready agentic AI blueprints, skills, memory patterns, and workflow tools.", "icon": "⚙", "color": "#0C447C", "tc": "#B5D4F4", "cat": "ai", "status": "live"}, {"server": "AIMyService", "domain": "aiagencyforautomation.com", "name": "AI Agency for Automation", "tagline": "Done-for-you AI automation", "desc": "We build and deploy AI automation systems for businesses that want results, not complexity.", "icon": "🤖", "color": "#534AB7", "tc": "#CECBF6", "cat": "ai", "status": "stub"}, {"server": "AIMyService", "domain": "aibiogenius.com", "name": "AI BioGenius", "tagline": "Your story, beautifully told", "desc": "AI-powered biography and life story writing. From professional bios to full memoirs.", "icon": "🧬", "color": "#085041", "tc": "#9FE1CB", "cat": "ai", "status": "stub"}, {"server": "AIMyService", "domain": "aicareerplanner.com", "name": "AI Career Planner", "tagline": "Your AI-powered career roadmap", "desc": "Personalized career planning, skill gap analysis, and step-by-step roadmaps powered by AI.", "icon": "🗺", "color": "#185FA5", "tc": "#B5D4F4", "cat": "career", "status": "stub"}, {"server": "AIMyService", "domain": "aiforbars.com", "name": "AI for Bars", "tagline": "AI built for bar operators", "desc": "Staff scheduling, inventory optimization, event planning, and customer engagement — all AI-powered.", "icon": "🍸", "color": "#993C1D", "tc": "#F5C4B3", "cat": "hospitality", "status": "stub"}, {"server": "AIMyService", "domain": "aiforcasinos.com", "name": "AI for Casinos", "tagline": "Intelligence on the gaming floor", "desc": "AI systems for casino operations: guest experience, floor optimization, and entertainment programming.", "icon": "🎰", "color": "#3B6D11", "tc": "#C0DD97", "cat": "hospitality", "status": "stub"}, {"server": "AIMyService", "domain": "aiforlongevity.dev", "name": "AI for Longevity", "tagline": "Live longer, better", "desc": "AI health tools focused on lifespan optimization, biomarker tracking, and longevity protocols.", "icon": "⏳", "color": "#0F6E56", "tc": "#5DCAA5", "cat": "health", "status": "stub"}, {"server": "AIMyService", "domain": "aiforrestaurants.com", "name": "AI for Restaurants", "tagline": "AI that works the back office", "desc": "Menu engineering, staffing, reservations, and marketing — AI automation for restaurant operators.", "icon": "🍽", "color": "#D85A30", "tc": "#FAECE7", "cat": "hospitality", "status": "stub"}, {"server": "AIMyService", "domain": "aiintelligencefactory.com", "name": "AI Intelligence Factory", "tagline": "Founder-led AI implementation", "desc": "Structured AI diagnostics and phased implementation for operational modernization. Pilot-first delivery.", "icon": "🏭", "color": "#26215C", "tc": "#CECBF6", "cat": "ai", "status": "live"}, {"server": "AIMyService", "domain": "aijobscoach.com", "name": "AI Jobs Coach", "tagline": "Land the job. Own the room.", "desc": "AI coaching for job seekers: resume review, interview prep, salary negotiation, and career pivots.", "icon": "💼", "color": "#185FA5", "tc": "#E6F1FB", "cat": "career", "status": "stub"}, {"server": "AIMyService", "domain": "ailunchclubs.com", "name": "AI Lunch Clubs", "tagline": "Learn AI over lunch", "desc": "Local AI learning communities. Structured lunch meetups for professionals exploring AI in their field.", "icon": "🥗", "color": "#3B6D11", "tc": "#EAF3DE", "cat": "community", "status": "stub"}, {"server": "AIMyService", "domain": "aimusicmemories.com", "name": "AI Music Memories", "tagline": "Your memories, set to music", "desc": "Turn photos, journals, and moments into custom AI-generated music that captures your story.", "icon": "🎵", "color": "#993556", "tc": "#F4C0D1", "cat": "music", "status": "stub"}, {"server": "AIMyService", "domain": "aimyarchive.com", "name": "AI My Archive", "tagline": "Your life, organized forever", "desc": "AI-powered personal archive. Organize decades of photos, videos, and documents into a living vault.", "icon": "🗄", "color": "#444441", "tc": "#D3D1C7", "cat": "personal", "status": "empty"}, {"server": "AIMyService", "domain": "aimybio.com", "name": "AI My Bio", "tagline": "Professional bios in minutes", "desc": "AI-generated professional bios tailored to any platform, audience, or career moment.", "icon": "📝", "color": "#534AB7", "tc": "#EEEDFE", "cat": "personal", "status": "stub"}, {"server": "AIMyService", "domain": "aimygifting.com", "name": "AI My Gifting", "tagline": "The perfect gift, every time", "desc": "Smart AI gift recommendations personalized to the recipient. Never give a bad gift again.", "icon": "🎁", "color": "#993556", "tc": "#FBEAF0", "cat": "personal", "status": "empty"}, {"server": "AIMyService", "domain": "aimyinterview.com", "name": "AI My Interview", "tagline": "Practice until it's perfect", "desc": "AI interview coaching: mock interviews, real-time feedback, and personalized prep plans.", "icon": "🎤", "color": "#185FA5", "tc": "#E6F1FB", "cat": "career", "status": "stub"}, {"server": "AIMyService", "domain": "aimyoffice.org", "name": "AI My Office", "tagline": "Your AI-powered back office", "desc": "AI systems for solo operators and small teams: scheduling, communications, task automation.", "icon": "🏢", "color": "#0C447C", "tc": "#B5D4F4", "cat": "ai", "status": "empty"}, {"server": "AIMyService", "domain": "aimypractice.org", "name": "AI My Practice", "tagline": "Dental Practice Flow Diagnostic™", "desc": "Identify operational friction, missed production exposure, and modernization gaps. No patient data required.", "icon": "🦷", "color": "#0F6E56", "tc": "#9FE1CB", "cat": "health", "status": "live"}, {"server": "AIMyService", "domain": "aimyservice.com", "name": "AI My Service", "tagline": "Every AI tool, one place", "desc": "The central hub for AI-powered service tools across hospitality, career, health, music, and more.", "icon": "⚡", "color": "#534AB7", "tc": "#CECBF6", "cat": "ai", "status": "stub"}, {"server": "AIMyService", "domain": "aimyservices.com", "name": "AI My Services", "tagline": "AI services on demand", "desc": "A curated marketplace for AI-powered services across every professional and personal category.", "icon": "🔧", "color": "#3C3489", "tc": "#EEEDFE", "cat": "ai", "status": "stub"}, {"server": "AIMyService", "domain": "aimyshopping.com", "name": "AI My Shopping", "tagline": "Your AI shopping concierge", "desc": "Price monitoring, gift blueprints, occasion planning, and smart recommendations — always on.", "icon": "🛍", "color": "#D4537E", "tc": "#FBEAF0", "cat": "personal", "status": "live"}, {"server": "AIMyService", "domain": "aimysoundtrack.com", "name": "AI My Soundtrack", "tagline": "The soundtrack to your life", "desc": "AI-generated personal soundtracks. Music for your commute, workflow, workouts, and memories.", "icon": "🎧", "color": "#993556", "tc": "#F4C0D1", "cat": "music", "status": "stub"}, {"server": "AIMyService", "domain": "aisocietynews.com", "name": "AI Society News", "tagline": "AI's impact on the world", "desc": "News, analysis, and commentary on how artificial intelligence is reshaping society, work, and culture.", "icon": "📰", "color": "#444441", "tc": "#D3D1C7", "cat": "community", "status": "stub"}, {"server": "AIMyService", "domain": "aiwisdomfactory.com", "name": "AI Wisdom Factory", "tagline": "Intelligence you can actually use", "desc": "Curated AI knowledge, frameworks, mental models, and insights for founders and operators.", "icon": "🧠", "color": "#26215C", "tc": "#CECBF6", "cat": "ai", "status": "stub"}, {"server": "AIMyService", "domain": "aiwizards.work", "name": "AI Wizards", "tagline": "Find your AI specialist", "desc": "A network of vetted AI implementation specialists, freelancers, and consultants ready to deploy.", "icon": "🪄", "color": "#534AB7", "tc": "#EEEDFE", "cat": "ai", "status": "stub"}, {"server": "AIMyService", "domain": "allstaravatars.com", "name": "All Star Avatars", "tagline": "Elite avatar performers", "desc": "A roster of elite AI avatar performers for live events, casinos, concerts, and digital stages.", "icon": "⭐", "color": "#BA7517", "tc": "#FAEEDA", "cat": "entertainment", "status": "empty"}, {"server": "AIMyService", "domain": "avastar.band", "name": "Avastar Band", "tagline": "AI music. Live energy.", "desc": "Avastar is an AI avatar band that performs live on digital and physical stages — always on, never canceled.", "icon": "🎸", "color": "#993C1D", "tc": "#FAECE7", "cat": "entertainment", "status": "empty"}, {"server": "AIMyService", "domain": "avatarallstars.com", "name": "Avatar All Stars", "tagline": "The greatest AI performers", "desc": "An all-star roster of AI avatar performers across genres, venues, and entertainment verticals.", "icon": "🌟", "color": "#854F0B", "tc": "#FAEEDA", "cat": "entertainment", "status": "empty"}, {"server": "AIMyService", "domain": "creativeintelligencesystem.com", "name": "Creative Intelligence System", "tagline": "AI for creative production", "desc": "AI creative systems for media, production, and entertainment. Scalable intelligence for creative work.", "icon": "💡", "color": "#BA7517", "tc": "#FAEEDA", "cat": "ai", "status": "empty"}, {"server": "AIMyService", "domain": "lifeisabeautifulthing.com", "name": "Life Is a Beautiful Thing", "tagline": "Celebrate every moment", "desc": "An AI-powered content platform celebrating the beauty of everyday life through stories, music, and memory.", "icon": "✨", "color": "#D4537E", "tc": "#FBEAF0", "cat": "personal", "status": "stub"}, {"server": "AIMyService", "domain": "repeatableintelligence.com", "name": "Repeatable Intelligence", "tagline": "Build AI that scales", "desc": "Scalable AI systems, reusable agent patterns, and frameworks for consistent, repeatable results.", "icon": "🔁", "color": "#0C447C", "tc": "#B5D4F4", "cat": "ai", "status": "empty"}, {"server": "AIMyService", "domain": "talktomeinheaven.com", "name": "Talk to Me in Heaven", "tagline": "Keep the conversation going", "desc": "AI memorial conversations that preserve the voice, memory, and wisdom of loved ones who have passed.", "icon": "☁", "color": "#7F77DD", "tc": "#EEEDFE", "cat": "personal", "status": "stub"}, {"server": "AIMyService", "domain": "cheerssocial.com", "name": "Cheers Social", "tagline": "Where social meets the pour", "desc": "A social platform built around bar culture, drinks, and the communities that gather around them.", "icon": "🍻", "color": "#993C1D", "tc": "#F5C4B3", "cat": "hospitality", "status": "stub"}, {"server": "AIMyService", "domain": "cheerscentral.com", "name": "Cheers Central", "tagline": "The hub for bar culture", "desc": "Central destination for bar events, specials, and the social scene around your favorite spots.", "icon": "🎉", "color": "#854F0B", "tc": "#FAEEDA", "cat": "hospitality", "status": "stub"}, {"server": "AIMyService", "domain": "happyhoursocial.com", "name": "Happy Hour Social", "tagline": "Find your happy hour", "desc": "Discover the best happy hour deals, events, and specials near you — powered by community.", "icon": "🥂", "color": "#BA7517", "tc": "#FAEEDA", "cat": "hospitality", "status": "stub"}, {"server": "AIMyService", "domain": "nolagoats.com", "name": "NOLA Goats", "tagline": "New Orleans greatest of all time", "desc": "Celebrating the greatest people, places, and moments in New Orleans culture and history.", "icon": "🐐", "color": "#3B6D11", "tc": "#C0DD97", "cat": "community", "status": "stub"}, {"server": "AIMyService", "domain": "nolalunchclub.com", "name": "NOLA Lunch Club", "tagline": "Lunch done right in New Orleans", "desc": "The premier lunch community in New Orleans — curated spots, weekly meetups, and food culture.", "icon": "🍜", "color": "#D85A30", "tc": "#FAECE7", "cat": "community", "status": "stub"}, {"server": "AIMyService", "domain": "tastetournola.com", "name": "Taste Tour NOLA", "tagline": "Taste your way through New Orleans", "desc": "Guided culinary experiences through New Orleans' most iconic and hidden-gem food destinations.", "icon": "🌶", "color": "#993C1D", "tc": "#FAECE7", "cat": "hospitality", "status": "stub"}, {"server": "AIMyService", "domain": "globaltix.app", "name": "Global Tix", "tagline": "Tickets without borders", "desc": "A global ticketing platform for events, concerts, experiences, and live entertainment worldwide.", "icon": "🎟", "color": "#185FA5", "tc": "#B5D4F4", "cat": "entertainment", "status": "stub"}, {"server": "AIMyService", "domain": "ticketsdirect.app", "name": "Tickets Direct", "tagline": "Direct from the source", "desc": "No fees, no middlemen. Buy and sell tickets directly for events, concerts, and live experiences.", "icon": "🎫", "color": "#0C447C", "tc": "#E6F1FB", "cat": "entertainment", "status": "stub"}, {"server": "AIMyService", "domain": "davefurano.com", "name": "Dave Furano", "tagline": "Entrepreneur. Entertainer. Innovator.", "desc": "The official home of Dave Furano — music, entertainment, AI ventures, and New Orleans culture.", "icon": "🎸", "color": "#26215C", "tc": "#CECBF6", "cat": "personal", "status": "stub"}, {"server": "AIMyService", "domain": "dellfurano.com", "name": "Dell Furano", "tagline": "Music industry legend", "desc": "The official home of Dell Furano, legendary music industry executive and licensing pioneer.", "icon": "🎵", "color": "#3C3489", "tc": "#EEEDFE", "cat": "personal", "status": "stub"}, {"server": "AIMyService", "domain": "gratefuldave.com", "name": "Grateful Dave", "tagline": "Living the Grateful life", "desc": "Dave Furano's Grateful Dead journey — shows, memories, community, and the culture that never dies.", "icon": "💀", "color": "#444441", "tc": "#D3D1C7", "cat": "personal", "status": "stub"}, {"server": "AIMyService", "domain": "kellyfurano.com", "name": "Kelly Furano", "tagline": "", "desc": "The personal home of Kelly Furano.", "icon": "🌸", "color": "#D4537E", "tc": "#FBEAF0", "cat": "personal", "status": "stub"}, {"server": "AIMyService", "domain": "rememberingwinterland.com", "name": "Remembering Winterland", "tagline": "The legendary SF concert venue", "desc": "A tribute to Winterland Arena — the legendary San Francisco venue that defined an era of live music.", "icon": "❄", "color": "#185FA5", "tc": "#B5D4F4", "cat": "entertainment", "status": "stub"}, {"server": "AIMyService", "domain": "sandybrew.com", "name": "Sandy Brew", "tagline": "Craft coffee culture", "desc": "A boutique coffee and craft beverage brand rooted in community, quality, and New Orleans flavor.", "icon": "☕", "color": "#633806", "tc": "#FAC775", "cat": "hospitality", "status": "stub"}, {"server": "AIMyService", "domain": "sandyfurano.com", "name": "Sandy Furano", "tagline": "", "desc": "The personal home of Sandy Furano.", "icon": "🌿", "color": "#0F6E56", "tc": "#9FE1CB", "cat": "personal", "status": "stub"}, {"server": "AIMyService", "domain": "sandyspritz.com", "name": "Sandy Spritz", "tagline": "Light, bright, and bubbly", "desc": "A spritz-forward cocktail brand celebrating the aperitivo lifestyle with a New Orleans twist.", "icon": "🍋", "color": "#BA7517", "tc": "#FAEEDA", "cat": "hospitality", "status": "stub"}];
+let activeFilter = 'all';
+
+function setFilter(el, f) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  activeFilter = f;
+  render();
+}
+
+function render() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const statusValues = ['live','stub','empty'];
+  const items = DOMAINS.filter(d => {
+    const matchF = activeFilter === 'all' || d.status === activeFilter || d.cat === activeFilter;
+    const matchQ = !q || d.domain.includes(q) || d.name.toLowerCase().includes(q) ||
+      d.desc.toLowerCase().includes(q) || d.cat.includes(q) || (d.tagline||'').toLowerCase().includes(q);
+    return matchF && matchQ;
+  });
+  document.getElementById('count').textContent = items.length + ' propert' + (items.length === 1 ? 'y' : 'ies');
+  const statusLabel = {live:'Live',stub:'Coming soon',empty:'Planned'};
+  const statusClass = {live:'status-live',stub:'status-stub',empty:'status-empty'};
+  document.getElementById('grid').innerHTML = items.length === 0
+    ? '<div class="empty-state">No properties match. Try a different keyword or filter.</div>'
+    : items.map(d => `
+      <a class="card" href="https://${d.domain}" target="_blank" rel="noopener">
+        <div class="thumb" style="background:${d.color}">
+          <div class="thumb-pattern"></div>
+          <div class="thumb-icon">${d.icon}</div>
+          <div class="thumb-name" style="color:${d.tc}">${d.name}</div>
+          <div class="thumb-status ${statusClass[d.status]}">${statusLabel[d.status]}</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">${d.name}</div>
+          <div class="card-desc">${d.desc}</div>
+          <div class="card-footer">
+            <span class="cat-pill" style="background:${CAT_BG[d.cat]||'#eee'};color:${CAT_COLORS[d.cat]||'#444'}">${d.cat}</span>
+            <span class="card-visit">Visit →</span>
+          </div>
+        </div>
+      </a>`).join('');
+}
+render();
+</script>
+</body>
+</html>
