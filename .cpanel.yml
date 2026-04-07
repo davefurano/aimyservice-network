@@ -2,51 +2,51 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
-    - /bin/cp -r aimyservice.com/. $DEPLOYPATH/
-    - /bin/cp -r aaifactory.com/. $DEPLOYPATH/../aaifactory.com/public_html/
-    - /bin/cp -r aiagencyforautomation.com/. $DEPLOYPATH/../aiagencyforautomation.com/public_html/
-    - /bin/cp -r aibiogenius.com/. $DEPLOYPATH/../aibiogenius.com/public_html/
-    - /bin/cp -r aicareerplanner.com/. $DEPLOYPATH/../aicareerplanner.com/public_html/
-    - /bin/cp -r aiforbars.com/. $DEPLOYPATH/../aiforbars.com/public_html/
-    - /bin/cp -r aiforcasinos.com/. $DEPLOYPATH/../aiforcasinos.com/public_html/
-    - /bin/cp -r aiforlongevity.dev/. $DEPLOYPATH/../aiforlongevity.dev/public_html/
-    - /bin/cp -r aiforrestaurants.com/. $DEPLOYPATH/../aiforrestaurants.com/public_html/
-    - /bin/cp -r aiintelligencefactory.com/. $DEPLOYPATH/../aiintelligencefactory.com/public_html/
-    - /bin/cp -r aijobscoach.com/. $DEPLOYPATH/../aijobscoach.com/public_html/
-    - /bin/cp -r ailunchclubs.com/. $DEPLOYPATH/../ailunchclubs.com/public_html/
-    - /bin/cp -r aimusicmemories.com/. $DEPLOYPATH/../aimusicmemories.com/public_html/
-    - /bin/cp -r aimyarchive.com/. $DEPLOYPATH/../aimyarchive.com/public_html/
-    - /bin/cp -r aimybio.com/. $DEPLOYPATH/../aimybio.com/public_html/
-    - /bin/cp -r aimygifting.com/. $DEPLOYPATH/../aimygifting.com/public_html/
-    - /bin/cp -r aimyinterview.com/. $DEPLOYPATH/../aimyinterview.com/public_html/
-    - /bin/cp -r aimyoffice.org/. $DEPLOYPATH/../aimyoffice.org/public_html/
-    - /bin/cp -r aimypractice.org/. $DEPLOYPATH/../aimypractice.org/public_html/
-    - /bin/cp -r aimyservices.com/. $DEPLOYPATH/../aimyservices.com/public_html/
-    - /bin/cp -r aimyshopping.com/. $DEPLOYPATH/../aimyshopping.com/public_html/
-    - /bin/cp -r aimysoundtrack.com/. $DEPLOYPATH/../aimysoundtrack.com/public_html/
-    - /bin/cp -r aisocietynews.com/. $DEPLOYPATH/../aisocietynews.com/public_html/
-    - /bin/cp -r aiwisdomfactory.com/. $DEPLOYPATH/../aiwisdomfactory.com/public_html/
-    - /bin/cp -r aiwizards.work/. $DEPLOYPATH/../aiwizards.work/public_html/
-    - /bin/cp -r allstaravatars.com/. $DEPLOYPATH/../allstaravatars.com/public_html/
-    - /bin/cp -r avastar.band/. $DEPLOYPATH/../avastar.band/public_html/
-    - /bin/cp -r avatarallstars.com/. $DEPLOYPATH/../avatarallstars.com/public_html/
-    - /bin/cp -r creativeintelligencesystem.com/. $DEPLOYPATH/../creativeintelligencesystem.com/public_html/
-    - /bin/cp -r lifeisabeautifulthing.com/. $DEPLOYPATH/../lifeisabeautifulthing.com/public_html/
-    - /bin/cp -r repeatableintelligence.com/. $DEPLOYPATH/../repeatableintelligence.com/public_html/
-    - /bin/cp -r talktomeinheaven.com/. $DEPLOYPATH/../talktomeinheaven.com/public_html/
-    - /bin/cp -r cheerssocial.com/. $DEPLOYPATH/../cheerssocial.com/public_html/
-    - /bin/cp -r cheerscentral.com/. $DEPLOYPATH/../cheerscentral.com/public_html/
-    - /bin/cp -r happyhoursocial.com/. $DEPLOYPATH/../happyhoursocial.com/public_html/
-    - /bin/cp -r nolagoats.com/. $DEPLOYPATH/../nolagoats.com/public_html/
-    - /bin/cp -r nolalunchclub.com/. $DEPLOYPATH/../nolalunchclub.com/public_html/
-    - /bin/cp -r tastetournola.com/. $DEPLOYPATH/../tastetournola.com/public_html/
-    - /bin/cp -r globaltix.app/. $DEPLOYPATH/../globaltix.app/public_html/
-    - /bin/cp -r ticketsdirect.app/. $DEPLOYPATH/../ticketsdirect.app/public_html/
-    - /bin/cp -r davefurano.com/. $DEPLOYPATH/../davefurano.com/public_html/
-    - /bin/cp -r dellfurano.com/. $DEPLOYPATH/../dellfurano.com/public_html/
-    - /bin/cp -r gratefuldave.com/. $DEPLOYPATH/../gratefuldave.com/public_html/
-    - /bin/cp -r kellyfurano.com/. $DEPLOYPATH/../kellyfurano.com/public_html/
-    - /bin/cp -r rememberingwinterland.com/. $DEPLOYPATH/../rememberingwinterland.com/public_html/
-    - /bin/cp -r sandybrew.com/. $DEPLOYPATH/../sandybrew.com/public_html/
-    - /bin/cp -r sandyfurano.com/. $DEPLOYPATH/../sandyfurano.com/public_html/
-    - /bin/cp -r sandyspritz.com/. $DEPLOYPATH/../sandyspritz.com/public_html/
+    - /bin/mkdir -p $DEPLOYPATH/aimyservice.com && /bin/cp -r aimyservice.com/. $DEPLOYPATH/aimyservice.com/
+    - /bin/mkdir -p $DEPLOYPATH/aaifactory.com && /bin/cp -r aaifactory.com/. $DEPLOYPATH/aaifactory.com/
+    - /bin/mkdir -p $DEPLOYPATH/aiagencyforautomation.com && /bin/cp -r aiagencyforautomation.com/. $DEPLOYPATH/aiagencyforautomation.com/
+    - /bin/mkdir -p $DEPLOYPATH/aibiogenius.com && /bin/cp -r aibiogenius.com/. $DEPLOYPATH/aibiogenius.com/
+    - /bin/mkdir -p $DEPLOYPATH/aicareerplanner.com && /bin/cp -r aicareerplanner.com/. $DEPLOYPATH/aicareerplanner.com/
+    - /bin/mkdir -p $DEPLOYPATH/aiforbars.com && /bin/cp -r aiforbars.com/. $DEPLOYPATH/aiforbars.com/
+    - /bin/mkdir -p $DEPLOYPATH/aiforcasinos.com && /bin/cp -r aiforcasinos.com/. $DEPLOYPATH/aiforcasinos.com/
+    - /bin/mkdir -p $DEPLOYPATH/aiforlongevity.dev && /bin/cp -r aiforlongevity.dev/. $DEPLOYPATH/aiforlongevity.dev/
+    - /bin/mkdir -p $DEPLOYPATH/aiforrestaurants.com && /bin/cp -r aiforrestaurants.com/. $DEPLOYPATH/aiforrestaurants.com/
+    - /bin/mkdir -p $DEPLOYPATH/aiintelligencefactory.com && /bin/cp -r aiintelligencefactory.com/. $DEPLOYPATH/aiintelligencefactory.com/
+    - /bin/mkdir -p $DEPLOYPATH/aijobscoach.com && /bin/cp -r aijobscoach.com/. $DEPLOYPATH/aijobscoach.com/
+    - /bin/mkdir -p $DEPLOYPATH/ailunchclubs.com && /bin/cp -r ailunchclubs.com/. $DEPLOYPATH/ailunchclubs.com/
+    - /bin/mkdir -p $DEPLOYPATH/aimusicmemories.com && /bin/cp -r aimusicmemories.com/. $DEPLOYPATH/aimusicmemories.com/
+    - /bin/mkdir -p $DEPLOYPATH/aimyarchive.com && /bin/cp -r aimyarchive.com/. $DEPLOYPATH/aimyarchive.com/
+    - /bin/mkdir -p $DEPLOYPATH/aimybio.com && /bin/cp -r aimybio.com/. $DEPLOYPATH/aimybio.com/
+    - /bin/mkdir -p $DEPLOYPATH/aimygifting.com && /bin/cp -r aimygifting.com/. $DEPLOYPATH/aimygifting.com/
+    - /bin/mkdir -p $DEPLOYPATH/aimyinterview.com && /bin/cp -r aimyinterview.com/. $DEPLOYPATH/aimyinterview.com/
+    - /bin/mkdir -p $DEPLOYPATH/aimyoffice.org && /bin/cp -r aimyoffice.org/. $DEPLOYPATH/aimyoffice.org/
+    - /bin/mkdir -p $DEPLOYPATH/aimypractice.org && /bin/cp -r aimypractice.org/. $DEPLOYPATH/aimypractice.org/
+    - /bin/mkdir -p $DEPLOYPATH/aimyservices.com && /bin/cp -r aimyservices.com/. $DEPLOYPATH/aimyservices.com/
+    - /bin/mkdir -p $DEPLOYPATH/aimyshopping.com && /bin/cp -r aimyshopping.com/. $DEPLOYPATH/aimyshopping.com/
+    - /bin/mkdir -p $DEPLOYPATH/aimysoundtrack.com && /bin/cp -r aimysoundtrack.com/. $DEPLOYPATH/aimysoundtrack.com/
+    - /bin/mkdir -p $DEPLOYPATH/aisocietynews.com && /bin/cp -r aisocietynews.com/. $DEPLOYPATH/aisocietynews.com/
+    - /bin/mkdir -p $DEPLOYPATH/aiwisdomfactory.com && /bin/cp -r aiwisdomfactory.com/. $DEPLOYPATH/aiwisdomfactory.com/
+    - /bin/mkdir -p $DEPLOYPATH/aiwizards.work && /bin/cp -r aiwizards.work/. $DEPLOYPATH/aiwizards.work/
+    - /bin/mkdir -p $DEPLOYPATH/allstaravatars.com && /bin/cp -r allstaravatars.com/. $DEPLOYPATH/allstaravatars.com/
+    - /bin/mkdir -p $DEPLOYPATH/avastar.band && /bin/cp -r avastar.band/. $DEPLOYPATH/avastar.band/
+    - /bin/mkdir -p $DEPLOYPATH/avatarallstars.com && /bin/cp -r avatarallstars.com/. $DEPLOYPATH/avatarallstars.com/
+    - /bin/mkdir -p $DEPLOYPATH/creativeintelligencesystem.com && /bin/cp -r creativeintelligencesystem.com/. $DEPLOYPATH/creativeintelligencesystem.com/
+    - /bin/mkdir -p $DEPLOYPATH/lifeisabeautifulthing.com && /bin/cp -r lifeisabeautifulthing.com/. $DEPLOYPATH/lifeisabeautifulthing.com/
+    - /bin/mkdir -p $DEPLOYPATH/repeatableintelligence.com && /bin/cp -r repeatableintelligence.com/. $DEPLOYPATH/repeatableintelligence.com/
+    - /bin/mkdir -p $DEPLOYPATH/talktomeinheaven.com && /bin/cp -r talktomeinheaven.com/. $DEPLOYPATH/talktomeinheaven.com/
+    - /bin/mkdir -p $DEPLOYPATH/cheerssocial.com && /bin/cp -r cheerssocial.com/. $DEPLOYPATH/cheerssocial.com/
+    - /bin/mkdir -p $DEPLOYPATH/cheerscentral.com && /bin/cp -r cheerscentral.com/. $DEPLOYPATH/cheerscentral.com/
+    - /bin/mkdir -p $DEPLOYPATH/happyhoursocial.com && /bin/cp -r happyhoursocial.com/. $DEPLOYPATH/happyhoursocial.com/
+    - /bin/mkdir -p $DEPLOYPATH/nolagoats.com && /bin/cp -r nolagoats.com/. $DEPLOYPATH/nolagoats.com/
+    - /bin/mkdir -p $DEPLOYPATH/nolalunchclub.com && /bin/cp -r nolalunchclub.com/. $DEPLOYPATH/nolalunchclub.com/
+    - /bin/mkdir -p $DEPLOYPATH/tastetournola.com && /bin/cp -r tastetournola.com/. $DEPLOYPATH/tastetournola.com/
+    - /bin/mkdir -p $DEPLOYPATH/globaltix.app && /bin/cp -r globaltix.app/. $DEPLOYPATH/globaltix.app/
+    - /bin/mkdir -p $DEPLOYPATH/ticketsdirect.app && /bin/cp -r ticketsdirect.app/. $DEPLOYPATH/ticketsdirect.app/
+    - /bin/mkdir -p $DEPLOYPATH/davefurano.com && /bin/cp -r davefurano.com/. $DEPLOYPATH/davefurano.com/
+    - /bin/mkdir -p $DEPLOYPATH/dellfurano.com && /bin/cp -r dellfurano.com/. $DEPLOYPATH/dellfurano.com/
+    - /bin/mkdir -p $DEPLOYPATH/gratefuldave.com && /bin/cp -r gratefuldave.com/. $DEPLOYPATH/gratefuldave.com/
+    - /bin/mkdir -p $DEPLOYPATH/kellyfurano.com && /bin/cp -r kellyfurano.com/. $DEPLOYPATH/kellyfurano.com/
+    - /bin/mkdir -p $DEPLOYPATH/rememberingwinterland.com && /bin/cp -r rememberingwinterland.com/. $DEPLOYPATH/rememberingwinterland.com/
+    - /bin/mkdir -p $DEPLOYPATH/sandybrew.com && /bin/cp -r sandybrew.com/. $DEPLOYPATH/sandybrew.com/
+    - /bin/mkdir -p $DEPLOYPATH/sandyfurano.com && /bin/cp -r sandyfurano.com/. $DEPLOYPATH/sandyfurano.com/
+    - /bin/mkdir -p $DEPLOYPATH/sandyspritz.com && /bin/cp -r sandyspritz.com/. $DEPLOYPATH/sandyspritz.com/
