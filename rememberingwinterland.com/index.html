@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Remembering Winterland — The Legendary SF Concert Venue</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0c;--text:#f5f0e0;--brand:#d4a840;--accent:#8b2020;--muted:#888878;--surface:#161610}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Crimson Text',serif;min-height:100vh}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;border-bottom:1px solid rgba(212,168,64,.2);position:relative;z-index:10}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--brand);letter-spacing:.08em}
+.nav-cta{background:transparent;color:var(--brand);padding:.5rem 1.25rem;border:1px solid rgba(212,168,64,.4);font-size:.875rem;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color .2s}
+.nav-cta:hover{border-color:var(--brand)}
+.hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at center,#1a1000 0%,#0c0c0c 70%);z-index:1}
+.spotlight{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:600px;height:800px;background:radial-gradient(ellipse,rgba(212,168,64,.08) 0%,transparent 60%);pointer-events:none;z-index:2}
+.hero-inner{position:relative;z-index:10;text-align:center;padding:4rem 3rem}
+.years{font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin-bottom:2rem;opacity:.8}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,9rem);color:var(--text);line-height:.95;margin-bottom:.5rem;letter-spacing:.03em;text-shadow:0 0 80px rgba(212,168,64,.15)}
+.h1-sub{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,4vw,3rem);color:var(--brand);letter-spacing:.08em;margin-bottom:2rem}
+.sub{font-size:1.2rem;color:var(--muted);max-width:560px;margin:0 auto 3rem;line-height:1.75;font-style:italic}
+.btn-p{background:var(--brand);color:var(--bg);padding:.95rem 2.75rem;font-size:.875rem;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:400;letter-spacing:.1em;text-transform:uppercase;transition:background .15s}
+.btn-p:hover{background:#e0b850}
+.timeline{max-width:900px;margin:0 auto;padding:5rem 3rem;position:relative;z-index:10}
+.tl-label{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--brand);margin-bottom:2.5rem;opacity:.8}
+.tl-item{display:grid;grid-template-columns:100px 1fr;gap:2rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(212,168,64,.1)}
+.tl-item:last-child{border-bottom:none}
+.tl-year{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--brand);line-height:1}
+.tl-content{}
+.tl-title{font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
+.tl-desc{font-size:1rem;color:var(--muted);line-height:1.7;font-style:italic}
+.shows-grid{background:var(--surface);padding:5rem 3rem;position:relative;z-index:10}
+.shows-inner{max-width:900px;margin:0 auto}
+.sg-label{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--brand);margin-bottom:.75rem;opacity:.8}
+.sg-title{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--text);margin-bottom:2.5rem;letter-spacing:.03em}
+.shows-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.show-card{border:1px solid rgba(212,168,64,.15);padding:1.25rem;transition:border-color .2s}
+.show-card:hover{border-color:rgba(212,168,64,.4)}
+.sc-artist{font-weight:600;font-size:1rem;color:var(--text);margin-bottom:.4rem}
+.sc-date{font-size:.85rem;color:var(--brand);font-style:italic}
+.cta{background:var(--accent);padding:5rem 3rem;text-align:center;position:relative;z-index:10}
+.cta h2{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--text);letter-spacing:.05em;margin-bottom:.5rem}
+.cta p{color:rgba(245,240,224,.7);margin-bottom:2rem;font-size:1.1rem;font-style:italic}
+.email-row{display:flex;gap:0;max-width:420px;margin:0 auto}
+.email-row input{flex:1;padding:.85rem 1rem;border:none;font-size:.875rem;background:rgba(0,0,0,.3);color:var(--text);outline:none;font-family:'Inter',sans-serif}
+.email-row input::placeholder{color:rgba(245,240,224,.4)}
+.email-row button{background:var(--brand);color:var(--bg);border:none;padding:.85rem 1.5rem;font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+footer{padding:2rem 3rem;display:flex;justify-content:space-between;font-family:'Inter',sans-serif;font-size:.75rem;color:var(--muted);border-top:1px solid rgba(212,168,64,.1);position:relative;z-index:10}
+</style></head><body>
+<nav><div class="logo">Remembering Winterland</div><button class="nav-cta">Enter the Archive</button></nav>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="spotlight"></div>
+  <div class="hero-inner">
+    <div class="years">San Francisco • 1971–1978</div>
+    <h1>Winterland</h1>
+    <div class="h1-sub">Arena</div>
+    <p class="sub">"The house that Bill Graham built." The most legendary concert venue in rock history — where the Grateful Dead, Led Zeppelin, and a generation made history.</p>
+    <button class="btn-p">Enter the Archive</button>
+  </div>
+</div>
+<div class="timeline">
+  <div class="tl-label">The Winterland Story</div>
+  <div class="tl-item"><div class="tl-year">1928</div><div class="tl-content"><div class="tl-title">Born as the Winterland Ice Arena</div><div class="tl-desc">Originally built as a skating rink on Post Street in San Francisco's Western Addition neighborhood.</div></div></div>
+  <div class="tl-item"><div class="tl-year">1971</div><div class="tl-content"><div class="tl-title">Bill Graham Takes the Stage</div><div class="tl-desc">Rock promoter Bill Graham transforms Winterland into the premier concert venue in Northern California.</div></div></div>
+  <div class="tl-item"><div class="tl-year">1974</div><div class="tl-content"><div class="tl-title">The Last Waltz</div><div class="tl-desc">The Band's farewell concert — one of the most celebrated events in rock history, filmed by Martin Scorsese.</div></div></div>
+  <div class="tl-item"><div class="tl-year">1978</div><div class="tl-content"><div class="tl-title">The Final Curtain</div><div class="tl-desc">New Year's Eve 1978. The Grateful Dead play the last show. The lights go down on Winterland forever.</div></div></div>
+</div>
+<div class="shows-grid">
+  <div class="shows-inner">
+    <div class="sg-label">Legendary Nights</div>
+    <div class="sg-title">Shows That Made History</div>
+    <div class="shows-list">
+      <div class="show-card"><div class="sc-artist">Grateful Dead</div><div class="sc-date">New Year's Eve, 1978</div></div>
+      <div class="show-card"><div class="sc-artist">The Band</div><div class="sc-date">The Last Waltz, 1976</div></div>
+      <div class="show-card"><div class="sc-artist">Led Zeppelin</div><div class="sc-date">September 1971</div></div>
+      <div class="show-card"><div class="sc-artist">Jimi Hendrix</div><div class="sc-date">Various, 1968</div></div>
+      <div class="show-card"><div class="sc-artist">Janis Joplin</div><div class="sc-date">Various, 1968–69</div></div>
+      <div class="show-card"><div class="sc-artist">Jefferson Airplane</div><div class="sc-date">Multiple runs</div></div>
+    </div>
+  </div>
+</div>
+<div class="cta">
+  <h2>You Were There.</h2>
+  <p>Share your Winterland memories — photos, stories, setlists, and more.</p>
+  <div class="email-row"><input type="email" placeholder="your@email.com"><button>Join the Archive</button></div>
+</div>
+<footer><span>© 2026 rememberingwinterland.com — Dave Furano</span><span>In memory of something irreplaceable</span></footer>
+</body></html>

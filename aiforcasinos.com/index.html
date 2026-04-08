@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI for Casinos — Intelligence on the Gaming Floor</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060810;--text:#e8eaf0;--brand:#00d4aa;--accent:#ffd700;--muted:#6a7080;--surface:#0d1018}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;min-height:100vh;overflow-x:hidden}
+.circuit{position:fixed;inset:0;opacity:.03;background-image:linear-gradient(rgba(0,212,170,1) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,170,1) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;border-bottom:1px solid rgba(0,212,170,.15);position:relative;z-index:10}
+.logo{font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:700;color:var(--brand);letter-spacing:.1em;text-transform:uppercase}
+.nav-cta{background:transparent;color:var(--brand);padding:.5rem 1.5rem;border:1px solid var(--brand);font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;transition:background .15s}
+.nav-cta:hover{background:rgba(0,212,170,.08)}
+.hero{max-width:1100px;margin:0 auto;padding:7rem 3rem 5rem;position:relative;z-index:10}
+.tag{font-family:'Rajdhani',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.tag::before{content:'';width:30px;height:1px;background:var(--brand)}
+h1{font-family:'Rajdhani',sans-serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:700;line-height:1;color:var(--text);margin-bottom:.75rem;letter-spacing:.02em}
+h1 span{color:var(--brand)}
+.h1-line2{color:var(--accent)}
+.sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.75;margin-bottom:3rem;font-weight:300}
+.actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-p{background:var(--brand);color:var(--bg);padding:.85rem 2.25rem;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.08em;border:none;cursor:pointer;transition:opacity .15s}
+.btn-p:hover{opacity:.88}
+.btn-s{background:transparent;color:var(--accent);padding:.85rem 1.75rem;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid rgba(255,215,0,.3);cursor:pointer}
+.stats-bar{background:var(--surface);border-top:1px solid rgba(0,212,170,.1);border-bottom:1px solid rgba(0,212,170,.1);padding:2.5rem 3rem;display:flex;gap:0;position:relative;z-index:10}
+.stat{flex:1;text-align:center;border-right:1px solid rgba(0,212,170,.1);padding:1rem}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Rajdhani',sans-serif;font-size:2.5rem;font-weight:700;color:var(--brand);line-height:1}
+.stat-label{font-size:.75rem;color:var(--muted);margin-top:.4rem;text-transform:uppercase;letter-spacing:.1em}
+.solutions{max-width:1100px;margin:0 auto;padding:5rem 3rem;position:relative;z-index:10}
+.sol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(0,212,170,.08)}
+.sol{background:var(--bg);padding:2.5rem;transition:background .15s}
+.sol:hover{background:var(--surface)}
+.sol-num{font-family:'Rajdhani',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--brand);margin-bottom:1.25rem}
+.sol-title{font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.04em}
+.sol-desc{font-size:.875rem;color:var(--muted);line-height:1.65;font-weight:300}
+.cta{background:linear-gradient(135deg,#0d1a14,#060810);border-top:1px solid rgba(0,212,170,.2);border-bottom:1px solid rgba(0,212,170,.2);padding:5rem 3rem;text-align:center;position:relative;z-index:10}
+.cta h2{font-family:'Rajdhani',sans-serif;font-size:3rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem}
+.cta h2 span{color:var(--brand)}
+.cta p{color:var(--muted);margin-bottom:2rem}
+.email-row{display:flex;gap:0;max-width:440px;margin:0 auto}
+.email-row input{flex:1;padding:.85rem 1rem;border:1px solid rgba(0,212,170,.2);background:transparent;color:var(--text);font-size:.875rem;outline:none;font-family:'Roboto',sans-serif}
+.email-row input::placeholder{color:var(--muted)}
+.email-row button{background:var(--brand);color:var(--bg);border:none;padding:.85rem 1.5rem;font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;white-space:nowrap}
+footer{padding:2rem 3rem;display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);border-top:1px solid rgba(0,212,170,.1);font-family:'Rajdhani',sans-serif;letter-spacing:.05em;position:relative;z-index:10}
+</style></head><body>
+<div class="circuit"></div>
+<nav><div class="logo">AI for Casinos</div><button class="nav-cta">Request Demo</button></nav>
+<div class="hero">
+  <div class="tag">Casino AI systems</div>
+  <h1>Intelligence<br><span>on the</span><br><span class="h1-line2">floor.</span></h1>
+  <p class="sub">AI systems built for casino operations: guest experience optimization, floor management, entertainment programming, and real-time revenue intelligence.</p>
+  <div class="actions">
+    <button class="btn-p">Request a Demo</button>
+    <button class="btn-s">View Solutions</button>
+  </div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">23%</div><div class="stat-label">Revenue lift</div></div>
+  <div class="stat"><div class="stat-num">41%</div><div class="stat-label">Better retention</div></div>
+  <div class="stat"><div class="stat-num">60s</div><div class="stat-label">Guest insight lag</div></div>
+  <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Live monitoring</div></div>
+</div>
+<div class="solutions">
+  <div class="sol-grid">
+    <div class="sol"><div class="sol-num">System 01</div><div class="sol-title">Guest Intelligence</div><div class="sol-desc">Real-time guest behavior analysis, preference tracking, and personalized experience delivery across every touchpoint.</div></div>
+    <div class="sol"><div class="sol-num">System 02</div><div class="sol-title">Floor Optimization</div><div class="sol-desc">AI-driven slot floor configuration, table game management, and traffic flow optimization for peak performance.</div></div>
+    <div class="sol"><div class="sol-num">System 03</div><div class="sol-title">Entertainment AI</div><div class="sol-desc">Program entertainment that drives floor energy — from AI avatar house bands to dynamic event scheduling.</div></div>
+    <div class="sol"><div class="sol-num">System 04</div><div class="sol-title">Revenue Intelligence</div><div class="sol-desc">Predictive analytics for every revenue center — slots, tables, F&B, and hotel — with actionable daily insights.</div></div>
+  </div>
+</div>
+<div class="cta">
+  <h2>The <span>smarter</span> casino floor.</h2>
+  <p>Request a demo and see what AI can do for your operation.</p>
+  <div class="email-row"><input type="email" placeholder="your@casino.com"><button>Request Demo</button></div>
+</div>
+<footer><span>© 2026 aiforcasinos.com</span><span>Part of the AI My Service network</span></footer>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI for Restaurants — AI That Works the Back Office</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--text:#1a1008;--brand:#2d5016;--accent:#e8730a;--muted:#7a6a58;--surface:#faf7f2;--light:#f0ebe0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',sans-serif}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;border-bottom:1px solid var(--light)}
+.logo{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--brand)}
+.nav-cta{background:var(--accent);color:var(--bg);padding:.5rem 1.5rem;font-size:.875rem;border:none;cursor:pointer;font-weight:600}
+.hero{background:var(--brand);padding:6rem 3rem 5rem;display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;max-width:100%}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding:4rem 2rem}}
+.tag{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.25rem}
+h1{font-family:'Libre Baskerville',serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.15;color:#fff;margin-bottom:1.5rem}
+h1 em{font-style:italic;color:rgba(232,115,10,1)}
+.sub{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.btn-p{background:var(--accent);color:#fff;padding:.9rem 2.5rem;font-size:.95rem;border:none;cursor:pointer;font-weight:600;transition:opacity .15s}
+.btn-p:hover{opacity:.88}
+.menu-card{background:#fff;padding:2rem}
+.menu-title{font-family:'Libre Baskerville',serif;font-size:.8rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;border-bottom:1px solid var(--light);padding-bottom:.75rem}
+.menu-item{display:flex;justify-content:space-between;align-items:baseline;padding:.65rem 0;border-bottom:1px dotted var(--light)}
+.menu-item:last-child{border-bottom:none}
+.item-name{font-family:'Libre Baskerville',serif;font-size:.95rem;color:var(--text)}
+.item-price{font-size:.85rem;color:var(--accent);font-weight:600}
+.item-badge{font-size:.65rem;background:var(--light);color:var(--muted);padding:.2rem .5rem;margin-left:.5rem;letter-spacing:.04em}
+.features{background:var(--surface);padding:5rem 3rem}
+.features-inner{max-width:1000px;margin:0 auto}
+.section-eyebrow{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+.section-h{font-family:'Libre Baskerville',serif;font-size:2.25rem;margin-bottom:3rem;color:var(--text)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.feat{background:#fff;padding:1.75rem;border-bottom:3px solid var(--accent)}
+.feat-title{font-family:'Libre Baskerville',serif;font-size:1.05rem;margin-bottom:.6rem;color:var(--text)}
+.feat-desc{font-size:.875rem;color:var(--muted);line-height:1.65;font-weight:300}
+.cta{background:var(--accent);padding:5rem 3rem;text-align:center}
+.cta h2{font-family:'Libre Baskerville',serif;font-size:2.5rem;color:#fff;margin-bottom:.75rem}
+.cta p{color:rgba(255,255,255,.75);margin-bottom:2rem}
+.email-row{display:flex;gap:0;max-width:420px;margin:0 auto}
+.email-row input{flex:1;padding:.85rem 1rem;border:none;font-size:.875rem;background:#fff;color:var(--text);outline:none}
+.email-row button{background:var(--brand);color:#fff;border:none;padding:.85rem 1.5rem;font-weight:600;cursor:pointer;white-space:nowrap}
+footer{padding:2rem 3rem;display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);border-top:1px solid var(--light)}
+</style></head><body>
+<nav><div class="logo">AI for Restaurants</div><button class="nav-cta">Get Started</button></nav>
+<div class="hero">
+  <div>
+    <div class="tag">Restaurant AI automation</div>
+    <h1>AI that works<br>the <em>back office</em>.</h1>
+    <p class="sub">Menu engineering, staffing, reservations, and marketing — AI automation built for restaurant operators who need results, not complexity.</p>
+    <button class="btn-p">Get Started Free →</button>
+  </div>
+  <div class="menu-card">
+    <div class="menu-title">AI-Optimized Menu Analysis</div>
+    <div class="menu-item"><span class="item-name">Shrimp & Grits<span class="item-badge">↑ STAR</span></span><span class="item-price">$28</span></div>
+    <div class="menu-item"><span class="item-name">Redfish Almondine<span class="item-badge">→ HOLD</span></span><span class="item-price">$32</span></div>
+    <div class="menu-item"><span class="item-name">Boudin Stuffed Chicken<span class="item-badge">↑ FEATURE</span></span><span class="item-price">$26</span></div>
+    <div class="menu-item"><span class="item-name">Vegetable Plate<span class="item-badge">↓ REVIEW</span></span><span class="item-price">$18</span></div>
+    <div class="menu-item"><span class="item-name">Bread Pudding<span class="item-badge">↑ PUSH</span></span><span class="item-price">$10</span></div>
+  </div>
+</div>
+<div class="features">
+  <div class="features-inner">
+    <div class="section-eyebrow">What we automate</div>
+    <div class="section-h">Everything but the cooking.</div>
+    <div class="feat-grid">
+      <div class="feat"><div class="feat-title">Menu Engineering</div><div class="feat-desc">AI analyzes sales data to optimize your menu — what to feature, what to cut, and how to price.</div></div>
+      <div class="feat"><div class="feat-title">Staff Scheduling</div><div class="feat-desc">Demand-based scheduling built from your history — the right people on the right shifts, automatically.</div></div>
+      <div class="feat"><div class="feat-title">Reservation AI</div><div class="feat-desc">Smart booking management that fills tables, reduces no-shows, and handles waitlists intelligently.</div></div>
+      <div class="feat"><div class="feat-title">Marketing Engine</div><div class="feat-desc">Automated email, social, and SMS campaigns that drive covers — personalized to your regulars.</div></div>
+    </div>
+  </div>
+</div>
+<div class="cta">
+  <h2>Your back office, automated.</h2>
+  <p>Join the waitlist for early access.</p>
+  <div class="email-row"><input type="email" placeholder="your@restaurant.com"><button>Join Waitlist</button></div>
+</div>
+<footer><span>© 2026 aiforrestaurants.com</span><span>Part of the AI My Service network</span></footer>
+</body></html>

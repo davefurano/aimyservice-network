@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI My Archive — Your Life, Organized Forever</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f0e8;--text:#1c1a16;--brand:#3d2b1f;--accent:#c4622d;--muted:#7a6e62;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;background:var(--brand)}
+.logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--bg)}
+.nav-cta{background:var(--accent);color:var(--white);padding:.55rem 1.5rem;font-size:.875rem;border:none;cursor:pointer}
+.hero{padding:7rem 3rem 5rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:center}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding:4rem 2rem;gap:3rem}}
+.eyebrow{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(2.75rem,5.5vw,4.5rem);line-height:1.1;color:var(--text);margin-bottom:1.5rem}
+h1 em{font-style:italic;color:var(--brand)}
+.sub{font-size:1.05rem;color:var(--muted);line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.btn-p{background:var(--brand);color:var(--bg);padding:.9rem 2.5rem;font-size:.95rem;border:none;cursor:pointer;font-weight:500;transition:background .15s}
+.btn-p:hover{background:var(--accent)}
+.archive-visual{background:var(--brand);padding:2.5rem;position:relative}
+.archive-row{display:flex;align-items:center;gap:1rem;padding:.85rem;border-bottom:1px solid rgba(255,255,255,.08);transition:background .15s}
+.archive-row:hover{background:rgba(255,255,255,.05)}
+.archive-row:last-child{border-bottom:none}
+.arch-year{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--accent);min-width:48px}
+.arch-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.arch-label{font-size:.85rem;color:rgba(255,255,255,.75)}
+.arch-count{font-size:.75rem;color:rgba(255,255,255,.4);margin-left:auto}
+.features{padding:5rem 3rem;background:var(--white)}
+.features-inner{max-width:1000px;margin:0 auto}
+.section-eyebrow{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+.section-h{font-family:'DM Serif Display',serif;font-size:2.25rem;margin-bottom:3rem}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.feat{padding:1.75rem;border:1px solid #eee;transition:border-color .15s}
+.feat:hover{border-color:var(--accent)}
+.feat-icon{font-size:1.75rem;margin-bottom:1rem}
+.feat-title{font-family:'DM Serif Display',serif;font-size:1.1rem;margin-bottom:.5rem}
+.feat-desc{font-size:.875rem;color:var(--muted);line-height:1.65}
+.cta{background:var(--brand);padding:5rem 3rem;text-align:center}
+.cta h2{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--bg);margin-bottom:.75rem}
+.cta p{color:rgba(245,240,232,.6);margin-bottom:2rem}
+.email-row{display:flex;gap:0;max-width:420px;margin:0 auto}
+.email-row input{flex:1;padding:.85rem 1rem;border:none;font-size:.875rem;background:rgba(255,255,255,.1);color:var(--bg);outline:none}
+.email-row input::placeholder{color:rgba(245,240,232,.4)}
+.email-row button{background:var(--accent);color:var(--white);border:none;padding:.85rem 1.5rem;font-weight:500;cursor:pointer;white-space:nowrap}
+footer{padding:2rem 3rem;display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);background:var(--bg);border-top:1px solid #ddd}
+</style></head><body>
+<nav><div class="logo">AI My Archive</div><button class="nav-cta">Join Waitlist</button></nav>
+<div class="hero">
+  <div>
+    <div class="eyebrow">Personal archive system</div>
+    <h1>Your life,<br><em>organized</em><br>forever.</h1>
+    <p class="sub">AI-powered personal archive that organizes decades of photos, videos, documents, and memories into a searchable, chronological vault — automatically.</p>
+    <button class="btn-p">Join the Waitlist →</button>
+  </div>
+  <div class="archive-visual">
+    <div class="archive-row"><span class="arch-year">1975</span><div class="arch-dot"></div><span class="arch-label">Family photos</span><span class="arch-count">47 items</span></div>
+    <div class="archive-row"><span class="arch-year">1988</span><div class="arch-dot"></div><span class="arch-label">School years</span><span class="arch-count">123 items</span></div>
+    <div class="archive-row"><span class="arch-year">1996</span><div class="arch-dot"></div><span class="arch-label">Early career</span><span class="arch-count">89 items</span></div>
+    <div class="archive-row"><span class="arch-year">2004</span><div class="arch-dot"></div><span class="arch-label">Family milestones</span><span class="arch-count">341 items</span></div>
+    <div class="archive-row"><span class="arch-year">2015</span><div class="arch-dot"></div><span class="arch-label">Adventures</span><span class="arch-count">892 items</span></div>
+    <div class="archive-row"><span class="arch-year">2026</span><div class="arch-dot"></div><span class="arch-label">Today</span><span class="arch-count">ongoing</span></div>
+  </div>
+</div>
+<div class="features">
+  <div class="features-inner">
+    <div class="section-eyebrow">How it works</div>
+    <div class="section-h">One vault. Every memory.</div>
+    <div class="feat-grid">
+      <div class="feat"><div class="feat-icon">🗄</div><div class="feat-title">Smart Organization</div><div class="feat-desc">AI automatically tags, dates, and organizes everything by people, places, events, and eras.</div></div>
+      <div class="feat"><div class="feat-icon">🔍</div><div class="feat-title">Instant Search</div><div class="feat-desc">Find any memory in seconds. Search by face, location, year, or natural language query.</div></div>
+      <div class="feat"><div class="feat-icon">🔒</div><div class="feat-title">Private & Secure</div><div class="feat-desc">Your archive stays yours. Encrypted, backed up, and accessible only by you.</div></div>
+      <div class="feat"><div class="feat-icon">📤</div><div class="feat-title">Easy Sharing</div><div class="feat-desc">Share curated collections with family and friends — or keep it all to yourself.</div></div>
+    </div>
+  </div>
+</div>
+<div class="cta">
+  <h2>Start preserving your story.</h2>
+  <p>Join the waitlist — launching in 2026.</p>
+  <div class="email-row"><input type="email" placeholder="your@email.com"><button>Join Waitlist</button></div>
+</div>
+<footer><span>© 2026 aimyarchive.com</span><span>Part of the AI My Service network</span></footer>
+</body></html>

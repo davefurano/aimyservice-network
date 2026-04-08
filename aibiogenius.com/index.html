@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI BioGenius — Your Story, Beautifully Told</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f5;--text:#1a1a1a;--brand:#2d5a27;--accent:#c8a96e;--muted:#777;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Lato',sans-serif}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;background:var(--white);border-bottom:1px solid #eee}
+.logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--brand)}
+.nav-cta{background:var(--brand);color:var(--white);padding:.55rem 1.5rem;font-size:.875rem;border:none;cursor:pointer}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:85vh;max-width:1200px;margin:0 auto;padding:0 3rem;align-items:center;gap:4rem}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding:4rem 2rem}}
+.hero-left{padding:4rem 0}
+.eyebrow{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1.15;color:var(--text);margin-bottom:1.5rem}
+h1 em{font-style:italic;color:var(--brand)}
+.sub{font-size:1.05rem;color:var(--muted);line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.btn-p{background:var(--brand);color:var(--white);padding:.9rem 2.5rem;font-size:.95rem;border:none;cursor:pointer;transition:opacity .15s}
+.btn-p:hover{opacity:.88}
+.hero-right{background:var(--brand);padding:3rem;display:flex;flex-direction:column;justify-content:center;min-height:500px}
+.bio-preview{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:2rem;margin-bottom:1.5rem}
+.bio-label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.bio-text{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(255,255,255,.9);line-height:1.8;font-style:italic}
+.bio-name{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:1rem;text-align:right}
+.formats{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+.fmt{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);padding:.4rem .9rem;font-size:.75rem;letter-spacing:.05em}
+.features{background:var(--white);padding:5rem 3rem}
+.features-inner{max-width:900px;margin:0 auto}
+.section-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.section-title{font-family:'Playfair Display',serif;font-size:2.25rem;margin-bottom:3rem;color:var(--text)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.feat{border-top:2px solid var(--accent);padding-top:1.5rem}
+.feat-title{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:.75rem;color:var(--text)}
+.feat-desc{font-size:.875rem;color:var(--muted);line-height:1.7;font-weight:300}
+.cta{background:var(--accent);padding:5rem 3rem;text-align:center}
+.cta h2{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--text);margin-bottom:.75rem}
+.cta p{color:rgba(26,26,26,.7);margin-bottom:2rem}
+.email-row{display:flex;gap:0;max-width:420px;margin:0 auto}
+.email-row input{flex:1;padding:.85rem 1rem;border:1px solid rgba(0,0,0,.2);font-size:.875rem;background:var(--white);outline:none}
+.email-row button{background:var(--brand);color:var(--white);border:none;padding:.85rem 1.5rem;font-weight:700;cursor:pointer;white-space:nowrap}
+footer{padding:2rem 3rem;display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);background:var(--white);border-top:1px solid #eee}
+</style></head><body>
+<nav><div class="logo">AI BioGenius</div><button class="nav-cta">Start My Bio</button></nav>
+<div class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">AI biography writing</div>
+    <h1>Your story,<br><em>beautifully</em><br>told.</h1>
+    <p class="sub">AI-powered biography writing that captures your voice, your achievements, and your essence — for LinkedIn, press kits, speaker profiles, and more.</p>
+    <button class="btn-p">Write My Bio →</button>
+  </div>
+  <div class="hero-right">
+    <div class="bio-preview">
+      <div class="bio-label">Sample — Executive Bio</div>
+      <div class="bio-text">"A visionary operator with two decades building companies at the intersection of technology and human experience, she brings an uncommon clarity to complex problems — and an infectious belief that the best work is always just beginning."</div>
+      <div class="bio-name">— Generated in 90 seconds</div>
+    </div>
+    <div class="formats">
+      <span class="fmt">LinkedIn</span><span class="fmt">Speaker Bio</span><span class="fmt">Press Kit</span><span class="fmt">Website</span><span class="fmt">Full Memoir</span>
+    </div>
+  </div>
+</div>
+<div class="features">
+  <div class="features-inner">
+    <div class="section-label">What we do</div>
+    <div class="section-title">Every format. Every audience.</div>
+    <div class="feat-grid">
+      <div class="feat"><div class="feat-title">Professional Bios</div><div class="feat-desc">LinkedIn summaries, speaker introductions, and executive profiles tailored to your industry and audience.</div></div>
+      <div class="feat"><div class="feat-title">Life Stories</div><div class="feat-desc">Long-form personal narratives that capture a lifetime — for family archives, memoirs, or legacy projects.</div></div>
+      <div class="feat"><div class="feat-title">Brand Narratives</div><div class="feat-desc">The story behind your company, product, or mission — told in a way that makes people care.</div></div>
+      <div class="feat"><div class="feat-title">Multiple Versions</div><div class="feat-desc">Short, medium, and long versions of every bio, ready for any platform or occasion.</div></div>
+    </div>
+  </div>
+</div>
+<div class="cta">
+  <h2>Your story deserves to be told well.</h2>
+  <p>Get notified when AI BioGenius launches.</p>
+  <div class="email-row"><input type="email" placeholder="your@email.com"><button>Notify Me</button></div>
+</div>
+<footer><span>© 2026 aibiogenius.com</span><span>Part of the AI My Service network</span></footer>
+</body></html>

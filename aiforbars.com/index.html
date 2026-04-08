@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI for Bars — Built for Bar Operators</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0a06;--text:#f5efe8;--brand:#e8820a;--accent:#c0392b;--muted:#8a7a6a;--surface:#1a1208}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;border-bottom:1px solid rgba(232,130,10,.2);position:relative;z-index:10}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;color:var(--brand);letter-spacing:.05em;text-transform:uppercase}
+.nav-cta{background:var(--brand);color:var(--bg);padding:.5rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;border:none;cursor:pointer}
+.hero{max-width:1100px;margin:0 auto;padding:6rem 3rem 4rem;display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;position:relative;z-index:10}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding:4rem 2rem}}
+.tag{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin-bottom:1.25rem}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:900;line-height:.95;text-transform:uppercase;color:var(--text);margin-bottom:1.5rem}
+h1 span{color:var(--brand);display:block}
+.sub{font-size:1rem;color:var(--muted);line-height:1.75;margin-bottom:2.5rem;font-weight:300}
+.actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-p{background:var(--brand);color:var(--bg);padding:.85rem 2rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;border:none;cursor:pointer}
+.btn-s{background:transparent;color:var(--brand);padding:.85rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid rgba(232,130,10,.4);cursor:pointer}
+.metrics{background:var(--surface);border:1px solid rgba(232,130,10,.15);padding:2rem}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(232,130,10,.1)}
+.metric{background:var(--surface);padding:1.5rem;text-align:center}
+.metric-num{font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:900;color:var(--brand);line-height:1}
+.metric-label{font-size:.75rem;color:var(--muted);margin-top:.4rem;text-transform:uppercase;letter-spacing:.08em}
+.features{max-width:1100px;margin:0 auto;padding:4rem 3rem;position:relative;z-index:10}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.feat{border-left:3px solid var(--brand);padding-left:1.5rem}
+.feat-title{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;text-transform:uppercase;color:var(--text);margin-bottom:.5rem}
+.feat-desc{font-size:.875rem;color:var(--muted);line-height:1.65;font-weight:300}
+.cta{background:var(--brand);padding:4rem 3rem;text-align:center;position:relative;z-index:10}
+.cta h2{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:900;text-transform:uppercase;color:var(--bg);margin-bottom:.5rem;letter-spacing:.02em}
+.cta p{color:rgba(15,10,6,.7);margin-bottom:2rem}
+.email-row{display:flex;gap:0;max-width:420px;margin:0 auto}
+.email-row input{flex:1;padding:.85rem 1rem;border:none;font-size:.875rem;background:var(--bg);color:var(--brand);outline:none;font-family:'Barlow',sans-serif}
+.email-row input::placeholder{color:var(--muted)}
+.email-row button{background:var(--bg);color:var(--brand);border:none;padding:.85rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+footer{padding:2rem 3rem;display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);border-top:1px solid rgba(232,130,10,.1);position:relative;z-index:10}
+</style></head><body>
+<nav><div class="logo">AI for Bars</div><button class="nav-cta">Get a Demo</button></nav>
+<div class="hero">
+  <div>
+    <div class="tag">AI built for bar operators</div>
+    <h1>More pours.<br><span>Less chaos.</span></h1>
+    <p class="sub">Staff scheduling, inventory optimization, event planning, and customer engagement — all AI-powered, all built specifically for bar operations.</p>
+    <div class="actions">
+      <button class="btn-p">Get a Demo</button>
+      <button class="btn-s">Learn More</button>
+    </div>
+  </div>
+  <div class="metrics">
+    <div class="metric-grid">
+      <div class="metric"><div class="metric-num">32%</div><div class="metric-label">Less waste</div></div>
+      <div class="metric"><div class="metric-num">18%</div><div class="metric-label">More revenue</div></div>
+      <div class="metric"><div class="metric-num">4hrs</div><div class="metric-label">Saved weekly</div></div>
+      <div class="metric"><div class="metric-num">24/7</div><div class="metric-label">AI coverage</div></div>
+    </div>
+  </div>
+</div>
+<div class="features">
+  <div class="feat-grid">
+    <div class="feat"><div class="feat-title">Smart Scheduling</div><div class="feat-desc">AI builds staff schedules based on historical traffic, events, and weather — automatically.</div></div>
+    <div class="feat"><div class="feat-title">Inventory AI</div><div class="feat-desc">Never run out of your top sellers. Real-time alerts and automated reorder suggestions.</div></div>
+    <div class="feat"><div class="feat-title">Event Engine</div><div class="feat-desc">Plan, promote, and manage events with AI tools built for nightlife and hospitality.</div></div>
+    <div class="feat"><div class="feat-title">Guest Intel</div><div class="feat-desc">Know your regulars. AI tracks preferences and suggests personalized offers and experiences.</div></div>
+  </div>
+</div>
+<div class="cta">
+  <h2>Last call for manual ops.</h2>
+  <p>Join the waitlist and be first when we launch.</p>
+  <div class="email-row"><input type="email" placeholder="your@bar.com"><button>GET EARLY ACCESS</button></div>
+</div>
+<footer><span>© 2026 aiforbars.com</span><span>Part of the AI My Service network</span></footer>
+</body></html>
