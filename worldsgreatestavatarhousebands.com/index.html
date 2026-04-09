@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World's Greatest Avatar House Bands — World-class AI entertainment</title>
+<meta name="description" content="A world-class network of AI avatar casino house bands. The future of live casino entertainment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand: #3C3489;
+  --brand-light: #3C348918;
+  --brand-mid: #3C348944;
+  --text: #111;
+  --muted: #666;
+  --border: #e5e5e5;
+  --bg: #fafaf9;
+  --white: #fff;
+  --radius: 10px;
+  --max: 960px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { opacity: .8; }
+
+/* NAV */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.nav-logo .icon { font-size: 1.4rem; }
+.nav-cta {
+  background: var(--brand);
+  color: var(--white) !important;
+  padding: .55rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: .875rem;
+  font-weight: 500;
+  transition: opacity .15s;
+}
+.nav-cta:hover { opacity: .88; }
+
+/* HERO */
+.hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 6rem 2rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media (max-width: 700px) {
+  .hero { grid-template-columns: 1fr; padding: 3.5rem 1.5rem 3rem; gap: 2.5rem; }
+}
+.hero-eyebrow {
+  display: inline-block;
+  background: var(--brand-light);
+  color: var(--brand);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .35rem .85rem;
+  border-radius: 20px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--brand-mid);
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--brand);
+}
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  max-width: 420px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  background: var(--brand);
+  color: var(--white);
+  padding: .75rem 1.75rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: .95rem;
+  transition: opacity .15s;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+.btn-primary:hover { opacity: .88; color: var(--white); }
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  padding: .75rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: .875rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color .15s;
+  display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+
+/* HERO VISUAL */
+.hero-visual {
+  background: var(--brand-light);
+  border: 1px solid var(--brand-mid);
+  border-radius: 16px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+.hero-visual-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: var(--brand);
+  text-align: center;
+}
+.hero-visual-sub {
+  font-size: .85rem;
+  color: var(--muted);
+  margin-top: .5rem;
+  text-align: center;
+}
+.hero-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--brand);
+  color: var(--white);
+  font-size: .7rem;
+  font-weight: 500;
+  padding: .25rem .65rem;
+  border-radius: 20px;
+  letter-spacing: .04em;
+}
+
+/* FEATURES */
+.section { max-width: var(--max); margin: 0 auto; padding: 5rem 2rem; }
+.section-label {
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: .75rem;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  margin-bottom: .75rem;
+}
+.section-desc {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 560px;
+  margin-bottom: 3rem;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.feature-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color .15s;
+}
+.feature-card:hover { border-color: var(--brand); }
+.feature-icon {
+  font-size: 1.5rem;
+  margin-bottom: .85rem;
+  display: block;
+}
+.feature-title {
+  font-weight: 500;
+  font-size: .95rem;
+  margin-bottom: .4rem;
+  color: var(--text);
+}
+.feature-desc {
+  font-size: .875rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* CTA BAND */
+.cta-band {
+  background: var(--brand);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.cta-band h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--white);
+  margin-bottom: .85rem;
+}
+.cta-band p {
+  color: rgba(255,255,255,.75);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-white {
+  background: var(--white);
+  color: var(--brand);
+  padding: .85rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline-block;
+  transition: opacity .15s;
+}
+.btn-white:hover { opacity: .9; color: var(--brand); }
+
+/* EMAIL CAPTURE */
+.email-form {
+  display: flex;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.email-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: .75rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: .95rem;
+  background: rgba(255,255,255,.15);
+  color: var(--white);
+  outline: none;
+}
+.email-form input::placeholder { color: rgba(255,255,255,.6); }
+.email-form button {
+  background: var(--white);
+  color: var(--brand);
+  border: none;
+  padding: .75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: .95rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: var(--white);
+}
+.footer-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: .95rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.footer-copy {
+  font-size: .8rem;
+  color: var(--muted);
+}
+.footer-link { font-size: .8rem; color: var(--muted); }
+.footer-link:hover { color: var(--brand); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <span class="icon">🥇</span>
+    World's Greatest Avatar House Bands
+  </div>
+  <a href="#network" class="nav-cta">Explore the Network</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Entertainment</div>
+    <h1>World-class AI entertainment</h1>
+    <p class="hero-desc">A world-class network of AI avatar casino house bands. The future of live casino entertainment.</p>
+    <div class="hero-actions">
+      <a href="#network" class="btn-primary">Explore the Network</a>
+      <a href="#about" class="btn-ghost">Learn more</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-badge">Live</div>
+    <div class="hero-icon">🥇</div>
+    <div class="hero-visual-title">World's Greatest Avatar House Bands</div>
+    <div class="hero-visual-sub">worldsgreatestavatarhousebands.com</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="about">
+  <div class="section-label">What we do</div>
+  <h2 class="section-title">What World's Greatest Avatar House Bands does</h2>
+  <p class="section-desc">A world-class network of AI avatar casino house bands. The future of live casino entertainment. Here's what you get when you use World's Greatest Avatar House Bands.</p>
+  <div class="features-grid">
+        <div class="feature-card">
+      <span class="feature-icon">🎭</span>
+      <div class="feature-title">Always performing</div>
+      <div class="feature-desc">AI avatars with no travel, no cancellations, no downtime.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📺</span>
+      <div class="feature-title">LED wall integration</div>
+      <div class="feature-desc">Synchronized visuals for stages, screens, and slot floors.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🎵</span>
+      <div class="feature-title">Live music AI</div>
+      <div class="feature-desc">Programmable setlists, energy levels, and crowd interaction.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📍</span>
+      <div class="feature-title">Radius exclusivity</div>
+      <div class="feature-desc">Exclusive licensing options for your venue or market.</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<div class="cta-band" id="network">
+  <h2>Ready to book the future of entertainment?</h2>
+  <p>Join the growing network of people using World's Greatest Avatar House Bands to get more done with AI.</p>
+  <form class="email-form" onsubmit="return false">
+    <input type="email" placeholder="your@email.com">
+    <button type="submit">Explore the Network</button>
+  </form>
+</div>
+
+<footer>
+  <div class="footer-brand"><span>🥇</span> World's Greatest Avatar House Bands</div>
+  <div class="footer-copy">&copy; 2026 worldsgreatestavatarhousebands.com — All rights reserved</div>
+  <a href="https://aimyservice.com" class="footer-link">Part of the AI My Service network</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI My Practice — AI Operations for Every Professional Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f8fffe;--text:#0d2820;--brand:#0f6e56;--accent:#e8730a;--muted:#6b8a7a;--surface:#e8f5f2;--white:#fff;--border:#c8e8e0}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',sans-serif}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:var(--white);border-bottom:1px solid var(--border)}
+.logo{font-family:'Merriweather',serif;font-size:1rem;color:var(--brand)}
+.nav-cta{background:var(--brand);color:#fff;padding:.5rem 1.5rem;font-size:.875rem;border:none;cursor:pointer;font-weight:600}
+.hero{background:var(--brand);padding:7rem 3rem 6rem;display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;max-width:100%}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding:4rem 2rem}}
+.hero-tag{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1.25rem}
+h1{font-family:'Merriweather',serif;font-size:clamp(2rem,4.5vw,3.5rem);color:#fff;line-height:1.2;margin-bottom:1.25rem}
+h1 em{font-style:italic;color:#88ffcc}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.btn-p{background:var(--accent);color:#fff;padding:.9rem 2.25rem;font-size:.95rem;border:none;cursor:pointer;font-weight:600;transition:opacity .15s}
+.btn-p:hover{opacity:.88}
+.hero-visual{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:2rem}
+.hv-title{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.25rem}
+.hv-item{display:flex;align-items:center;gap:.85rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.hv-item:last-child{border-bottom:none}
+.hv-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.hv-label{font-size:.875rem;color:rgba(255,255,255,.8);flex:1}
+.hv-val{font-size:.8rem;color:#88ffcc;font-weight:600}
+.story{max-width:880px;margin:0 auto;padding:5rem 3rem}
+.story-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--brand);margin-bottom:1rem}
+.story-h{font-family:'Merriweather',serif;font-size:1.9rem;margin-bottom:1.5rem;line-height:1.3}
+.story-body{font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:1.5rem;font-weight:300}
+.ai-how{background:var(--white);border:1px solid var(--border);padding:2.5rem;margin:3rem 0;border-top:3px solid var(--brand)}
+.ai-how-title{font-family:'Merriweather',serif;font-size:1.3rem;margin-bottom:2rem;color:var(--text)}
+.ai-step{display:flex;gap:1.25rem;margin-bottom:1.75rem;align-items:flex-start}
+.ai-step:last-child{margin-bottom:0}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+.step-title{font-weight:600;font-size:.95rem;color:var(--text);margin-bottom:.35rem}
+.step-desc{font-size:.875rem;color:var(--muted);line-height:1.65;font-weight:300}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin:3rem 0}
+.feat{background:var(--surface);padding:1.75rem;border-radius:8px}
+.feat-icon{font-size:1.5rem;margin-bottom:.85rem;display:block}
+.feat-title{font-weight:600;font-size:.95rem;margin-bottom:.5rem}
+.feat-desc{font-size:.85rem;color:var(--muted);line-height:1.65;font-weight:300}
+.cta{background:var(--accent);padding:5rem 3rem;text-align:center}
+.cta h2{font-family:'Merriweather',serif;font-size:2.25rem;color:#fff;margin-bottom:.75rem}
+.cta p{color:rgba(255,255,255,.8);margin-bottom:2rem}
+.email-row{display:flex;gap:0;max-width:420px;margin:0 auto}
+.email-row input{flex:1;padding:.85rem 1rem;border:none;font-size:.875rem;background:rgba(255,255,255,.2);color:#fff;outline:none}
+.email-row input::placeholder{color:rgba(255,255,255,.6)}
+.email-row button{background:#fff;color:var(--accent);border:none;padding:.85rem 1.5rem;font-weight:700;cursor:pointer;white-space:nowrap}
+footer{padding:2rem 3rem;display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);background:var(--white);border-top:1px solid var(--border)}
+</style></head><body>
+<nav><div class="logo">AI My Practice</div><button class="nav-cta">Get Early Access</button></nav>
+<div class="hero">
+  <div>
+    <div class="hero-tag">AI for professional practices</div>
+    <h1>Your practice, running<br><em>smarter</em> every day.</h1>
+    <p class="hero-sub">AI My Practice brings intelligent operations to every professional practice — dental, medical, legal, financial, and beyond. Reduce friction, increase production, and focus on the patients and clients who need you.</p>
+    <button class="btn-p">Get Early Access →</button>
+  </div>
+  <div class="hero-visual">
+    <div class="hv-title">Practice health dashboard</div>
+    <div class="hv-item"><div class="hv-dot" style="background:#88ffcc"></div><div class="hv-label">Scheduling efficiency</div><div class="hv-val">↑ 34%</div></div>
+    <div class="hv-item"><div class="hv-dot" style="background:#88ffcc"></div><div class="hv-label">No-show rate</div><div class="hv-val">↓ 61%</div></div>
+    <div class="hv-item"><div class="hv-dot" style="background:#ffcc44"></div><div class="hv-label">Admin hours saved</div><div class="hv-val">12 hrs/wk</div></div>
+    <div class="hv-item"><div class="hv-dot" style="background:#88ffcc"></div><div class="hv-label">Production per day</div><div class="hv-val">↑ 22%</div></div>
+    <div class="hv-item"><div class="hv-dot" style="background:#ffcc44"></div><div class="hv-label">Patient satisfaction</div><div class="hv-val">4.9 / 5</div></div>
+  </div>
+</div>
+<div class="story">
+  <div class="story-label">The story</div>
+  <div class="story-h">Every practice has the same problem. AI My Practice solves it.</div>
+  <p class="story-body">Whether you run a dental office, a medical practice, a law firm, or a financial advisory — you face the same operational reality: the business side of your practice is eating the professional side. Scheduling gaps, missed follow-ups, administrative overload, and staff burnout are universal.</p>
+  <p class="story-body">AI My Practice is purpose-built for the operational challenges of professional practices. It's not a generic business tool adapted for healthcare or law. It's a system that understands how practices work — the cadence of appointments, the importance of follow-through, and the sensitivity of the client relationship.</p>
+  <p class="story-body">Our AI works in the background to fill your schedule, reduce no-shows, handle routine communications, and surface the operational insights you need to make better decisions — without requiring you to manage another software platform.</p>
+
+  <div class="ai-how">
+    <div class="ai-how-title">How AI powers AI My Practice</div>
+    <div class="ai-step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Practice diagnostic</div><div class="step-desc">A 10-minute intake helps the AI understand your practice type, team size, volume, and current pain points — no patient data required.</div></div></div>
+    <div class="ai-step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Intelligent scheduling</div><div class="step-desc">AI fills gaps, optimizes your schedule, and proactively moves patients or clients to maximize production every day.</div></div></div>
+    <div class="ai-step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Automated follow-through</div><div class="step-desc">Appointment reminders, recall sequences, post-visit follow-ups, and reactivation campaigns — running automatically.</div></div></div>
+    <div class="ai-step"><div class="step-num">4</div><div class="step-content"><div class="step-title">Production intelligence</div><div class="step-desc">Daily and weekly reports on schedule performance, production gaps, and opportunities — in plain language, not spreadsheets.</div></div></div>
+  </div>
+
+  <div class="features">
+    <div class="feat"><span class="feat-icon">📅</span><div class="feat-title">Smart scheduling</div><div class="feat-desc">AI fills your schedule, reduces gaps, and manages waitlists automatically.</div></div>
+    <div class="feat"><span class="feat-icon">🔔</span><div class="feat-title">Automated reminders</div><div class="feat-desc">Multi-channel reminders that dramatically reduce no-shows and late cancellations.</div></div>
+    <div class="feat"><span class="feat-icon">📊</span><div class="feat-title">Production reporting</div><div class="feat-desc">Daily insights on what your practice produced, what it missed, and why.</div></div>
+    <div class="feat"><span class="feat-icon">🔁</span><div class="feat-title">Recall & reactivation</div><div class="feat-desc">AI identifies and reactivates lapsed patients or clients — automatically.</div></div>
+  </div>
+</div>
+<div class="cta">
+  <h2>A smarter practice starts here.</h2>
+  <p>Join the waitlist for AI My Practice — launching in 2026.</p>
+  <div class="email-row"><input type="email" placeholder="your@practice.com"><button>Join Waitlist</button></div>
+</div>
+<footer><span>© 2026 aimypractice.app</span><span>Part of the AI My Service network</span></footer>
+</body></html>
