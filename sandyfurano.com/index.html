@@ -47,97 +47,56 @@ footer{padding:2rem 3rem;display:flex;justify-content:space-between;font-size:.8
 </div>
 <footer><span>© 2026 sandyfurano.com</span><span>Part of the AI My Service network</span></footer>
 
-</body>
-<script>
-(function(){
-  const {createClient}=supabase;
-  const sb=createClient("https://yourhspxqggfhbsjpsnq.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvdXJoc3B4cWdnZmhic2pwc25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MjMxMTksImV4cCI6MjA3MzI5OTExOX0.2YPm1xP8RhfShzItK1RXxa1_Gcmw56jqt3NskoPVr3k");
-  const DOMAIN="sandyfurano.com";
-  async function saveLead(email){
-    if(!email||!email.includes("@"))return false;
-    const {data:d}=await sb.from("domains").select("id").eq("domain",DOMAIN).single();
-    if(!d)return false;
-    const {error}=await sb.from("email_signups").upsert(
-      {email:email.toLowerCase().trim(),domain_id:d.id,source:"landing_page",subscribed:true},
-      {onConflict:"email,domain_id"}
-    );
-    return !error;
-  }
-  function wire(){
-    document.querySelectorAll(".email-row").forEach(row=>{
-      const input=row.querySelector("input[type=email]");
-      const btn=row.querySelector("button");
-      if(!input||!btn)return;
-      const orig=btn.textContent;
-      btn.addEventListener("click",async()=>{
-        const email=input.value.trim();
-        if(!email){input.focus();return;}
-        btn.disabled=true;btn.textContent="Saving...";
-        const ok=await saveLead(email);
-        if(ok){btn.textContent="✓ You're on the list!";btn.style.background="#16a34a";input.value="";}
-        else{btn.textContent="Try again";btn.disabled=false;setTimeout(()=>{btn.textContent=orig;},2000);}
-      });
-      input.addEventListener("keydown",e=>{if(e.key==="Enter")btn.click();});
-    });
-  }
-  document.readyState==="loading"?document.addEventListener("DOMContentLoaded",wire):wire();
-})();
-</script>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-(function(){
-  const {createClient} = supabase;
-  const sb = createClient('https://yourhspxqggfhbsjpsnq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvdXJoc3B4cWdnZmhic2pwc25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MjMxMTksImV4cCI6MjA3MzI5OTExOX0.2YPm1xP8RhfShzItK1RXxa1_Gcmw56jqt3NskoPVr3k');
-  const DOMAIN = 'sandyfurano.com';
+document.addEventListener('DOMContentLoaded', function() {
+  var SUPABASE_URL = 'https://yourhspxqggfhbsjpsnq.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvdXJoc3B4cWdnZmhic2pwc25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MjMxMTksImV4cCI6MjA3MzI5OTExOX0.2YPm1xP8RhfShzItK1RXxa1_Gcmw56jqt3NskoPVr3k';
+  var DOMAIN_ID = 'a8d60b91-49e3-48aa-acf5-646d0a200dd9';
 
-  async function saveLead(email) {
-    if (!email || !email.includes('@')) return false;
-    try {
-      const {data:d} = await sb.from('domains').select('id').eq('domain', DOMAIN).single();
-      if (!d) return false;
-      const {error} = await sb.from('email_signups').insert({
-        email: email.toLowerCase().trim(),
-        domain_id: d.id,
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  var rows = document.querySelectorAll('.email-row');
+  rows.forEach(function(row) {
+    var input = row.querySelector('input[type="email"]');
+    var btn = row.querySelector('button');
+    if (!input || !btn) return;
+
+    var orig = btn.textContent;
+
+    btn.addEventListener('click', function() {
+      var email = input.value.trim();
+      if (!email || email.indexOf('@') === -1) {
+        input.focus();
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      sb.from('email_signups').insert({
+        email: email.toLowerCase(),
+        domain_id: DOMAIN_ID,
         source: 'landing_page',
         subscribed: true
-      });
-      // Ignore duplicate errors — already signed up is fine
-      if (error && error.code !== '23505') return false;
-      return true;
-    } catch(e) {
-      return false;
-    }
-  }
-
-  function wire() {
-    document.querySelectorAll('.email-row').forEach(row => {
-      const input = row.querySelector('input[type=email]');
-      const btn   = row.querySelector('button');
-      if (!input || !btn) return;
-      const orig = btn.textContent;
-      btn.addEventListener('click', async () => {
-        const email = input.value.trim();
-        if (!email) { input.focus(); return; }
-        btn.disabled = true;
-        btn.textContent = 'Saving...';
-        const ok = await saveLead(email);
-        if (ok) {
-          btn.textContent = "✓ You're on the list!";
+      }).then(function(result) {
+        btn.disabled = false;
+        if (!result.error || result.error.code === '23505') {
+          btn.textContent = "You're on the list!";
           btn.style.background = '#16a34a';
+          btn.style.color = '#fff';
           input.value = '';
         } else {
-          btn.textContent = 'Try again';
-          btn.disabled = false;
-          setTimeout(() => { btn.textContent = orig; }, 2000);
+          btn.textContent = orig;
         }
       });
-      input.addEventListener('keydown', e => { if (e.key === 'Enter') btn.click(); });
     });
-  }
 
-  document.readyState === 'loading'
-    ? document.addEventListener('DOMContentLoaded', wire)
-    : wire();
-})();
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') btn.click();
+    });
+  });
+});
 </script>
+</body>
 </html>
