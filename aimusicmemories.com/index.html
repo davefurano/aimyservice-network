@@ -424,6 +424,104 @@
     .signup-form { flex-direction: column; border-radius: 12px; }
     .signup-btn { margin: 0 4px 4px; border-radius: 8px; padding: .85rem; }
   }
+
+  /* ── SIGNUP COMPONENT ── */
+  .signup-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .signup-row {
+    display: flex;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color .25s, box-shadow .25s;
+    position: relative;
+  }
+  .signup-row:focus-within {
+    border-color: rgba(var(--brand-rgb),0.6);
+    box-shadow: 0 0 0 4px rgba(var(--brand-rgb),0.12), 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .signup-input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: .9rem;
+    font-family: inherit;
+    color: #f0f0f8;
+    min-width: 0;
+  }
+  .signup-input::placeholder { color: rgba(240,240,248,0.25); }
+  .signup-submit {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: inherit;
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .03em;
+    color: #fff;
+    background: var(--brand);
+    border: none;
+    padding: .85rem 1.5rem;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all .2s;
+    min-width: 130px;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .signup-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .signup-submit:hover::before { opacity: 1; }
+  .signup-submit:hover { transform: scale(1.02); box-shadow: 0 4px 20px rgba(var(--brand-rgb),0.4); }
+  .signup-submit:active { transform: scale(0.98); }
+  .signup-submit:disabled { opacity: .7; cursor: not-allowed; transform: none; }
+  .signup-submit.sending { background: rgba(var(--brand-rgb),0.7); }
+  .signup-submit.success { background: #16a34a; }
+  .signup-submit.error { background: #dc2626; }
+  .btn-icon { font-size: 1rem; transition: transform .2s; }
+  .signup-submit:hover .btn-icon { transform: translateX(2px); }
+  .signup-status {
+    text-align: center;
+    font-size: .78rem;
+    margin-top: .75rem;
+    height: 1.2em;
+    color: rgba(240,240,248,0.45);
+    transition: all .3s;
+  }
+  .signup-status.ok { color: #4ade80; }
+  .signup-status.err { color: #f87171; }
+  /* Spinner */
+  .spin {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .6s linear infinite;
+    display: none;
+  }
+  .signup-submit.sending .spin { display: block; }
+  .signup-submit.sending .btn-label { display: none; }
+  .signup-submit.sending .btn-icon { display: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (max-width: 480px) {
+    .signup-row { flex-direction: column; border-radius: 12px; }
+    .signup-submit { margin: 0 5px 5px; border-radius: 8px; min-width: auto; }
+  }
 </style>
 </head>
 <body>
@@ -482,9 +580,16 @@
   <div class="cta-inner">
     <div class="cta-title">Join the List.</div>
     <p class="cta-sub">Early access for music creators.</p>
-    <div class="signup-form">
-      <input type="email" id="signup-input" placeholder="your@email.com">
-      <button class="signup-btn" id="signup-btn">Join the List</button>
+        <div class="signup-wrap">
+      <div class="signup-row">
+        <input type="email" id="signup-input" class="signup-input" placeholder="your@email.com" autocomplete="email">
+        <button id="signup-btn" class="signup-submit idle">
+          <span class="spin"></span>
+          <span class="btn-label">Join the List</span>
+          <span class="btn-icon">&#8594;</span>
+        </button>
+      </div>
+      <div id="signup-status" class="signup-status"></div>
     </div>
   </div>
 </section>
@@ -497,46 +602,81 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function() {
-  var sb = supabase.createClient(
-    'https://yourhspxqggfhbsjpsnq.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvdXJoc3B4cWdnZmhic2pwc25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MjMxMTksImV4cCI6MjA3MzI5OTExOX0.2YPm1xP8RhfShzItK1RXxa1_Gcmw56jqt3NskoPVr3k'
-  );
-  var DOMAIN_ID = 'e3cda219-b5c0-4d92-b5d9-9c1822c93978';
-  var btn = document.getElementById('signup-btn');
-  var input = document.getElementById('signup-input');
-  var origText = btn.textContent;
+  var DOMAIN_ID = "e3cda219-b5c0-4d92-b5d9-9c1822c93978";
+  var sb = supabase.createClient("https://yourhspxqggfhbsjpsnq.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvdXJoc3B4cWdnZmhic2pwc25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MjMxMTksImV4cCI6MjA3MzI5OTExOX0.2YPm1xP8RhfShzItK1RXxa1_Gcmw56jqt3NskoPVr3k");
+  var input = document.getElementById("signup-input");
+  var btn   = document.getElementById("signup-btn");
+  var status = document.getElementById("signup-status");
+
+  if (!input || !btn) return;
+
+  function setState(state) {
+    btn.className = "signup-submit " + state;
+    btn.disabled = (state === "sending" || state === "success");
+    var labels = {
+      "idle":    ["Join the List", "arrow"],
+      "sending": ["", ""],
+      "success": ["Confirmed", "check"],
+      "error":   ["Try Again", "retry"]
+    };
+    var l = labels[state] || labels["idle"];
+    var labelEl = btn.querySelector(".btn-label");
+    var iconEl  = btn.querySelector(".btn-icon");
+    if (labelEl) labelEl.textContent = l[0];
+    if (iconEl) {
+      var icons = { arrow: "\u2192", check: "\u2713", retry: "\u21BA" };
+      iconEl.textContent = icons[l[1]] || "";
+    }
+  }
+
+  function setStatus(msg, type) {
+    if (!status) return;
+    status.textContent = msg;
+    status.className = "signup-status " + (type || "");
+  }
 
   function doSignup() {
     var email = input.value.trim();
-    if (!email || email.indexOf('@') < 0) {
+    if (!email || email.indexOf("@") < 0) {
       input.focus();
-      input.style.outline = '2px solid rgba(239,68,68,0.5)';
-      setTimeout(function() { input.style.outline = ''; }, 1500);
+      input.style.outline = "2px solid rgba(239,68,68,0.5)";
+      setStatus("Please enter a valid email address.", "err");
+      setTimeout(function() {
+        input.style.outline = "";
+        setStatus("");
+      }, 2000);
       return;
     }
-    btn.disabled = true;
-    btn.textContent = '...';
-    sb.from('email_signups').insert({
+
+    setState("sending");
+    setStatus("Sending...");
+
+    sb.from("email_signups").insert({
       email: email.toLowerCase(),
       domain_id: DOMAIN_ID,
-      source: 'landing_page',
+      source: "landing_page",
       subscribed: true
     }).then(function(result) {
-      if (!result.error || result.error.code === '23505') {
-        btn.textContent = '✓ You're in!';
-        btn.classList.add('success');
-        input.value = '';
-        input.placeholder = 'See you soon!';
+      if (!result.error || result.error.code === "23505") {
+        setState("success");
+        setStatus("You are on the list. Check your email.", "ok");
+        input.value = "";
+        input.placeholder = "See you soon";
       } else {
-        btn.disabled = false;
-        btn.textContent = origText;
+        setState("error");
+        setStatus("Something went wrong. Please try again.", "err");
+        setTimeout(function() { setState("idle"); setStatus(""); }, 3000);
       }
+    }).catch(function() {
+      setState("error");
+      setStatus("Connection error. Please try again.", "err");
+      setTimeout(function() { setState("idle"); setStatus(""); }, 3000);
     });
   }
 
-  btn.addEventListener('click', doSignup);
-  input.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') doSignup();
+  btn.addEventListener("click", doSignup);
+  input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") doSignup();
   });
 })();
 </script>
