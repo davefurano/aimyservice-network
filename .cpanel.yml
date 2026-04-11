@@ -4,7 +4,6 @@ deployment:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
     - /bin/mkdir -p $DEPLOYPATH/aaifactorycom && /bin/cp -rf aaifactory.com/. $DEPLOYPATH/aaifactorycom/
     - /bin/mkdir -p $DEPLOYPATH/aiagencyforautomationcom && /bin/cp -rf aiagencyforautomation.com/. $DEPLOYPATH/aiagencyforautomationcom/
-    - /bin/mkdir -p $DEPLOYPATH/aibiogeniuscom && /bin/cp -rf aibiogenius.com/. $DEPLOYPATH/aibiogeniuscom/
     - /bin/mkdir -p $DEPLOYPATH/aicareerplannercom && /bin/cp -rf aicareerplanner.com/. $DEPLOYPATH/aicareerplannercom/
     - /bin/mkdir -p $DEPLOYPATH/aiforbarscom && /bin/cp -rf aiforbars.com/. $DEPLOYPATH/aiforbarscom/
     - /bin/mkdir -p $DEPLOYPATH/aiforcasinoscom && /bin/cp -rf aiforcasinos.com/. $DEPLOYPATH/aiforcasinoscom/
@@ -36,13 +35,14 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/avastarapp && /bin/cp -rf avastar.app/. $DEPLOYPATH/avastarapp/
     - /bin/mkdir -p $DEPLOYPATH/avastarband && /bin/cp -rf avastar.band/. $DEPLOYPATH/avastarband/
     - /bin/mkdir -p $DEPLOYPATH/avatarallstarscom && /bin/cp -rf avatarallstars.com/. $DEPLOYPATH/avatarallstarscom/
+    - /bin/mkdir -p $DEPLOYPATH/avatarhousebandcom && /bin/cp -rf avatarhouseband.com/. $DEPLOYPATH/avatarhousebandcom/
+    - /bin/mkdir -p $DEPLOYPATH/avatarhousebandscom && /bin/cp -rf avatarhousebands.com/. $DEPLOYPATH/avatarhousebandscom/
     - /bin/mkdir -p $DEPLOYPATH/avatheatercom && /bin/cp -rf avatheater.com/. $DEPLOYPATH/avatheatercom/
     - /bin/mkdir -p $DEPLOYPATH/creativeintelligencesystemcom && /bin/cp -rf creativeintelligencesystem.com/. $DEPLOYPATH/creativeintelligencesystemcom/
     - /bin/mkdir -p $DEPLOYPATH/dellfuranocom && /bin/cp -rf dellfurano.com/. $DEPLOYPATH/dellfuranocom/
     - /bin/mkdir -p $DEPLOYPATH/globaltixapp && /bin/cp -rf globaltix.app/. $DEPLOYPATH/globaltixapp/
     - /bin/mkdir -p $DEPLOYPATH/repeatableintelligencecom && /bin/cp -rf repeatableintelligence.com/. $DEPLOYPATH/repeatableintelligencecom/
     - /bin/mkdir -p $DEPLOYPATH/sandyfuranocom && /bin/cp -rf sandyfurano.com/. $DEPLOYPATH/sandyfuranocom/
-    - /bin/mkdir -p $DEPLOYPATH/sandyspritzcom && /bin/cp -rf sandyspritz.com/. $DEPLOYPATH/sandyspritzcom/
     - /bin/mkdir -p $DEPLOYPATH/ticketsdirectapp && /bin/cp -rf ticketsdirect.app/. $DEPLOYPATH/ticketsdirectapp/
     - /bin/mkdir -p $DEPLOYPATH/worldsgreatestavatarhousebandcom && /bin/cp -rf worldsgreatestavatarhouseband.com/. $DEPLOYPATH/worldsgreatestavatarhousebandcom/
     - /bin/mkdir -p $DEPLOYPATH/worldsgreatestavatarhousebandscom && /bin/cp -rf worldsgreatestavatarhousebands.com/. $DEPLOYPATH/worldsgreatestavatarhousebandscom/
