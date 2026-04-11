@@ -5,680 +5,333 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI My Service — Every AI tool, one place</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --brand: #534AB7;
-    --brand-rgb: 83,74,183;
-    --bg: #080810;
-    --surface: #0e0e1a;
-    --border: rgba(83,74,183,0.2);
-    --text: #f0f0f8;
-    --muted: rgba(240,240,248,0.5);
-    --glow: rgba(83,74,183,0.15);
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Geist', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ── NOISE TEXTURE ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 3rem;
-    background: rgba(8,8,16,0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'Instrument Serif', serif;
-    font-size: 1.15rem;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-  .nav-logo span { color: var(--brand); }
-  .nav-actions { display: flex; gap: .75rem; align-items: center; }
-  .nav-link {
-    font-size: .8rem;
-    color: var(--muted);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color .2s;
-  }
-  .nav-link:hover { color: var(--text); }
-  .nav-btn {
-    font-size: .8rem;
-    font-weight: 600;
-    font-family: 'Geist', sans-serif;
-    color: var(--bg);
-    background: var(--brand);
-    border: none;
-    padding: .5rem 1.25rem;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: opacity .2s, transform .15s;
-    letter-spacing: .01em;
-  }
-  .nav-btn:hover { opacity: .85; transform: translateY(-1px); }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 8rem 2rem 5rem;
-    overflow: hidden;
-  }
-  .hero-orb {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--brand-rgb),0.2) 0%, transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    pointer-events: none;
-    animation: pulse 4s ease-in-out infinite;
-  }
-  .hero-orb-2 {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--brand-rgb),0.1) 0%, transparent 70%);
-    top: 30%;
-    right: 15%;
-    pointer-events: none;
-    animation: pulse 6s ease-in-out infinite reverse;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: .7; transform: translate(-50%,-50%) scale(1); }
-    50% { opacity: 1; transform: translate(-50%,-50%) scale(1.05); }
-  }
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(var(--brand-rgb),0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(var(--brand-rgb),0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
-    pointer-events: none;
-  }
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    font-size: .72rem;
-    font-weight: 500;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--brand);
-    background: rgba(var(--brand-rgb), 0.1);
-    border: 1px solid rgba(var(--brand-rgb), 0.25);
-    padding: .4rem 1rem;
-    border-radius: 100px;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-    animation: fadeUp .6s ease both;
-  }
-  .hero-tag::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--brand);
-    animation: blink 2s ease infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero h1 {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(2.75rem, 7vw, 5.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    max-width: 800px;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-    animation: fadeUp .6s .1s ease both;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--brand);
-  }
-  .hero-sub {
-    font-size: 1.05rem;
-    color: var(--muted);
-    max-width: 560px;
-    line-height: 1.75;
-    margin-bottom: 3rem;
-    font-weight: 300;
-    position: relative;
-    z-index: 1;
-    animation: fadeUp .6s .2s ease both;
-  }
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    animation: fadeUp .6s .3s ease both;
-  }
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    font-family: 'Geist', sans-serif;
-    font-size: .9rem;
-    font-weight: 600;
-    color: #fff;
-    background: var(--brand);
-    border: none;
-    padding: .85rem 2rem;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all .2s;
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-  }
-  .btn-primary::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity .2s;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(var(--brand-rgb),0.4); }
-  .btn-primary:hover::after { opacity: 1; }
-  .btn-primary:active { transform: translateY(0); }
-  .btn-ghost {
-    font-family: 'Geist', sans-serif;
-    font-size: .9rem;
-    font-weight: 500;
-    color: var(--muted);
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: .85rem 2rem;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all .2s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-  }
-  .btn-ghost:hover { color: var(--text); border-color: rgba(var(--brand-rgb),0.4); background: rgba(var(--brand-rgb),0.05); }
-
-  /* ── FEATURES ── */
-  .features-section {
-    padding: 7rem 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-  .section-eyebrow {
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--brand);
-    margin-bottom: .75rem;
-  }
-  .section-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    color: var(--text);
-  }
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5px;
-    background: var(--border);
-    border: 1.5px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .feat {
-    background: var(--surface);
-    padding: 2.25rem;
-    transition: background .2s;
-    animation: fadeUp .5s ease both;
-  }
-  .feat:hover { background: rgba(var(--brand-rgb),0.05); }
-  .feat-icon {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    display: block;
-    filter: drop-shadow(0 0 8px rgba(var(--brand-rgb),0.4));
-  }
-  .feat-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: 1.15rem;
-    color: var(--text);
-    margin-bottom: .6rem;
-    letter-spacing: -0.01em;
-  }
-  .feat-desc {
-    font-size: .85rem;
-    color: var(--muted);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* ── CTA SECTION ── */
-  .cta-section {
-    padding: 7rem 2rem;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-  .cta-inner {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 3.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-inner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--brand), transparent);
-  }
-  .cta-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: 2.25rem;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: .75rem;
-    line-height: 1.1;
-  }
-  .cta-sub {
-    font-size: .9rem;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    font-weight: 300;
-  }
-  .signup-form {
-    display: flex;
-    gap: 0;
-    max-width: 420px;
-    margin: 0 auto;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    overflow: hidden;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .signup-form:focus-within {
-    border-color: rgba(var(--brand-rgb), 0.5);
-    box-shadow: 0 0 0 4px rgba(var(--brand-rgb), 0.1);
-  }
-  .signup-form input {
-    flex: 1;
-    padding: .85rem 1.25rem;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: .875rem;
-    font-family: 'Geist', sans-serif;
-    color: var(--text);
-  }
-  .signup-form input::placeholder { color: rgba(240,240,248,0.3); }
-  .signup-btn {
-    font-family: 'Geist', sans-serif;
-    font-size: .8rem;
-    font-weight: 600;
-    color: var(--bg);
-    background: var(--brand);
-    border: none;
-    padding: .75rem 1.5rem;
-    margin: 4px;
-    border-radius: 100px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all .2s;
-    letter-spacing: .01em;
-  }
-  .signup-btn:hover { opacity: .88; transform: scale(1.02); }
-  .signup-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-  .signup-btn.success {
-    background: #16a34a;
-    color: #fff;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 2rem 3rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: .78rem;
-    color: var(--muted);
-    position: relative;
-    z-index: 1;
-  }
-  footer a { color: var(--muted); text-decoration: none; transition: color .2s; }
-  footer a:hover { color: var(--text); }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .hero { padding: 7rem 1.5rem 4rem; }
-    .features-section { padding: 4rem 1.5rem; }
-    .cta-section { padding: 4rem 1.5rem; }
-    .cta-inner { padding: 2.5rem 1.5rem; }
-    footer { flex-direction: column; gap: .5rem; text-align: center; padding: 1.5rem; }
-    .signup-form { flex-direction: column; border-radius: 12px; }
-    .signup-btn { margin: 0 4px 4px; border-radius: 8px; padding: .85rem; }
-  }
-
-  /* ── SIGNUP COMPONENT ── */
-  .signup-wrap {
-    max-width: 480px;
-    margin: 0 auto;
-  }
-  .signup-row {
-    display: flex;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: border-color .25s, box-shadow .25s;
-    position: relative;
-  }
-  .signup-row:focus-within {
-    border-color: rgba(var(--brand-rgb),0.6);
-    box-shadow: 0 0 0 4px rgba(var(--brand-rgb),0.12), 0 4px 24px rgba(0,0,0,0.3);
-  }
-  .signup-input {
-    flex: 1;
-    padding: 1rem 1.25rem;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: .9rem;
-    font-family: inherit;
-    color: #f0f0f8;
-    min-width: 0;
-  }
-  .signup-input::placeholder { color: rgba(240,240,248,0.25); }
-  .signup-submit {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    font-family: inherit;
-    font-size: .82rem;
-    font-weight: 600;
-    letter-spacing: .03em;
-    color: #fff;
-    background: var(--brand);
-    border: none;
-    padding: .85rem 1.5rem;
-    margin: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all .2s;
-    min-width: 130px;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .signup-submit::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity .2s;
-  }
-  .signup-submit:hover::before { opacity: 1; }
-  .signup-submit:hover { transform: scale(1.02); box-shadow: 0 4px 20px rgba(var(--brand-rgb),0.4); }
-  .signup-submit:active { transform: scale(0.98); }
-  .signup-submit:disabled { opacity: .7; cursor: not-allowed; transform: none; }
-  .signup-submit.sending { background: rgba(var(--brand-rgb),0.7); }
-  .signup-submit.success { background: #16a34a; }
-  .signup-submit.error { background: #dc2626; }
-  .btn-icon { font-size: 1rem; transition: transform .2s; }
-  .signup-submit:hover .btn-icon { transform: translateX(2px); }
-  .signup-status {
-    text-align: center;
-    font-size: .78rem;
-    margin-top: .75rem;
-    height: 1.2em;
-    color: rgba(240,240,248,0.45);
-    transition: all .3s;
-  }
-  .signup-status.ok { color: #4ade80; }
-  .signup-status.err { color: #f87171; }
-  /* Spinner */
-  .spin {
-    width: 14px;
-    height: 14px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin .6s linear infinite;
-    display: none;
-  }
-  .signup-submit.sending .spin { display: block; }
-  .signup-submit.sending .btn-label { display: none; }
-  .signup-submit.sending .btn-icon { display: none; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  @media (max-width: 480px) {
-    .signup-row { flex-direction: column; border-radius: 12px; }
-    .signup-submit { margin: 0 5px 5px; border-radius: 8px; min-width: auto; }
-  }
+:root{--brand:#534AB7;--brand-rgb:83,74,183;--bg:#080810;--surface:#0e0e1a;--surface2:#13131f;--border:rgba(83,74,183,0.15);--text:#f0f0f8;--muted:rgba(240,240,248,0.5);--muted2:rgba(240,240,248,0.25)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Geist",-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:60px;background:rgba(8,8,16,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-left{display:flex;align-items:center;gap:2rem}
+.nav-logo{font-family:"Instrument Serif",serif;font-size:1.1rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.nav-logo span{color:var(--brand)}
+.nav-search{display:flex;align-items:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:100px;padding:.4rem 1rem;gap:.5rem;width:280px;transition:border-color .2s,box-shadow .2s}
+.nav-search:focus-within{border-color:rgba(var(--brand-rgb),0.5);box-shadow:0 0 0 3px rgba(var(--brand-rgb),0.1)}
+.nav-search input{background:transparent;border:none;outline:none;font-size:.85rem;color:var(--text);font-family:inherit;width:100%}
+.nav-search input::placeholder{color:var(--muted2)}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.nav-btn{font-size:.8rem;font-weight:600;color:#fff;background:var(--brand);border:none;padding:.45rem 1.1rem;border-radius:100px;cursor:pointer;text-decoration:none;transition:opacity .2s}
+.nav-btn:hover{opacity:.85}
+.nav-link{font-size:.8rem;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-link:hover{color:var(--text)}
+/* HERO */
+.hero{padding:100px 2rem 3rem;text-align:center;position:relative;overflow:hidden}
+.hero-orb{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(var(--brand-rgb),0.15) 0%,transparent 70%);top:0;left:50%;transform:translateX(-50%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);background:rgba(var(--brand-rgb),0.1);border:1px solid rgba(var(--brand-rgb),0.25);padding:.35rem .9rem;border-radius:100px;margin-bottom:1.5rem;position:relative;z-index:1}
+.hero h1{font-family:"Instrument Serif",serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.05;letter-spacing:-0.02em;color:var(--text);margin-bottom:1rem;position:relative;z-index:1}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto 2rem;line-height:1.75;font-weight:300;position:relative;z-index:1}
+.hero-stats{display:flex;gap:3rem;justify-content:center;position:relative;z-index:1;margin-bottom:3rem}
+.stat{text-align:center}
+.stat-num{font-family:"Instrument Serif",serif;font-size:2.25rem;color:var(--text);letter-spacing:-0.02em;line-height:1}
+.stat-label{font-size:.75rem;color:var(--muted);margin-top:.25rem;letter-spacing:.05em;text-transform:uppercase}
+/* CATEGORY NAV */
+.cat-nav{position:sticky;top:60px;z-index:100;background:rgba(8,8,16,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-btn{font-size:.8rem;font-weight:500;color:var(--muted);background:transparent;border:none;border-bottom:2px solid transparent;padding:.75rem 1rem;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:inherit;margin-bottom:-1px}
+.cat-btn:hover{color:var(--text)}
+.cat-btn.active{color:var(--brand);border-bottom-color:var(--brand)}
+/* MAIN CONTENT */
+.main{max-width:1400px;margin:0 auto;padding:2rem}
+/* CATEGORY SECTION */
+.cat-section{margin-bottom:3rem;display:none}
+.cat-section.visible{display:block}
+.cat-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+.cat-icon{font-size:1.25rem}
+.cat-title{font-family:"Instrument Serif",serif;font-size:1.5rem;color:var(--text)}
+.cat-count{font-size:.75rem;color:var(--muted);background:rgba(255,255,255,0.06);padding:.2rem .6rem;border-radius:100px;border:1px solid rgba(255,255,255,0.08)}
+/* DOMAIN GRID */
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.05);border-radius:16px;overflow:hidden}
+/* DOMAIN CARD */
+.domain-card{background:var(--surface);padding:1.5rem;text-decoration:none;display:block;transition:background .2s;position:relative;overflow:hidden}
+.domain-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--card-color);opacity:0;transition:opacity .2s}
+.domain-card:hover{background:var(--surface2)}
+.domain-card:hover::before{opacity:1}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.75rem}
+.card-icon{font-size:1.75rem;line-height:1}
+.card-arrow{font-size:.85rem;color:var(--muted2);opacity:0;transition:opacity .2s,transform .2s}
+.domain-card:hover .card-arrow{opacity:1;transform:translateX(3px)}
+.card-name{font-weight:600;font-size:.95rem;color:var(--text);margin-bottom:.3rem;line-height:1.3}
+.card-tagline{font-size:.78rem;color:var(--muted);line-height:1.5;font-weight:300}
+.card-domain{font-size:.72rem;color:var(--muted2);margin-top:.75rem;font-family:monospace}
+/* FEATURED CARDS (first 2 in each section) */
+.domain-card.featured{grid-column:span 2}
+@media(max-width:600px){.domain-card.featured{grid-column:span 1}}
+/* SEARCH EMPTY */
+.search-empty{text-align:center;padding:4rem 2rem;color:var(--muted)}
+.search-empty-icon{font-size:3rem;margin-bottom:1rem}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.78rem;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none}
+@media(max-width:768px){
+  nav{padding:0 1rem}
+  .nav-search{display:none}
+  .hero{padding:80px 1rem 2rem}
+  .hero-stats{gap:1.5rem}
+  .main{padding:1rem}
+  .cat-nav{padding:0 1rem}
+}
 </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-logo">⚡ AI My Service</div>
-  <div class="nav-actions">
+  <div class="nav-left">
+    <a href="/" class="nav-logo">⚡ <span>AI My Service</span></a>
+    <div class="nav-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(240,240,248,0.3)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search-input" placeholder="Search 93 properties..." autocomplete="off">
+    </div>
+  </div>
+  <div class="nav-right">
     <a href="/login.html" class="nav-link">Sign in</a>
-    <button class="nav-btn" onclick="document.getElementById('signup-input').focus()">Get Early Access</button>
+    <a href="/login.html" class="nav-btn">Get Started</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-grid"></div>
   <div class="hero-orb"></div>
-  <div class="hero-orb-2"></div>
-  <div class="hero-tag">Every AI tool, one place</div>
-  <h1>AI My Service</h1>
-  <p class="hero-sub">The central hub for AI-powered service tools across hospitality, career, health, music, and more.</p>
-  <div class="hero-cta">
-    <button class="btn-primary" onclick="document.getElementById('signup-input').focus()">Get Early Access →</button>
-    <a href="/login.html" class="btn-ghost">Sign in</a>
+  <div class="hero-tag">⚡ The Network</div>
+  <h1>Every AI tool,<br><em style="font-style:italic;color:var(--brand)">one place.</em></h1>
+  <p class="hero-sub">93 properties across AI, hospitality, entertainment, education, and more. Built for the future of intelligent business.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">93</div><div class="stat-label">Properties</div></div>
+    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Categories</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Servers</div></div>
   </div>
 </section>
 
-<section class="features-section">
-  <div class="section-header">
-    <div class="section-eyebrow">What we offer</div>
-    <div class="section-title">Built different.<br>Built to last.</div>
-  </div>
-  <div class="features-grid">
-        <div class="feat" style="animation-delay:0.0s">
-          <div class="feat-icon">⚡</div>
-          <div class="feat-title">AI-powered automation</div>
-          <p class="feat-desc">Automates the work that slows you down so you can focus on what matters.</p>
-        </div>
-        <div class="feat" style="animation-delay:0.1s">
-          <div class="feat-icon">🧠</div>
-          <div class="feat-title">Real-time intelligence</div>
-          <p class="feat-desc">Surfaces insights from your data in plain language — no dashboards required.</p>
-        </div>
-        <div class="feat" style="animation-delay:0.2s">
-          <div class="feat-icon">🔗</div>
-          <div class="feat-title">Seamless integration</div>
-          <p class="feat-desc">Connects to your existing tools and workflows without disruption.</p>
-        </div>
-        <div class="feat" style="animation-delay:0.30000000000000004s">
-          <div class="feat-icon">∞</div>
-          <div class="feat-title">Always learning</div>
-          <p class="feat-desc">Gets smarter with every interaction, adapting to how you work.</p>
-        </div>
-  </div>
-</section>
+<div class="cat-nav" id="cat-nav">
+  <button class="cat-btn active" data-cat="all">All</button>
+  <button class="cat-btn" data-cat="ai">AI Tools</button>
+  <button class="cat-btn" data-cat="entertainment">Entertainment</button>
+  <button class="cat-btn" data-cat="hospitality">Hospitality</button>
+  <button class="cat-btn" data-cat="personal">Personal</button>
+  <button class="cat-btn" data-cat="career">Career</button>
+  <button class="cat-btn" data-cat="community">Community</button>
+  <button class="cat-btn" data-cat="education">Education</button>
+  <button class="cat-btn" data-cat="music">Music</button>
+  <button class="cat-btn" data-cat="media">Media</button>
+  <button class="cat-btn" data-cat="real estate">Real Estate</button>
+  <button class="cat-btn" data-cat="health">Health</button>
+</div>
 
-<section class="cta-section">
-  <div class="cta-inner">
-    <div class="cta-title">Get Early Access.</div>
-    <p class="cta-sub">Join the waitlist. Free forever, upgrade anytime.</p>
-        <div class="signup-wrap">
-      <div class="signup-row">
-        <input type="email" id="signup-input" class="signup-input" placeholder="your@email.com" autocomplete="email">
-        <button id="signup-btn" class="signup-submit idle">
-          <span class="spin"></span>
-          <span class="btn-label">Get Early Access</span>
-          <span class="btn-icon">&#8594;</span>
-        </button>
-      </div>
-      <div id="signup-status" class="signup-status"></div>
+<div class="main" id="main-content">
+  <div id="search-results" style="display:none">
+    <div class="domain-grid" id="search-grid"></div>
+    <div class="search-empty" id="search-empty" style="display:none">
+      <div class="search-empty-icon">🔍</div>
+      <div>No properties found</div>
     </div>
   </div>
-</section>
+  <div id="cat-sections"></div>
+</div>
 
 <footer>
-  <span>© 2026 aimyservice.com</span>
-  <span>Part of the <a href="https://aimyservice.com">AI My Service</a> network</span>
+  <p>2026 AI My Service Network &mdash; New Orleans, LA &mdash; <a href="/login.html">Sign in</a></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-(function() {
-  var DOMAIN_ID = "4bbbd0b6-2f0e-4d76-a6e2-fc910fdae198";
-  var sb = supabase.createClient("https://yourhspxqggfhbsjpsnq.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvdXJoc3B4cWdnZmhic2pwc25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3MjMxMTksImV4cCI6MjA3MzI5OTExOX0.2YPm1xP8RhfShzItK1RXxa1_Gcmw56jqt3NskoPVr3k");
-  var input = document.getElementById("signup-input");
-  var btn   = document.getElementById("signup-btn");
-  var status = document.getElementById("signup-status");
+var DOMAINS = [
+  {d:"aaifactory.com",n:"AAI Factory",t:"Agentic AI Factory",c:"#0C447C",i:"\u2699",cat:"ai"},
+  {d:"aiagencyforautomation.com",n:"AI Agency for Automation",t:"Done-for-you AI automation",c:"#534AB7",i:"\ud83e\udd16",cat:"ai"},
+  {d:"aiintelligencefactory.com",n:"AI Intelligence Factory",t:"Founder-led AI implementation",c:"#26215C",i:"\ud83c\udfed",cat:"ai"},
+  {d:"aimycompany.app",n:"AI My Company",t:"Your company, run by AI",c:"#2545e8",i:"\ud83c\udfe2",cat:"ai"},
+  {d:"aimyoffice.app",n:"AI My Office",t:"Your office, run by AI",c:"#0066cc",i:"\ud83d\udcbc",cat:"ai"},
+  {d:"aimyoffice.org",n:"AI My Office",t:"Your AI-powered back office",c:"#0C447C",i:"\ud83c\udfe2",cat:"ai"},
+  {d:"aimyservice.com",n:"AI My Service",t:"Every AI tool, one place",c:"#534AB7",i:"\u26a1",cat:"ai"},
+  {d:"aimyservices.com",n:"AI My Services",t:"AI services on demand",c:"#3C3489",i:"\ud83d\udd27",cat:"ai"},
+  {d:"aiwisdomfactory.com",n:"AI Wisdom Factory",t:"Intelligence you can use",c:"#26215C",i:"\ud83e\udde0",cat:"ai"},
+  {d:"aiwizards.work",n:"AI Wizards",t:"AI expertise on demand",c:"#6b0f8b",i:"\ud83e\uddd9",cat:"ai"},
+  {d:"creativeintelligencesystem.com",n:"Creative Intelligence System",t:"AI for creative production",c:"#BA7517",i:"\ud83d\udca1",cat:"ai"},
+  {d:"repeatableintelligence.com",n:"Repeatable Intelligence",t:"Build AI that scales",c:"#0C447C",i:"\ud83d\udd01",cat:"ai"},
+  {d:"aiforlongevity.dev",n:"AI for Longevity",t:"Live longer with AI",c:"#0f6e56",i:"\ud83e\uddec",cat:"ai"},
+  {d:"aicareerplanner.com",n:"AI Career Planner",t:"Your AI-powered career roadmap",c:"#185FA5",i:"\ud83d\uddfa",cat:"career"},
+  {d:"aijobscoach.com",n:"AI Jobs Coach",t:"Land the job. Own the room.",c:"#185FA5",i:"\ud83d\udcbc",cat:"career"},
+  {d:"aimyinterview.com",n:"AI My Interview",t:"Practice until perfect",c:"#185FA5",i:"\ud83c\udfa4",cat:"career"},
+  {d:"ailunchclubs.com",n:"AI Lunch Clubs",t:"Learn AI over lunch",c:"#3B6D11",i:"\ud83e\udd57",cat:"community"},
+  {d:"aisocietynews.com",n:"AI Society News",t:"AI impact on the world",c:"#444441",i:"\ud83d\udcf0",cat:"community"},
+  {d:"nolablockparty.com",n:"NOLA Block Party",t:"The whole block shows up",c:"#993C1D",i:"\ud83c\udf8a",cat:"community"},
+  {d:"nolagoats.com",n:"NOLA Goats",t:"New Orleans greatest of all time",c:"#3B6D11",i:"\ud83d\udc10",cat:"community"},
+  {d:"nolalunchclub.com",n:"NOLA Lunch Club",t:"Lunch done right in New Orleans",c:"#D85A30",i:"\ud83c\udf5c",cat:"community"},
+  {d:"proudtoserve.com",n:"Proud to Serve",t:"For those who serve",c:"#185FA5",i:"\ud83c\udf96",cat:"community"},
+  {d:"culinaryinstitutenola.com",n:"Culinary Institute NOLA",t:"Master the craft of New Orleans cooking",c:"#8b3a00",i:"\ud83d\udc68\u200d\ud83c\udf73",cat:"education"},
+  {d:"neworleansculinaryinstitute.com",n:"New Orleans Culinary Institute",t:"Where flavor becomes craft",c:"#D85A30",i:"\ud83d\udc68\u200d\ud83c\udf73",cat:"education"},
+  {d:"neworleanshospitalityinstitute.com",n:"New Orleans Hospitality Institute",t:"Train for the best",c:"#185FA5",i:"\ud83c\udfe8",cat:"education"},
+  {d:"nolaculinaryinstitute.com",n:"NOLA Culinary Institute",t:"Mastering the flavors of NOLA",c:"#854F0B",i:"\ud83c\udf73",cat:"education"},
+  {d:"allstaravatars.com",n:"All Star Avatars",t:"Elite avatar performers",c:"#BA7517",i:"\u2b50",cat:"entertainment"},
+  {d:"avastage.com",n:"Ava Stage",t:"AI performance, live",c:"#993C1D",i:"\ud83c\udfad",cat:"entertainment"},
+  {d:"avastar.app",n:"Avastar",t:"Your AI star performer",c:"#BA7517",i:"\u2b50",cat:"entertainment"},
+  {d:"avastar.band",n:"Avastar Band",t:"AI music. Live energy.",c:"#993C1D",i:"\ud83c\udfb8",cat:"entertainment"},
+  {d:"avatarallstars.com",n:"Avatar All Stars",t:"The greatest AI performers",c:"#854F0B",i:"\ud83c\udf1f",cat:"entertainment"},
+  {d:"avatarhouseband.com",n:"Avatar House Band",t:"The AI house band experience",c:"#26215C",i:"\ud83c\udfb8",cat:"entertainment"},
+  {d:"avatarhousebands.com",n:"Avatar House Bands",t:"AI house bands worldwide",c:"#3C3489",i:"\ud83c\udfb5",cat:"entertainment"},
+  {d:"avatheater.com",n:"Ava Theater",t:"AI entertainment venue",c:"#993556",i:"\ud83c\udfac",cat:"entertainment"},
+  {d:"concertslots.com",n:"Concert Slots",t:"The show never stops",c:"#6b0f8b",i:"\ud83c\udfb8",cat:"entertainment"},
+  {d:"crowdfundedconcerts.com",n:"Crowdfunded Concerts",t:"The crowd funds the show",c:"#3B6D11",i:"\ud83c\udfa4",cat:"entertainment"},
+  {d:"globaltix.app",n:"Global Tix",t:"Tickets without borders",c:"#185FA5",i:"\ud83c\udf9f",cat:"entertainment"},
+  {d:"musicslots.com",n:"Music Slots",t:"Play to the beat",c:"#993556",i:"\ud83c\udfb0",cat:"entertainment"},
+  {d:"rememberingwinterland.com",n:"Remembering Winterland",t:"The legendary SF concert venue",c:"#0a0a14",i:"\u2744",cat:"entertainment"},
+  {d:"rocksportsplay.com",n:"Rock Sports Play",t:"Where sports meets rock",c:"#c0392b",i:"\ud83c\udfb8",cat:"entertainment"},
+  {d:"thedick.show",n:"The Dick Show",t:"Coming to a screen near you",c:"#444441",i:"\ud83c\udfac",cat:"entertainment"},
+  {d:"ticketsdirect.app",n:"Tickets Direct",t:"Direct from the source",c:"#0C447C",i:"\ud83c\udfab",cat:"entertainment"},
+  {d:"worldsgreatestavatarhouseband.com",n:"World's Greatest Avatar House Band",t:"The definitive AI house band",c:"#26215C",i:"\ud83c\udfc6",cat:"entertainment"},
+  {d:"worldsgreatestavatarhousebands.com",n:"World's Greatest Avatar House Bands",t:"World-class AI entertainment",c:"#3C3489",i:"\ud83e\udd47",cat:"entertainment"},
+  {d:"worldsgreatesthouseband.com",n:"World's Greatest House Band",t:"AI-powered house band franchise",c:"#185FA5",i:"\ud83c\udf99",cat:"entertainment"},
+  {d:"worldsgreatesthousebands.com",n:"World's Greatest House Bands",t:"Global AI band network",c:"#0C447C",i:"\ud83c\udf10",cat:"entertainment"},
+  {d:"aimypractice.app",n:"AI My Practice",t:"AI operations for every practice",c:"#0f6e56",i:"\ud83e\uddb7",cat:"health"},
+  {d:"aimypractice.org",n:"AI My Practice",t:"Dental Practice Flow Diagnostic",c:"#0F6E56",i:"\ud83e\uddb7",cat:"health"},
+  {d:"aiforbars.com",n:"AI for Bars",t:"AI built for bar operators",c:"#993C1D",i:"\ud83c\udf78",cat:"hospitality"},
+  {d:"aiforcasinos.com",n:"AI for Casinos",t:"Intelligence on the gaming floor",c:"#3B6D11",i:"\ud83c\udfb0",cat:"hospitality"},
+  {d:"aiforrestaurants.com",n:"AI for Restaurants",t:"AI that works the back office",c:"#D85A30",i:"\ud83c\udf7d",cat:"hospitality"},
+  {d:"aimyrestaurant.app",n:"AI My Restaurant",t:"The restaurant AI that works",c:"#8b3a00",i:"\ud83c\udf7d",cat:"hospitality"},
+  {d:"breakfastandbrews.com",n:"Breakfast and Brews",t:"Morning done right",c:"#8b4513",i:"\ud83c\udf73",cat:"hospitality"},
+  {d:"brewsandbagels.com",n:"Brews and Bagels",t:"The morning pairing you needed",c:"#5c3317",i:"\ud83e\udd6f",cat:"hospitality"},
+  {d:"cheerscentral.com",n:"Cheers Central",t:"The hub for bar culture",c:"#854F0B",i:"\ud83c\udf89",cat:"hospitality"},
+  {d:"cheerssocial.com",n:"Cheers Social",t:"Where social meets the pour",c:"#993C1D",i:"\ud83c\udf7b",cat:"hospitality"},
+  {d:"happyhoursocial.com",n:"Happy Hour Social",t:"Find your happy hour",c:"#BA7517",i:"\ud83c\udf79",cat:"hospitality"},
+  {d:"rocknchicken.com",n:"Rock N Chicken",t:"Rock. Chicken. Repeat.",c:"#993C1D",i:"\ud83c\udf57",cat:"hospitality"},
+  {d:"sandyspritz.com",n:"Sandy Spritz",t:"Light, bright, and bubbly",c:"#BA7517",i:"\ud83e\udd42",cat:"hospitality"},
+  {d:"scratchchicken.com",n:"Scratch Chicken",t:"Made from scratch, every time",c:"#8b3a00",i:"\ud83d\udc14",cat:"hospitality"},
+  {d:"sharkstoothvineyards.com",n:"Shark's Tooth Vineyards",t:"Uncork something extraordinary",c:"#6b2d3e",i:"\ud83c\udf77",cat:"hospitality"},
+  {d:"tastetournola.com",n:"Taste Tour NOLA",t:"Taste your way through New Orleans",c:"#993C1D",i:"\ud83c\udf36",cat:"hospitality"},
+  {d:"wallofbeer.com",n:"Wall of Beer",t:"The ultimate beer experience",c:"#8b4513",i:"\ud83c\udf7a",cat:"hospitality"},
+  {d:"auctionarium.com",n:"Auctionarium",t:"The art of the auction",c:"#854F0B",i:"\ud83d\udd28",cat:"media"},
+  {d:"downloadlounge.com",n:"Download Lounge",t:"Your digital destination",c:"#0C447C",i:"\u2b07",cat:"media"},
+  {d:"fmgsf.com",n:"FMG SF",t:"Fan merchandise group SF",c:"#444441",i:"\ud83d\udc55",cat:"media"},
+  {d:"winterlandposters.com",n:"Winterland Posters",t:"Concert art that defined an era",c:"#185FA5",i:"\ud83d\uddbc",cat:"media"},
+  {d:"aimusicmemories.com",n:"AI Music Memories",t:"Your memories, set to music",c:"#993556",i:"\ud83c\udfb5",cat:"music"},
+  {d:"aimymusic.app",n:"AI My Music",t:"Your music business, supercharged",c:"#9b4dff",i:"\ud83c\udfb5",cat:"music"},
+  {d:"aimysoundtrack.com",n:"AI My Soundtrack",t:"The soundtrack to your life",c:"#993556",i:"\ud83c\udfa7",cat:"music"},
+  {d:"bsgroove.com",n:"BS Groove",t:"The groove never stops",c:"#993556",i:"\ud83c\udfb7",cat:"music"},
+  {d:"djbobspencer.com",n:"DJ Bob Spencer",t:"On the ones and twos",c:"#26215C",i:"\ud83c\udfa7",cat:"music"},
+  {d:"aimyarchive.com",n:"AI My Archive",t:"Your life, organized forever",c:"#444441",i:"\ud83d\uddc4",cat:"personal"},
+  {d:"aimybio.com",n:"AI My Bio",t:"Professional bios in minutes",c:"#534AB7",i:"\ud83d\udcdd",cat:"personal"},
+  {d:"aimygifting.com",n:"AI My Gifting",t:"The perfect gift, every time",c:"#993556",i:"\ud83c\udf81",cat:"personal"},
+  {d:"aimyshopping.com",n:"AI My Shopping",t:"Your AI shopping concierge",c:"#D4537E",i:"\ud83d\udecd",cat:"personal"},
+  {d:"aimyshopping.app",n:"AI My Shopping App",t:"Your AI personal shopper",c:"#d4537e",i:"\ud83d\udecd",cat:"personal"},
+  {d:"aminthenungesser.com",n:"Amin Then Ungesser",t:"",c:"#534AB7",i:"\ud83d\udc64",cat:"personal"},
+  {d:"brionwise.com",n:"Brion Wise",t:"",c:"#185FA5",i:"\ud83d\udc64",cat:"personal"},
+  {d:"davefurano.com",n:"Dave Furano",t:"Entrepreneur. Entertainer. Innovator.",c:"#26215C",i:"\ud83c\udfb8",cat:"personal"},
+  {d:"dellfurano.com",n:"Dell Furano",t:"Music industry legend",c:"#3C3489",i:"\ud83c\udfb5",cat:"personal"},
+  {d:"furanos.com",n:"Furano's",t:"The Furano family home",c:"#0F6E56",i:"\ud83c\udfe1",cat:"personal"},
+  {d:"gratefuldave.com",n:"Grateful Dave",t:"Living the Grateful life",c:"#444441",i:"\ud83d\udc80",cat:"personal"},
+  {d:"jbbocas.com",n:"JB Bocas",t:"",c:"#534AB7",i:"\ud83d\udc64",cat:"personal"},
+  {d:"lifeisabeautifulthing.com",n:"Life Is a Beautiful Thing",t:"Celebrate every moment",c:"#D4537E",i:"\u2728",cat:"personal"},
+  {d:"martinerlichman.com",n:"Martin Erlichman",t:"Legendary music manager",c:"#26215C",i:"\ud83c\udfac",cat:"personal"},
+  {d:"mospencer.com",n:"Mo Spencer",t:"",c:"#3C3489",i:"\ud83d\udc64",cat:"personal"},
+  {d:"rondawise.com",n:"Ronda Wise",t:"",c:"#D4537E",i:"\ud83d\udc64",cat:"personal"},
+  {d:"sandyfurano.com",n:"Sandy Furano",t:"",c:"#0F6E56",i:"\ud83c\udf3f",cat:"personal"},
+  {d:"talktomeinheaven.com",n:"Talk to Me in Heaven",t:"Keep the conversation going",c:"#7F77DD",i:"\u2601",cat:"personal"},
+  {d:"22914th.com",n:"229 14th",t:"A special New Orleans address",c:"#444441",i:"\ud83c\udfe0",cat:"real estate"},
+  {d:"7919willow.com",n:"7919 Willow",t:"A New Orleans address",c:"#3B6D11",i:"\ud83c\udf3f",cat:"real estate"}
+];
 
-  if (!input || !btn) return;
+var CAT_META = {
+  ai:{label:"AI Tools",icon:"\u26a1"},
+  entertainment:{label:"Entertainment",icon:"\ud83c\udfad"},
+  hospitality:{label:"Hospitality",icon:"\ud83c\udf7d"},
+  personal:{label:"Personal",icon:"\ud83d\udc64"},
+  career:{label:"Career",icon:"\ud83d\udcbc"},
+  community:{label:"Community",icon:"\ud83e\udd1d"},
+  education:{label:"Education",icon:"\ud83d\udcda"},
+  music:{label:"Music",icon:"\ud83c\udfb5"},
+  media:{label:"Media",icon:"\ud83d\udcfa"},
+  "real estate":{label:"Real Estate",icon:"\ud83c\udfe0"},
+  health:{label:"Health",icon:"\ud83e\uddb7"}
+};
 
-  function setState(state) {
-    btn.className = "signup-submit " + state;
-    btn.disabled = (state === "sending" || state === "success");
-    var labels = {
-      "idle":    ["Get Early Access", "arrow"],
-      "sending": ["", ""],
-      "success": ["Confirmed", "check"],
-      "error":   ["Try Again", "retry"]
-    };
-    var l = labels[state] || labels["idle"];
-    var labelEl = btn.querySelector(".btn-label");
-    var iconEl  = btn.querySelector(".btn-icon");
-    if (labelEl) labelEl.textContent = l[0];
-    if (iconEl) {
-      var icons = { arrow: "\u2192", check: "\u2713", retry: "\u21BA" };
-      iconEl.textContent = icons[l[1]] || "";
-    }
-  }
+function makeCard(item,featured){
+  var cls = "domain-card" + (featured ? " featured" : "");
+  return '<a href="https://'+item.d+'" target="_blank" class="'+cls+'" style="--card-color:'+item.c+'">'
+    +'<div class="card-top"><span class="card-icon">'+item.i+'</span><span class="card-arrow">&#8594;</span></div>'
+    +'<div class="card-name">'+item.n+'</div>'
+    +(item.t ? '<div class="card-tagline">'+item.t+'</div>' : '')
+    +'<div class="card-domain">'+item.d+'</div>'
+    +'</a>';
+}
 
-  function setStatus(msg, type) {
-    if (!status) return;
-    status.textContent = msg;
-    status.className = "signup-status " + (type || "");
-  }
-
-  function doSignup() {
-    var email = input.value.trim();
-    if (!email || email.indexOf("@") < 0) {
-      input.focus();
-      input.style.outline = "2px solid rgba(239,68,68,0.5)";
-      setStatus("Please enter a valid email address.", "err");
-      setTimeout(function() {
-        input.style.outline = "";
-        setStatus("");
-      }, 2000);
-      return;
-    }
-
-    setState("sending");
-    setStatus("Sending...");
-
-    sb.from("email_signups").insert({
-      email: email.toLowerCase(),
-      domain_id: DOMAIN_ID,
-      source: "landing_page",
-      subscribed: true
-    }).then(function(result) {
-      if (!result.error || result.error.code === "23505") {
-        setState("success");
-        setStatus("You are on the list. Check your email.", "ok");
-        input.value = "";
-        input.placeholder = "See you soon";
-      } else {
-        setState("error");
-        setStatus("Something went wrong. Please try again.", "err");
-        setTimeout(function() { setState("idle"); setStatus(""); }, 3000);
-      }
-    }).catch(function() {
-      setState("error");
-      setStatus("Connection error. Please try again.", "err");
-      setTimeout(function() { setState("idle"); setStatus(""); }, 3000);
-    });
-  }
-
-  btn.addEventListener("click", doSignup);
-  input.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") doSignup();
+function buildSections(filter){
+  var sections = document.getElementById("cat-sections");
+  var cats = {};
+  DOMAINS.forEach(function(d){
+    if(filter && filter !== "all" && d.cat !== filter) return;
+    if(!cats[d.cat]) cats[d.cat] = [];
+    cats[d.cat].push(d);
   });
-})();
+  var html = "";
+  Object.keys(cats).forEach(function(cat){
+    var meta = CAT_META[cat] || {label:cat,icon:""};
+    var items = cats[cat];
+    html += '<div class="cat-section visible" data-cat="'+cat+'">';
+    html += '<div class="cat-header"><span class="cat-icon">'+meta.icon+'</span>';
+    html += '<span class="cat-title">'+meta.label+'</span>';
+    html += '<span class="cat-count">'+items.length+'</span></div>';
+    html += '<div class="domain-grid">';
+    items.forEach(function(item,i){ html += makeCard(item, i < 2 && items.length > 3); });
+    html += '</div></div>';
+  });
+  sections.innerHTML = html;
+}
+
+function doSearch(q){
+  var results = document.getElementById("search-results");
+  var sections = document.getElementById("cat-sections");
+  var grid = document.getElementById("search-grid");
+  var empty = document.getElementById("search-empty");
+  if(!q){
+    results.style.display = "none";
+    sections.style.display = "block";
+    return;
+  }
+  q = q.toLowerCase();
+  var matches = DOMAINS.filter(function(d){
+    return d.d.indexOf(q) > -1 || d.n.toLowerCase().indexOf(q) > -1 || (d.t && d.t.toLowerCase().indexOf(q) > -1) || d.cat.indexOf(q) > -1;
+  });
+  results.style.display = "block";
+  sections.style.display = "none";
+  if(matches.length === 0){
+    grid.innerHTML = "";
+    empty.style.display = "block";
+  } else {
+    empty.style.display = "none";
+    grid.innerHTML = matches.map(function(item){ return makeCard(item, false); }).join("");
+  }
+}
+
+// Init
+buildSections("all");
+
+// Category nav
+document.getElementById("cat-nav").addEventListener("click", function(e){
+  var btn = e.target.closest(".cat-btn");
+  if(!btn) return;
+  document.querySelectorAll(".cat-btn").forEach(function(b){ b.classList.remove("active"); });
+  btn.classList.add("active");
+  var cat = btn.dataset.cat;
+  document.getElementById("search-input").value = "";
+  document.getElementById("search-results").style.display = "none";
+  document.getElementById("cat-sections").style.display = "block";
+  buildSections(cat === "all" ? null : cat);
+});
+
+// Search
+var searchTimer;
+document.getElementById("search-input").addEventListener("input", function(){
+  clearTimeout(searchTimer);
+  var q = this.value.trim();
+  searchTimer = setTimeout(function(){ doSearch(q); }, 150);
+});
 </script>
 </body>
 </html>
