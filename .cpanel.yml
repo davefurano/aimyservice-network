@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
-    - /bin/cp -rf aimyservice.com/. $DEPLOYPATH/
+    - /bin/mkdir -p $DEPLOYPATH/aimyservicecom
+    - /bin/cp -rf aimyservice.com/. $DEPLOYPATH/aimyservicecom/
