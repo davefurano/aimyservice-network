@@ -2,11 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
-    - /bin/mkdir -p $DEPLOYPATH/aimyservicecom $DEPLOYPATH/aimyshoppingcom $DEPLOYPATH/avastagecom $DEPLOYPATH/avastarapp $DEPLOYPATH/avatarhousebandscom $DEPLOYPATH/avatheatercom
-    - /bin/cp -rf aimyservice.com/. $DEPLOYPATH/aimyservicecom/ && /bin/cp -rf aimyshopping.com/. $DEPLOYPATH/aimyshoppingcom/ && /bin/cp -rf avastage.com/. $DEPLOYPATH/avastagecom/ && /bin/cp -rf avastar.app/. $DEPLOYPATH/avastarapp/ && /bin/cp -rf avatarhousebands.com/. $DEPLOYPATH/avatarhousebandscom/ && /bin/cp -rf avatheater.com/. $DEPLOYPATH/avatheatercom/
-    - /bin/mkdir -p $DEPLOYPATH/aimyarchivecom $DEPLOYPATH/aimybiocom $DEPLOYPATH/aimycompanyapp $DEPLOYPATH/aimygiftingcom $DEPLOYPATH/aimyinterviewcom $DEPLOYPATH/aimymusicapp
-    - /bin/cp -rf aimyarchive.com/. $DEPLOYPATH/aimyarchivecom/ && /bin/cp -rf aimybio.com/. $DEPLOYPATH/aimybiocom/ && /bin/cp -rf aimycompany.app/. $DEPLOYPATH/aimycompanyapp/ && /bin/cp -rf aimygifting.com/. $DEPLOYPATH/aimygiftingcom/ && /bin/cp -rf aimyinterview.com/. $DEPLOYPATH/aimyinterviewcom/ && /bin/cp -rf aimymusic.app/. $DEPLOYPATH/aimymusicapp/
-    - /bin/mkdir -p $DEPLOYPATH/aimyofficeapp $DEPLOYPATH/aimyofficeorg $DEPLOYPATH/aimypracticeapp $DEPLOYPATH/aimypracticeorg $DEPLOYPATH/aimyrestaurantapp $DEPLOYPATH/aimyservicescom
-    - /bin/cp -rf aimyoffice.app/. $DEPLOYPATH/aimyofficeapp/ && /bin/cp -rf aimyoffice.org/. $DEPLOYPATH/aimyofficeorg/ && /bin/cp -rf aimypractice.app/. $DEPLOYPATH/aimypracticeapp/ && /bin/cp -rf aimypractice.org/. $DEPLOYPATH/aimypracticeorg/ && /bin/cp -rf aimyrestaurant.app/. $DEPLOYPATH/aimyrestaurantapp/ && /bin/cp -rf aimyservices.com/. $DEPLOYPATH/aimyservicescom/
-    - /bin/mkdir -p $DEPLOYPATH/aicareerplannercom $DEPLOYPATH/aiforrestaurantscom $DEPLOYPATH/ailunchclubscom $DEPLOYPATH/aisocietynewscom $DEPLOYPATH/avatarhousebandcom
-    - /bin/cp -rf aicareerplanner.com/. $DEPLOYPATH/aicareerplannercom/ && /bin/cp -rf aiforrestaurants.com/. $DEPLOYPATH/aiforrestaurantscom/ && /bin/cp -rf ailunchclubs.com/. $DEPLOYPATH/ailunchclubscom/ && /bin/cp -rf aisocietynews.com/. $DEPLOYPATH/aisocietynewscom/ && /bin/cp -rf avatarhouseband.com/. $DEPLOYPATH/avatarhousebandcom/
+    - /bin/mkdir -p $DEPLOYPATH/avastagecom $DEPLOYPATH/avastarapp $DEPLOYPATH/avatheatercom $DEPLOYPATH/aimyservicecom $DEPLOYPATH/aimyshoppingcom $DEPLOYPATH/avatarhousebandcom $DEPLOYPATH/avatarhousebandscom
+    - /bin/cp -rf avastage.com/. $DEPLOYPATH/avastagecom/ && /bin/cp -rf avastar.app/. $DEPLOYPATH/avastarapp/ && /bin/cp -rf avatheater.com/. $DEPLOYPATH/avatheatercom/
+    - /bin/cp -rf aimyservice.com/. $DEPLOYPATH/aimyservicecom/ && /bin/cp -rf aimyshopping.com/. $DEPLOYPATH/aimyshoppingcom/
+    - /bin/cp -rf avatarhouseband.com/. $DEPLOYPATH/avatarhousebandcom/ && /bin/cp -rf avatarhousebands.com/. $DEPLOYPATH/avatarhousebandscom/
