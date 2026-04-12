@@ -5,98 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI My Service — 45 properties across AI, entertainment, hospitality, and more.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--brand:#534AB7;--brand-rgb:83,74,183;--bg:#0a0a0f;--surface:#111118;--surface2:#1a1a24;--border:rgba(255,255,255,0.07);--text:#f0f0f8;--muted:rgba(240,240,248,0.45);--card-h:170px;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:"Geist",-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;gap:1.25rem;padding:.8rem 1.5rem;background:rgba(10,10,15,0.93);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:"Instrument Serif",serif;font-size:1.15rem;color:var(--text);text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:.4rem;}
-.nav-logo em{font-style:normal;color:var(--brand);}
-.search-wrap{flex:1;max-width:500px;margin:0 auto;position:relative;}
-.search-input{width:100%;padding:.55rem 1rem .55rem 2.4rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:.85rem;outline:none;transition:border-color .2s,box-shadow .2s;}
-.search-input:focus{border-color:rgba(var(--brand-rgb),.5);box-shadow:0 0 0 3px rgba(var(--brand-rgb),.12);}
-.search-input::placeholder{color:var(--muted);}
-.search-icon{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem;pointer-events:none;}
-.nav-pill{font-size:.72rem;color:var(--muted);white-space:nowrap;background:var(--surface2);border:1px solid var(--border);padding:.3rem .8rem;border-radius:20px;}
-.nav-link{font-size:.75rem;color:var(--muted);text-decoration:none;padding:.35rem .8rem;border:1px solid var(--border);border-radius:6px;transition:all .2s;white-space:nowrap;}
-.nav-link:hover{color:var(--text);border-color:rgba(var(--brand-rgb),.4);background:rgba(var(--brand-rgb),.08);}
-.hero{background:linear-gradient(135deg,rgba(var(--brand-rgb),.18) 0%,rgba(var(--brand-rgb),.04) 50%,transparent 100%);border-bottom:1px solid var(--border);padding:2.25rem 1.5rem 1.75rem;text-align:center;}
-.hero h1{font-family:"Instrument Serif",serif;font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.02em;line-height:1.1;margin-bottom:.4rem;}
-.hero h1 em{font-style:italic;color:var(--brand);}
-.hero-sub{font-size:.9rem;color:var(--muted);font-weight:300;}
-.filter-bar{display:flex;align-items:center;gap:.4rem;padding:.75rem 1.5rem;overflow-x:auto;border-bottom:1px solid var(--border);background:var(--surface);scrollbar-width:none;}
+body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f7f7f8;color:#0d0d0d;min-height:100vh;-webkit-font-smoothing:antialiased;}
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid #e5e5e5;padding:0 1.5rem;height:56px;display:flex;align-items:center;gap:1rem;}
+.nav-logo{font-size:.95rem;font-weight:700;color:#0d0d0d;text-decoration:none;white-space:nowrap;letter-spacing:-.01em;}
+.nav-logo span{color:#534AB7;}
+.search-wrap{flex:1;max-width:480px;margin:0 auto;position:relative;}
+.search-input{width:100%;padding:.5rem .9rem .5rem 2.25rem;background:#f7f7f8;border:1px solid #e5e5e5;border-radius:8px;font-family:inherit;font-size:.875rem;color:#0d0d0d;outline:none;transition:border-color .15s,box-shadow .15s;}
+.search-input:focus{border-color:#534AB7;box-shadow:0 0 0 3px #534AB722;background:#fff;}
+.search-input::placeholder{color:#999;}
+.search-icon{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);color:#aaa;font-size:.8rem;pointer-events:none;}
+.nav-tag{font-size:.75rem;color:#666;white-space:nowrap;}
+.nav-link{font-size:.78rem;font-weight:500;color:#666;text-decoration:none;padding:.4rem .85rem;border:1px solid #e5e5e5;border-radius:6px;transition:all .15s;white-space:nowrap;}
+.nav-link:hover{color:#0d0d0d;border-color:#ccc;background:#f7f7f8;}
+/* HERO */
+.hero{background:#fff;border-bottom:1px solid #e5e5e5;padding:2.5rem 1.5rem 2rem;text-align:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#534AB7;margin-bottom:.85rem;}
+.hero h1{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;color:#0d0d0d;margin-bottom:.5rem;}
+.hero-sub{font-size:.9rem;color:#666;font-weight:400;max-width:520px;margin:0 auto;line-height:1.6;}
+/* FILTER BAR */
+.filter-bar{background:#fff;border-bottom:1px solid #e5e5e5;padding:.6rem 1.5rem;display:flex;align-items:center;gap:.4rem;overflow-x:auto;scrollbar-width:none;}
 .filter-bar::-webkit-scrollbar{display:none;}
-.cat-btn{font-family:inherit;font-size:.72rem;font-weight:500;color:var(--muted);background:transparent;border:1px solid var(--border);border-radius:6px;padding:.3rem .75rem;cursor:pointer;white-space:nowrap;transition:all .15s;}
-.cat-btn:hover,.cat-btn.active{color:var(--text);background:rgba(var(--brand-rgb),.15);border-color:rgba(var(--brand-rgb),.4);font-weight:600;}
-.stats{display:flex;gap:1.5rem;padding:.5rem 1.5rem;border-bottom:1px solid var(--border);background:rgba(var(--brand-rgb),.03);font-size:.72rem;color:var(--muted);}
-.stats strong{color:var(--text);font-weight:600;}
-.grid-wrap{padding:1.25rem 1.5rem 4rem;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.9rem;}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;text-decoration:none;display:block;}
-.card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.55);border-color:rgba(var(--card-rgb),.45);}
-.thumb{width:100%;height:var(--card-h);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(var(--card-rgb),.22) 0%,rgba(var(--card-rgb),.07) 100%);}
-.thumb::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(var(--card-rgb),.07) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--card-rgb),.07) 1px,transparent 1px);background-size:22px 22px;}
-.thumb::after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(var(--card-rgb),.22) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
-.thumb-icon{font-size:2.6rem;position:relative;z-index:1;filter:drop-shadow(0 4px 14px rgba(var(--card-rgb),.5));}
-.thumb-cat{position:absolute;bottom:.5rem;right:.5rem;font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(0,0,0,.6);backdrop-filter:blur(8px);padding:.2rem .55rem;border-radius:4px;z-index:1;}
-.card-body{padding:.75rem .85rem .8rem;}
-.card-title{font-family:"Instrument Serif",serif;font-size:.95rem;color:var(--text);line-height:1.25;margin-bottom:.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.card-tagline{font-size:.72rem;color:var(--muted);line-height:1.4;font-weight:300;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.card-domain{font-size:.65rem;color:rgba(var(--card-rgb),.85);margin-top:.35rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.no-results{grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--muted);}
+.cat-btn{font-family:inherit;font-size:.75rem;font-weight:500;color:#555;background:#f7f7f8;border:1px solid #e5e5e5;border-radius:20px;padding:.3rem .85rem;cursor:pointer;white-space:nowrap;transition:all .15s;}
+.cat-btn:hover{background:#f0f0f0;color:#0d0d0d;border-color:#ccc;}
+.cat-btn.active{background:#534AB7;color:#fff;border-color:#534AB7;font-weight:600;}
+/* STATS */
+.stats-bar{background:#f7f7f8;border-bottom:1px solid #e5e5e5;padding:.45rem 1.5rem;display:flex;gap:1.5rem;font-size:.72rem;color:#888;}
+.stats-bar strong{color:#444;font-weight:600;}
+/* GRID */
+.grid-wrap{max-width:1400px;margin:0 auto;padding:1.5rem 1.5rem 4rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+/* CARD — YouTube rectangle thumbnail style */
+.card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;text-decoration:none;display:block;transition:box-shadow .2s,transform .2s,border-color .2s;}
+.card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-2px);border-color:#d0d0d0;}
+/* 16:9 thumbnail */
+.thumb{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.thumb-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(var(--cr),.12) 0%,rgba(var(--cr),.04) 100%);}
+.thumb-pattern{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(var(--cr),.08) 1px,transparent 1px);background-size:20px 20px;}
+.thumb-glow{position:absolute;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle,rgba(var(--cr),.15) 0%,transparent 70%);}
+.thumb-icon{position:relative;z-index:1;font-size:2.75rem;filter:drop-shadow(0 2px 12px rgba(var(--cr),.35));}
+.thumb-cat{position:absolute;bottom:.5rem;left:.5rem;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(var(--cr),1);padding:.2rem .55rem;border-radius:4px;z-index:2;}
+/* Card body */
+.card-body{padding:.85rem 1rem .9rem;}
+.card-name{font-size:.9rem;font-weight:600;color:#0d0d0d;line-height:1.3;margin-bottom:.2rem;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.card-tagline{font-size:.775rem;color:#666;line-height:1.45;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.card-domain{font-size:.68rem;color:#aaa;margin-top:.45rem;display:flex;align-items:center;gap:.3rem;}
+.card-domain::before{content:"🔗";font-size:.6rem;}
+/* No results */
+.no-results{grid-column:1/-1;text-align:center;padding:5rem 2rem;color:#999;}
 .no-results .big{font-size:2.5rem;display:block;margin-bottom:.75rem;}
-footer{padding:1.25rem 1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--muted);}
-footer a{color:var(--muted);text-decoration:none;}footer a:hover{color:var(--text);}
-@media(max-width:600px){nav{flex-wrap:wrap;gap:.6rem;padding:.7rem 1rem;}.hero{padding:1.5rem 1rem 1.25rem;}.filter-bar{padding:.6rem 1rem;}.grid-wrap{padding:1rem 1rem 3rem;}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.65rem;}--card-h:140px;.thumb-icon{font-size:2rem;}.stats{padding:.4rem 1rem;gap:1rem;}.nav-link{display:none;}footer{flex-direction:column;gap:.35rem;text-align:center;}}
+/* Footer */
+footer{border-top:1px solid #e5e5e5;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:#aaa;background:#fff;}
+footer a{color:#888;text-decoration:none;}footer a:hover{color:#0d0d0d;}
+@media(max-width:640px){
+  nav{padding:0 1rem;gap:.75rem;}
+  .hero{padding:1.75rem 1rem 1.5rem;}
+  .filter-bar{padding:.5rem 1rem;}
+  .stats-bar{padding:.4rem 1rem;gap:1rem;}
+  .grid-wrap{padding:1rem 1rem 3rem;}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;}
+  .thumb-icon{font-size:2rem;}
+  .nav-link,.nav-tag{display:none;}
+  footer{flex-direction:column;gap:.35rem;text-align:center;}
+}
 </style>
 </head>
 <body>
 <nav>
-  <a class="nav-logo" href="/"><em>⚡</em> AI My Service</a>
+  <a class="nav-logo" href="/"><span>⚡</span> AI My Service</a>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
     <input type="text" class="search-input" id="search" placeholder="Search 44 properties..." autocomplete="off">
   </div>
-  <div class="nav-pill" id="nav-count">44 properties</div>
+  <div class="nav-tag" id="nav-count">44 properties</div>
   <a class="nav-link" href="https://downloadlounge.com">Download Lounge →</a>
 </nav>
 <div class="hero">
-  <h1><em>AI My Service</em> Network</h1>
+  <div class="hero-eyebrow">⚡ AI My Service Network</div>
+  <h1>Your AI Network, All in One Place</h1>
   <p class="hero-sub">45 properties across AI, entertainment, hospitality, and more.</p>
 </div>
 <div class="filter-bar">
   <button class="cat-btn active" data-cat="all">All (44)</button>
-  <button class="cat-btn" data-cat="ai">Ai</button><button class="cat-btn" data-cat="career">Career</button><button class="cat-btn" data-cat="community">Community</button><button class="cat-btn" data-cat="entertainment">Entertainment</button><button class="cat-btn" data-cat="health">Health</button><button class="cat-btn" data-cat="hospitality">Hospitality</button><button class="cat-btn" data-cat="music">Music</button><button class="cat-btn" data-cat="personal">Personal</button>
+  <button class="cat-btn" data-cat="AI">AI</button><button class="cat-btn" data-cat="Career">Career</button><button class="cat-btn" data-cat="Community">Community</button><button class="cat-btn" data-cat="Entertainment">Entertainment</button><button class="cat-btn" data-cat="Health">Health</button><button class="cat-btn" data-cat="Hospitality">Hospitality</button><button class="cat-btn" data-cat="Music">Music</button><button class="cat-btn" data-cat="Personal">Personal</button>
 </div>
-<div class="stats">
+<div class="stats-bar">
   <span><strong id="showing">44</strong> showing</span>
-  <span><strong>44</strong> total</span>
+  <span><strong>44</strong> total properties</span>
   <span><strong>8</strong> categories</span>
 </div>
 <div class="grid-wrap"><div class="grid" id="grid"></div></div>
 <footer>
   <span>© 2026 aimyservice.com</span>
-  <span>Also see <a href="https://downloadlounge.com">Download Lounge →</a></span>
+  <span>Also explore <a href="https://downloadlounge.com">Download Lounge →</a></span>
 </footer>
 <script>
-var D=[{"domain": "aaifactory.com", "name": "AAI Factory", "tagline": "Agentic AI Factory", "category": "ai", "color": "#0C447C", "icon": "⚙"}, {"domain": "aiagencyforautomation.com", "name": "AI Agency for Automation", "tagline": "Done-for-you AI automation", "category": "ai", "color": "#534AB7", "icon": "🤖"}, {"domain": "aiintelligencefactory.com", "name": "AI Intelligence Factory", "tagline": "Founder-led AI implementation", "category": "ai", "color": "#26215C", "icon": "🏭"}, {"domain": "aimycompany.app", "name": "AI My Company", "tagline": "Your company, run by AI", "category": "ai", "color": "#2545e8", "icon": "🏢"}, {"domain": "aimyoffice.org", "name": "AI My Office", "tagline": "Your AI-powered back office", "category": "ai", "color": "#0C447C", "icon": "🏢"}, {"domain": "aimyoffice.app", "name": "AI My Office App", "tagline": "Your office, run by AI", "category": "ai", "color": "#0066cc", "icon": "💼"}, {"domain": "aimyservice.com", "name": "AI My Service", "tagline": "Every AI tool, one place", "category": "ai", "color": "#534AB7", "icon": "⚡"}, {"domain": "aimyservices.com", "name": "AI My Services", "tagline": "AI services on demand", "category": "ai", "color": "#3C3489", "icon": "🔧"}, {"domain": "aiwisdomfactory.com", "name": "AI Wisdom Factory", "tagline": "Intelligence you can actually use", "category": "ai", "color": "#26215C", "icon": "🧠"}, {"domain": "creativeintelligencesystem.com", "name": "Creative Intelligence System", "tagline": "AI for creative production", "category": "ai", "color": "#BA7517", "icon": "💡"}, {"domain": "repeatableintelligence.com", "name": "Repeatable Intelligence", "tagline": "Build AI that scales", "category": "ai", "color": "#0C447C", "icon": "🔁"}, {"domain": "aicareerplanner.com", "name": "AI Career Planner", "tagline": "Your AI-powered career roadmap", "category": "career", "color": "#185FA5", "icon": "🗺"}, {"domain": "aijobscoach.com", "name": "AI Jobs Coach", "tagline": "Land the job. Own the room.", "category": "career", "color": "#185FA5", "icon": "💼"}, {"domain": "aimyinterview.com", "name": "AI My Interview", "tagline": "Practice until perfect", "category": "career", "color": "#185FA5", "icon": "🎤"}, {"domain": "ailunchclubs.com", "name": "AI Lunch Clubs", "tagline": "Learn AI over lunch", "category": "community", "color": "#3B6D11", "icon": "🥗"}, {"domain": "aisocietynews.com", "name": "AI Society News", "tagline": "AI impact on the world", "category": "community", "color": "#444441", "icon": "📰"}, {"domain": "allstaravatars.com", "name": "All Star Avatars", "tagline": "Elite avatar performers", "category": "entertainment", "color": "#BA7517", "icon": "⭐"}, {"domain": "avastage.com", "name": "Ava Stage", "tagline": "AI performers, live", "category": "entertainment", "color": "#993C1D", "icon": "🎭"}, {"domain": "avatheater.com", "name": "Ava Theater", "tagline": "AI entertainment on stage", "category": "entertainment", "color": "#993556", "icon": "🎬"}, {"domain": "avastar.app", "name": "Avastar", "tagline": "Your AI star performer", "category": "entertainment", "color": "#BA7517", "icon": "⭐"}, {"domain": "avastar.band", "name": "Avastar Band", "tagline": "AI music. Live energy.", "category": "entertainment", "color": "#993C1D", "icon": "🎸"}, {"domain": "avatarallstars.com", "name": "Avatar All Stars", "tagline": "The greatest AI performers", "category": "entertainment", "color": "#854F0B", "icon": "🌟"}, {"domain": "avatarhouseband.com", "name": "Avatar House Band", "tagline": "The AI house band experience", "category": "entertainment", "color": "#26215C", "icon": "🎸"}, {"domain": "avatarhousebands.com", "name": "Avatar House Bands", "tagline": "AI house bands worldwide", "category": "entertainment", "color": "#3C3489", "icon": "🎵"}, {"domain": "globaltix.app", "name": "Global Tix", "tagline": "Tickets without borders", "category": "entertainment", "color": "#185FA5", "icon": "🎟"}, {"domain": "ticketsdirect.app", "name": "Tickets Direct", "tagline": "Direct from the source", "category": "entertainment", "color": "#0C447C", "icon": "🎫"}, {"domain": "worldsgreatestavatarhouseband.com", "name": "Worlds Greatest Avatar House Band", "tagline": "The definitive AI house band", "category": "entertainment", "color": "#26215C", "icon": "🏆"}, {"domain": "worldsgreatestavatarhousebands.com", "name": "Worlds Greatest Avatar House Bands", "tagline": "World-class AI entertainment", "category": "entertainment", "color": "#3C3489", "icon": "🥇"}, {"domain": "worldsgreatesthouseband.com", "name": "Worlds Greatest House Band", "tagline": "AI-powered house band franchise", "category": "entertainment", "color": "#185FA5", "icon": "🎙"}, {"domain": "worldsgreatesthousebands.com", "name": "Worlds Greatest House Bands", "tagline": "Global AI band network", "category": "entertainment", "color": "#0C447C", "icon": "🌐"}, {"domain": "aimypractice.org", "name": "AI My Practice", "tagline": "Dental Practice Flow Diagnostic", "category": "health", "color": "#0F6E56", "icon": "🦷"}, {"domain": "aimypractice.app", "name": "AI My Practice App", "tagline": "AI for every practice", "category": "health", "color": "#0f6e56", "icon": "🦷"}, {"domain": "aiforbars.com", "name": "AI for Bars", "tagline": "AI built for bar operators", "category": "hospitality", "color": "#993C1D", "icon": "🍸"}, {"domain": "aiforcasinos.com", "name": "AI for Casinos", "tagline": "Intelligence on the gaming floor", "category": "hospitality", "color": "#3B6D11", "icon": "🎰"}, {"domain": "aiforrestaurants.com", "name": "AI for Restaurants", "tagline": "AI that works the back office", "category": "hospitality", "color": "#D85A30", "icon": "🍽"}, {"domain": "aimyrestaurant.app", "name": "AI My Restaurant", "tagline": "The restaurant AI that works", "category": "hospitality", "color": "#8b3a00", "icon": "🍽"}, {"domain": "aimusicmemories.com", "name": "AI Music Memories", "tagline": "Your memories, set to music", "category": "music", "color": "#993556", "icon": "🎵"}, {"domain": "aimymusic.app", "name": "AI My Music", "tagline": "Your music business, supercharged", "category": "music", "color": "#9b4dff", "icon": "🎵"}, {"domain": "aimysoundtrack.com", "name": "AI My Soundtrack", "tagline": "The soundtrack to your life", "category": "music", "color": "#993556", "icon": "🎧"}, {"domain": "aimyarchive.com", "name": "AI My Archive", "tagline": "Your life, organized forever", "category": "personal", "color": "#444441", "icon": "🗄"}, {"domain": "aimybio.com", "name": "AI My Bio", "tagline": "Professional bios in minutes", "category": "personal", "color": "#534AB7", "icon": "📝"}, {"domain": "aimygifting.com", "name": "AI My Gifting", "tagline": "The perfect gift, every time", "category": "personal", "color": "#993556", "icon": "🎁"}, {"domain": "aimyshopping.com", "name": "AI My Shopping", "tagline": "Your AI shopping concierge", "category": "personal", "color": "#D4537E", "icon": "🛍"}, {"domain": "aimyshopping.app", "name": "AI My Shopping App", "tagline": "Your AI personal shopper", "category": "personal", "color": "#d4537e", "icon": "🛍"}];
+var D=[{"domain": "aaifactory.com", "name": "AAI Factory", "tagline": "Agentic AI Factory", "category": "AI", "color": "#0C447C", "icon": "⚙"}, {"domain": "aiagencyforautomation.com", "name": "AI Agency for Automation", "tagline": "Done-for-you AI automation", "category": "AI", "color": "#534AB7", "icon": "🤖"}, {"domain": "aiintelligencefactory.com", "name": "AI Intelligence Factory", "tagline": "Founder-led AI implementation", "category": "AI", "color": "#26215C", "icon": "🏭"}, {"domain": "aimycompany.app", "name": "AI My Company", "tagline": "Your company, run by AI", "category": "AI", "color": "#2545e8", "icon": "🏢"}, {"domain": "aimyoffice.org", "name": "AI My Office", "tagline": "Your AI-powered back office", "category": "AI", "color": "#0C447C", "icon": "🏢"}, {"domain": "aimyoffice.app", "name": "AI My Office App", "tagline": "Your office, run by AI", "category": "AI", "color": "#0066cc", "icon": "💼"}, {"domain": "aimyservice.com", "name": "AI My Service", "tagline": "Every AI tool, one place", "category": "AI", "color": "#534AB7", "icon": "⚡"}, {"domain": "aimyservices.com", "name": "AI My Services", "tagline": "AI services on demand", "category": "AI", "color": "#3C3489", "icon": "🔧"}, {"domain": "aiwisdomfactory.com", "name": "AI Wisdom Factory", "tagline": "Intelligence you can actually use", "category": "AI", "color": "#26215C", "icon": "🧠"}, {"domain": "creativeintelligencesystem.com", "name": "Creative Intelligence System", "tagline": "AI for creative production", "category": "AI", "color": "#BA7517", "icon": "💡"}, {"domain": "repeatableintelligence.com", "name": "Repeatable Intelligence", "tagline": "Build AI that scales", "category": "AI", "color": "#0C447C", "icon": "🔁"}, {"domain": "aicareerplanner.com", "name": "AI Career Planner", "tagline": "Your AI-powered career roadmap", "category": "Career", "color": "#185FA5", "icon": "🗺"}, {"domain": "aijobscoach.com", "name": "AI Jobs Coach", "tagline": "Land the job. Own the room.", "category": "Career", "color": "#185FA5", "icon": "💼"}, {"domain": "aimyinterview.com", "name": "AI My Interview", "tagline": "Practice until perfect", "category": "Career", "color": "#185FA5", "icon": "🎤"}, {"domain": "ailunchclubs.com", "name": "AI Lunch Clubs", "tagline": "Learn AI over lunch", "category": "Community", "color": "#3B6D11", "icon": "🥗"}, {"domain": "aisocietynews.com", "name": "AI Society News", "tagline": "AI impact on the world", "category": "Community", "color": "#444441", "icon": "📰"}, {"domain": "allstaravatars.com", "name": "All Star Avatars", "tagline": "Elite avatar performers", "category": "Entertainment", "color": "#BA7517", "icon": "⭐"}, {"domain": "avastage.com", "name": "Ava Stage", "tagline": "AI performers, live", "category": "Entertainment", "color": "#993C1D", "icon": "🎭"}, {"domain": "avatheater.com", "name": "Ava Theater", "tagline": "AI entertainment on stage", "category": "Entertainment", "color": "#993556", "icon": "🎬"}, {"domain": "avastar.app", "name": "Avastar", "tagline": "Your AI star performer", "category": "Entertainment", "color": "#BA7517", "icon": "⭐"}, {"domain": "avastar.band", "name": "Avastar Band", "tagline": "AI music. Live energy.", "category": "Entertainment", "color": "#993C1D", "icon": "🎸"}, {"domain": "avatarallstars.com", "name": "Avatar All Stars", "tagline": "The greatest AI performers", "category": "Entertainment", "color": "#854F0B", "icon": "🌟"}, {"domain": "avatarhouseband.com", "name": "Avatar House Band", "tagline": "The AI house band experience", "category": "Entertainment", "color": "#26215C", "icon": "🎸"}, {"domain": "avatarhousebands.com", "name": "Avatar House Bands", "tagline": "AI house bands worldwide", "category": "Entertainment", "color": "#3C3489", "icon": "🎵"}, {"domain": "globaltix.app", "name": "Global Tix", "tagline": "Tickets without borders", "category": "Entertainment", "color": "#185FA5", "icon": "🎟"}, {"domain": "ticketsdirect.app", "name": "Tickets Direct", "tagline": "Direct from the source", "category": "Entertainment", "color": "#0C447C", "icon": "🎫"}, {"domain": "worldsgreatestavatarhouseband.com", "name": "Worlds Greatest Avatar House Band", "tagline": "The definitive AI house band", "category": "Entertainment", "color": "#26215C", "icon": "🏆"}, {"domain": "worldsgreatestavatarhousebands.com", "name": "Worlds Greatest Avatar House Bands", "tagline": "World-class AI entertainment", "category": "Entertainment", "color": "#3C3489", "icon": "🥇"}, {"domain": "worldsgreatesthouseband.com", "name": "Worlds Greatest House Band", "tagline": "AI-powered house band franchise", "category": "Entertainment", "color": "#185FA5", "icon": "🎙"}, {"domain": "worldsgreatesthousebands.com", "name": "Worlds Greatest House Bands", "tagline": "Global AI band network", "category": "Entertainment", "color": "#0C447C", "icon": "🌐"}, {"domain": "aimypractice.org", "name": "AI My Practice", "tagline": "Dental Practice Flow Diagnostic", "category": "Health", "color": "#0F6E56", "icon": "🦷"}, {"domain": "aimypractice.app", "name": "AI My Practice App", "tagline": "AI for every practice", "category": "Health", "color": "#0f6e56", "icon": "🦷"}, {"domain": "aiforbars.com", "name": "AI for Bars", "tagline": "AI built for bar operators", "category": "Hospitality", "color": "#993C1D", "icon": "🍸"}, {"domain": "aiforcasinos.com", "name": "AI for Casinos", "tagline": "Intelligence on the gaming floor", "category": "Hospitality", "color": "#3B6D11", "icon": "🎰"}, {"domain": "aiforrestaurants.com", "name": "AI for Restaurants", "tagline": "AI that works the back office", "category": "Hospitality", "color": "#D85A30", "icon": "🍽"}, {"domain": "aimyrestaurant.app", "name": "AI My Restaurant", "tagline": "The restaurant AI that works", "category": "Hospitality", "color": "#8b3a00", "icon": "🍽"}, {"domain": "aimusicmemories.com", "name": "AI Music Memories", "tagline": "Your memories, set to music", "category": "Music", "color": "#993556", "icon": "🎵"}, {"domain": "aimymusic.app", "name": "AI My Music", "tagline": "Your music business, supercharged", "category": "Music", "color": "#9b4dff", "icon": "🎵"}, {"domain": "aimysoundtrack.com", "name": "AI My Soundtrack", "tagline": "The soundtrack to your life", "category": "Music", "color": "#993556", "icon": "🎧"}, {"domain": "aimyarchive.com", "name": "AI My Archive", "tagline": "Your life, organized forever", "category": "Personal", "color": "#444441", "icon": "🗄"}, {"domain": "aimybio.com", "name": "AI My Bio", "tagline": "Professional bios in minutes", "category": "Personal", "color": "#534AB7", "icon": "📝"}, {"domain": "aimygifting.com", "name": "AI My Gifting", "tagline": "The perfect gift, every time", "category": "Personal", "color": "#993556", "icon": "🎁"}, {"domain": "aimyshopping.com", "name": "AI My Shopping", "tagline": "Your AI shopping concierge", "category": "Personal", "color": "#D4537E", "icon": "🛍"}, {"domain": "aimyshopping.app", "name": "AI My Shopping App", "tagline": "Your AI personal shopper", "category": "Personal", "color": "#d4537e", "icon": "🛍"}];
 var cat="all",q="";
 function rgb(h){return parseInt(h.slice(1,3),16)+","+parseInt(h.slice(3,5),16)+","+parseInt(h.slice(5,7),16);}
 function render(){
   var f=D.filter(function(d){
-    return(cat==="all"||d.category===cat)&&(!q||[d.name,d.tagline,d.domain,d.category].some(function(s){return s.toLowerCase().includes(q);}));
+    return(cat==="all"||d.category===cat)&&(!q||[d.name,d.tagline,d.domain,d.category].join(" ").toLowerCase().includes(q));
   });
   document.getElementById("showing").textContent=f.length;
   document.getElementById("nav-count").textContent=f.length+" properties";
   var g=document.getElementById("grid");
-  if(!f.length){g.innerHTML='<div class="no-results"><span class="big">🔍</span>No results for "<strong>'+q+'</strong>"</div>';return;}
+  if(!f.length){g.innerHTML='<div class="no-results"><span class="big">🔍</span>No results for <strong>"'+q+'"</strong></div>';return;}
   g.innerHTML=f.map(function(d){
     var r=rgb(d.color);
-    return'<a class="card" href="https://'+d.domain+'/" target="_blank" rel="noopener" style="--card-rgb:'+r+'">'+
-      '<div class="thumb"><div class="thumb-icon">'+d.icon+'</div><div class="thumb-cat">'+d.category+'</div></div>'+
-      '<div class="card-body"><div class="card-title">'+d.name+'</div><div class="card-tagline">'+d.tagline+'</div><div class="card-domain">'+d.domain+'</div></div></a>';
+    return'<a class="card" href="https://'+d.domain+'/" target="_blank" rel="noopener" style="--cr:'+r+'">'+
+      '<div class="thumb">'+
+        '<div class="thumb-bg"></div>'+
+        '<div class="thumb-pattern"></div>'+
+        '<div class="thumb-glow"></div>'+
+        '<div class="thumb-icon">'+d.icon+'</div>'+
+        '<div class="thumb-cat">'+d.category+'</div>'+
+      '</div>'+
+      '<div class="card-body">'+
+        '<div class="card-name">'+d.name+'</div>'+
+        '<div class="card-tagline">'+d.tagline+'</div>'+
+        '<div class="card-domain">'+d.domain+'</div>'+
+      '</div>'+
+    '</a>';
   }).join("");
 }
 document.querySelectorAll(".cat-btn").forEach(function(b){
