@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
-    - /bin/mkdir -p $DEPLOYPATH/aaifactorycom $DEPLOYPATH/aiagencyforautomationcom $DEPLOYPATH/aicareerplannercom $DEPLOYPATH/aiforbarscom $DEPLOYPATH/aiforcasinoscom
-    - /bin/cp -rf aaifactory.com/. $DEPLOYPATH/aaifactorycom/ && /bin/cp -rf aiagencyforautomation.com/. $DEPLOYPATH/aiagencyforautomationcom/ && /bin/cp -rf aicareerplanner.com/. $DEPLOYPATH/aicareerplannercom/ && /bin/cp -rf aiforbars.com/. $DEPLOYPATH/aiforbarscom/ && /bin/cp -rf aiforcasinos.com/. $DEPLOYPATH/aiforcasinoscom/
+    - /bin/mkdir -p $DEPLOYPATH/aiforrestaurantscom $DEPLOYPATH/aiintelligencefactorycom $DEPLOYPATH/aijobscoachcom $DEPLOYPATH/ailunchclubscom $DEPLOYPATH/aimusicmemoriescom
+    - /bin/cp -rf aiforrestaurants.com/. $DEPLOYPATH/aiforrestaurantscom/ && /bin/cp -rf aiintelligencefactory.com/. $DEPLOYPATH/aiintelligencefactorycom/ && /bin/cp -rf aijobscoach.com/. $DEPLOYPATH/aijobscoachcom/ && /bin/cp -rf ailunchclubs.com/. $DEPLOYPATH/ailunchclubscom/ && /bin/cp -rf aimusicmemories.com/. $DEPLOYPATH/aimusicmemoriescom/
