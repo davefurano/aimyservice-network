@@ -2,7 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
-    - /bin/mkdir -p $DEPLOYPATH/avastagecom $DEPLOYPATH/avastarapp $DEPLOYPATH/avatheatercom $DEPLOYPATH/aimyservicecom $DEPLOYPATH/aimyshoppingcom $DEPLOYPATH/avatarhousebandcom $DEPLOYPATH/avatarhousebandscom
-    - /bin/cp -rf avastage.com/. $DEPLOYPATH/avastagecom/ && /bin/cp -rf avastar.app/. $DEPLOYPATH/avastarapp/ && /bin/cp -rf avatheater.com/. $DEPLOYPATH/avatheatercom/
-    - /bin/cp -rf aimyservice.com/. $DEPLOYPATH/aimyservicecom/ && /bin/cp -rf aimyshopping.com/. $DEPLOYPATH/aimyshoppingcom/
-    - /bin/cp -rf avatarhouseband.com/. $DEPLOYPATH/avatarhousebandcom/ && /bin/cp -rf avatarhousebands.com/. $DEPLOYPATH/avatarhousebandscom/
+    - /bin/cp -rf aimyservice.com/. $DEPLOYPATH/
