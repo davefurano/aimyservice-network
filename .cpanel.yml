@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
-    - /bin/chmod -R 755 $DEPLOYPATH/aimyservicecom || true
-    - /bin/cp -rf aimyservice.com/. $DEPLOYPATH/aimyservicecom/
-    - /bin/chmod -R 755 $DEPLOYPATH/avatheatercom || true
-    - /bin/cp -rf avatheater.com/. $DEPLOYPATH/avatheatercom/
+    - /bin/rm -f $DEPLOYPATH/aimyservicecom/index.html
+    - /bin/mkdir -p $DEPLOYPATH/aimyservicecom && /bin/cp -f aimyservice.com/index.html $DEPLOYPATH/aimyservicecom/index.html
+    - /bin/rm -f $DEPLOYPATH/avatheatercom/index.html
+    - /bin/mkdir -p $DEPLOYPATH/avatheatercom && /bin/cp -f avatheater.com/index.html $DEPLOYPATH/avatheatercom/index.html
