@@ -52,12 +52,12 @@ nav{background:#fff;border-bottom:1px solid #e0e0e0;padding:0 1.5rem;height:60px
 
 /* 16:9 thumbnail */
 .thumb{width:100%;aspect-ratio:4/3;position:relative;overflow:hidden;}
-.thumb-bg{position:absolute;inset:0;}
-.thumb-shine{position:absolute;top:-40%;left:-30%;width:80%;height:160%;background:linear-gradient(135deg,rgba(255,255,255,.22) 0%,transparent 55%);transform:skewX(-15deg);pointer-events:none;}
-.thumb-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:min(38vw,220px);line-height:1;filter:drop-shadow(0 8px 32px rgba(0,0,0,.45));}
-.thumb-title{position:absolute;bottom:0;left:0;right:0;padding:.75rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,.82));z-index:3;}
-.thumb-title-text{font-size:.8rem;font-weight:700;color:#fff;letter-spacing:.05em;text-transform:uppercase;}
-.thumb-badge{position:absolute;top:.65rem;right:.65rem;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);padding:.25rem .65rem;border-radius:5px;z-index:4;}
+
+
+
+
+
+
 
 /* Card body */
 .card-body{padding:.9rem 1rem 1rem;}
@@ -82,7 +82,7 @@ footer a{color:#888;text-decoration:none;}footer a:hover{color:#111;}
   .hero{padding:2rem 1rem 1.75rem;}
   .grid-wrap{padding:1rem;}
   .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;}
-  .thumb-icon{font-size:min(28vw,140px);}
+  
   footer{flex-direction:column;gap:.35rem;text-align:center;}
 }
 </style>
@@ -141,17 +141,24 @@ function lighten(hex, amt) {
 function makeThumb(d) {
   var rgb = hexToRgb(d.color);
   var r=rgb[0],g=rgb[1],b=rgb[2];
-  var light = "rgba("+r+","+g+","+b+",.12)";
-  return [
-    '<div class="thumb">',
-      '<div class="thumb-bg" style="background:linear-gradient(135deg,'+d.color+' 0%,'+d.color+'bb 100%);"></div>',
-      '<div class="thumb-dots"></div>',
-      '<div class="thumb-shine"></div>',
-      '<div class="thumb-icon">'+d.icon+'</div>',
-      '<div class="thumb-title"><div class="thumb-title-text">'+d.name+'</div></div>',
-      '<div class="thumb-badge">'+d.category+'</div>',
-    '</div>'
-  ].join("");
+  var dark = "rgb("+Math.round(r*.55)+","+Math.round(g*.55)+","+Math.round(b*.55)+")";
+  var gid = "g" + d.domain.replace(/[^a-z0-9]/gi,"");
+  var svgParts = [
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">',
+    '<defs><linearGradient id="'+gid+'" x1="0%" y1="0%" x2="100%" y2="100%">',
+    '<stop offset="0%" stop-color="'+d.color+'"/>',
+    '<stop offset="100%" stop-color="'+dark+'"/>',
+    '</linearGradient></defs>',
+    '<rect width="400" height="300" fill="url(#'+gid+')"/>',
+    '<text x="200" y="158" font-size="200" text-anchor="middle" dominant-baseline="middle" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">'+d.icon+'</text>',
+    '<rect x="0" y="228" width="400" height="72" fill="rgba(0,0,0,.72)"/>',
+    '<text x="16" y="256" font-size="14" font-weight="800" fill="white" font-family="Inter,system-ui,sans-serif" letter-spacing="0.5">'+d.name+'</text>',
+    '<text x="16" y="279" font-size="11.5" fill="rgba(255,255,255,.8)" font-family="Inter,system-ui,sans-serif">'+d.tagline+'</text>',
+    '</svg>'
+  ];
+  var svg = svgParts.join("");
+  var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  return '<div class="thumb"><img src="'+url+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/></div>';
 }
 
 function render() {
