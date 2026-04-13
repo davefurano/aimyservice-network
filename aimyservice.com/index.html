@@ -335,10 +335,10 @@ function renderList(type){
     var done=item.status==="completed";
     var pri=item.priority||"medium";
     var pl=pri==="high"?"&#128308;":pri==="low"?"&#128994;":"&#128993;";
-    var cb=type==="task"?'<input type="checkbox" class="icb"'+(done?" checked":"")+" onchange="tog('"+item.id+"',this.checked)">":"";
+    var cb=type==="task"?'<input type="checkbox" class="icb"'+(done?" checked":"")+" onchange='tog("+'"'+item.id+'"'+",this.checked)'>":"";
     return'<div class="item">'+cb
       +'<span class="itxt'+(done?" done":"")+'">'+item.title+'<span class="ipr p'+pri+'">'+pl+'</span></span>'
-      +'<button class="idel" onclick="del(''+item.id+'')">&#215;</button>'
+      +'<button class="idel" onclick="del(\''+item.id+'\')">&#215;</button>'
       +'</div>';
   }).join("");
 }
