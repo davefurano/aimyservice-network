@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sandy Furano</title>
 <meta name="description" content="The personal photo gallery of Sandy Furano.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -32,16 +31,21 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.88);backdrop
 .photo-item img{width:100%;display:block;transition:transform .45s cubic-bezier(.25,.46,.45,.94),opacity .35s;opacity:0;}
 .photo-item img.loaded{opacity:1;}
 .photo-item:hover img{transform:scale(1.04);}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .28s;}
+.video-badge{position:absolute;top:.5rem;left:.5rem;background:rgba(0,0,0,.65);color:#fff;font-size:.65rem;font-weight:600;padding:.2rem .5rem;border-radius:4px;display:flex;align-items:center;gap:.25rem;backdrop-filter:blur(4px);}
+.video-badge::before{content:"▶";font-size:.55rem;}
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .28s;}
 .lightbox.open{opacity:1;pointer-events:all;}
+.lb-media{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:6px;transition:opacity .22s;}
+#lb-video{max-width:90vw;max-height:88vh;border-radius:6px;display:none;outline:none;}
 #lb-img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:6px;transition:opacity .22s;}
 .lb-close{position:absolute;top:1.1rem;right:1.4rem;background:rgba(255,255,255,.12);border:none;color:#fff;font-size:1.2rem;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:background .15s;}
 .lb-close:hover{background:rgba(255,255,255,.22);}
 .lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;font-size:1.3rem;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:background .15s;user-select:none;}
 .lb-prev{left:1rem;}.lb-next{right:1rem;}
 .lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.22);}
-.lb-counter{position:absolute;top:1.1rem;left:50%;transform:translateX(-50%);font-size:.75rem;color:rgba(255,255,255,.5);letter-spacing:.03em;font-family:inherit;}
-.lb-caption{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:.78rem;color:rgba(255,255,255,.6);background:rgba(0,0,0,.45);padding:.35rem .9rem;border-radius:20px;backdrop-filter:blur(8px);white-space:nowrap;font-family:inherit;}
+.lb-counter{position:absolute;top:1.1rem;left:50%;transform:translateX(-50%);font-size:.75rem;color:rgba(255,255,255,.5);letter-spacing:.03em;}
+.lb-caption{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:.78rem;color:rgba(255,255,255,.6);background:rgba(0,0,0,.45);padding:.35rem .9rem;border-radius:20px;backdrop-filter:blur(8px);white-space:nowrap;}
 footer{text-align:center;padding:2rem;font-size:.75rem;color:#86868b;border-top:0.5px solid #f5f5f7;}
 footer a{color:#86868b;text-decoration:none;}
 footer a:hover{color:#1d1d1f;}
@@ -58,7 +62,7 @@ footer a:hover{color:#1d1d1f;}
   <p class="hero-sub">A personal photo gallery</p>
 </div>
 <div class="filter-bar">
-  <button class="filter-btn active" data-filter="all">All Photos</button>
+  <button class="filter-btn active" data-filter="all">All</button>
   <button class="filter-btn" data-filter="wedding">Wedding</button>
   <button class="filter-btn" data-filter="sandy-dave">Sandy &amp; Dave</button>
   <button class="filter-btn" data-filter="memories">Memories</button>
@@ -72,96 +76,136 @@ footer a:hover{color:#1d1d1f;}
   <div class="lb-counter" id="lb-counter"></div>
   <button class="lb-close" onclick="closeLB()">✕</button>
   <button class="lb-prev" onclick="navLB(-1)">‹</button>
+  <video id="lb-video" controls playsinline></video>
   <img id="lb-img" src="" alt="">
   <button class="lb-next" onclick="navLB(1)">›</button>
   <div class="lb-caption" id="lb-caption"></div>
 </div>
 <script>
-var BASE = "https://sandyfurano.com/SF/album/thumbs/";
+var BASE_THUMB = "https://sandyfurano.com/SF/album/thumbs/";
+var BASE_SLIDE = "https://sandyfurano.com/SF/album/slides/";
+
+// Deduplicated photo list — duplicates removed by file size analysis
+// Format: {f: filename, l: label, t: tags, v: video filename or null}
 var PHOTOS = [
-  {f:"Sandy - Dave Wedding.jpg", l:"Sandy & Dave Wedding", t:["wedding","sandy-dave"]},
-  {f:"Sandy - Dave Wedding 2.jpg", l:"Sandy & Dave Wedding", t:["wedding","sandy-dave"]},
-  {f:"sandy dave.jpg", l:"Sandy & Dave", t:["sandy-dave"]},
-  {f:"sandy dave 2.jpg", l:"Sandy & Dave", t:["sandy-dave"]},
-  {f:"sandy dave 3.jpg", l:"Sandy & Dave", t:["sandy-dave"]},
-  {f:"sandy dave 4.jpg", l:"Sandy & Dave", t:["sandy-dave"]},
-  {f:"sandy dave 5.jpg", l:"Sandy & Dave", t:["sandy-dave"]},
-  {f:"sandy dave 6.jpg", l:"Sandy & Dave", t:["sandy-dave"]},
-  {f:"image001.jpg", l:"Memory", t:["memories"]},
-  {f:"image002.jpg", l:"Memory", t:["memories"]},
-  {f:"image003.jpg", l:"Memory", t:["memories"]},
-  {f:"image004.jpg", l:"Memory", t:["memories"]},
-  {f:"image005.jpg", l:"Memory", t:["memories"]},
-  {f:"image006.jpg", l:"Memory", t:["memories"]},
-  {f:"image007.jpg", l:"Memory", t:["memories"]},
-  {f:"image008.jpg", l:"Memory", t:["memories"]},
-  {f:"image009.jpg", l:"Memory", t:["memories"]},
-  {f:"image010.jpg", l:"Memory", t:["memories"]},
-  {f:"image011.jpg", l:"Memory", t:["memories"]},
-  {f:"image012.jpg", l:"Memory", t:["memories"]},
-  {f:"Imports - 2 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 3 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 5 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 6 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 7 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 9 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 12 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 13 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 14 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 15 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 16 of 17.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 2 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 3 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 4 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 5 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 6 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 7 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 9 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 10 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 11 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 12 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 13 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 14 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 15 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 16 of 18.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 3 of 19.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 5 of 19.jpg", l:"Photo", t:["memories"]},
-  {f:"Imports - 16 of 19.jpg", l:"Photo", t:["memories"]},
+  // Wedding (2 unique photos — Wedding 1 has video, Wedding 2 is duplicate of Wedding 1 so kept only Wedding 1)
+  {f:"Sandy - Dave Wedding.jpg", l:"Sandy & Dave Wedding", t:["wedding","sandy-dave"], v:"Sandy & Dave Wedding.mp4"},
+
+  // Sandy & Dave (unique only — sandy dave 2=4, sandy dave=3=5=6, keeping one of each)
+  {f:"sandy dave.jpg", l:"Sandy & Dave", t:["sandy-dave"], v:null},
+  {f:"sandy dave 2.jpg", l:"Sandy & Dave", t:["sandy-dave"], v:null},
+
+  // image series (all unique by size)
+  {f:"image001.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image002.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image003.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image004.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image005.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image006.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image007.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image008.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image009.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image010.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image011.jpg", l:"Memory", t:["memories"], v:null},
+  {f:"image012.jpg", l:"Memory", t:["memories"], v:null},
+
+  // Imports of 17 — keeping one copy of each unique image
+  {f:"Imports - 2 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 3 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 4 of 18.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 5 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 6 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 7 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 9 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 10 of 18.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 11 of 18.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 12 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 13 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 14 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 15 of 17.jpg", l:"Photo", t:["memories"], v:null},
+  {f:"Imports - 16 of 17.jpg", l:"Photo", t:["memories"], v:null},
 ];
-var cur="all", vis=[], idx=0;
-function getVis(){return cur==="all"?PHOTOS:PHOTOS.filter(function(p){return p.t.indexOf(cur)>=0;});}
-function render(){
-  vis=getVis();
-  document.getElementById("count-bar").textContent=vis.length+" photo"+(vis.length!==1?"s":"");
-  document.getElementById("grid").innerHTML=vis.map(function(p,i){
-    return'<div class="photo-item" onclick="openLB('+i+')">'
-      +'<img src="'+BASE+encodeURIComponent(p.f)+'" alt="'+p.l+'" loading="lazy" onload="this.classList.add(\'loaded\')">'
-      +'</div>';
+
+var cur = "all", vis = [], idx = 0;
+
+function enc(s) { return encodeURIComponent(s); }
+
+function getVis() {
+  return cur === "all" ? PHOTOS : PHOTOS.filter(function(p) { return p.t.indexOf(cur) >= 0; });
+}
+
+function render() {
+  vis = getVis();
+  document.getElementById("count-bar").textContent = vis.length + " photo" + (vis.length !== 1 ? "s" : "");
+  document.getElementById("grid").innerHTML = vis.map(function(p, i) {
+    var badge = p.v ? '<div class="video-badge">Video</div>' : "";
+    return '<div class="photo-item" onclick="openLB(' + i + ')">'
+      + badge
+      + '<img src="' + BASE_THUMB + enc(p.f) + '" alt="' + p.l + '" loading="lazy" onload="this.classList.add(\'loaded\')">'
+      + '</div>';
   }).join("");
 }
-document.querySelectorAll(".filter-btn").forEach(function(b){
-  b.addEventListener("click",function(){
-    document.querySelectorAll(".filter-btn").forEach(function(x){x.classList.remove("active");});
-    b.classList.add("active"); cur=b.dataset.filter; render();
+
+document.querySelectorAll(".filter-btn").forEach(function(b) {
+  b.addEventListener("click", function() {
+    document.querySelectorAll(".filter-btn").forEach(function(x) { x.classList.remove("active"); });
+    b.classList.add("active"); cur = b.dataset.filter; render();
   });
 });
-function openLB(i){idx=i;showLB();document.getElementById("lightbox").classList.add("open");}
-function showLB(){
-  var p=vis[idx];
-  var img=document.getElementById("lb-img");
-  img.style.opacity="0"; img.src=BASE+encodeURIComponent(p.f);
-  img.onload=function(){img.style.opacity="1";};
-  document.getElementById("lb-caption").textContent=p.l;
-  document.getElementById("lb-counter").textContent=(idx+1)+" / "+vis.length;
+
+function openLB(i) { idx = i; showLB(); document.getElementById("lightbox").classList.add("open"); }
+
+function showLB() {
+  var p = vis[idx];
+  var video = document.getElementById("lb-video");
+  var img = document.getElementById("lb-img");
+
+  document.getElementById("lb-caption").textContent = p.l;
+  document.getElementById("lb-counter").textContent = (idx + 1) + " / " + vis.length;
+
+  if (p.v) {
+    // Show video
+    video.style.display = "block";
+    img.style.display = "none";
+    var videoUrl = BASE_SLIDE + enc(p.v);
+    if (video.src !== videoUrl) {
+      video.src = videoUrl;
+    }
+    video.play();
+  } else {
+    // Show image
+    video.style.display = "none";
+    video.pause();
+    video.src = "";
+    img.style.display = "block";
+    img.style.opacity = "0";
+    img.src = BASE_THUMB + enc(p.f);
+    img.onload = function() { img.style.opacity = "1"; };
+  }
 }
-function closeLB(){document.getElementById("lightbox").classList.remove("open");}
-function navLB(d){idx=(idx+d+vis.length)%vis.length;showLB();}
-document.getElementById("lightbox").addEventListener("click",function(e){if(e.target===this)closeLB();});
-document.addEventListener("keydown",function(e){
-  if(e.key==="Escape")closeLB();
-  if(e.key==="ArrowLeft")navLB(-1);
-  if(e.key==="ArrowRight")navLB(1);
+
+function closeLB() {
+  document.getElementById("lightbox").classList.remove("open");
+  var video = document.getElementById("lb-video");
+  video.pause();
+  video.src = "";
+}
+
+function navLB(d) {
+  idx = (idx + d + vis.length) % vis.length;
+  showLB();
+}
+
+document.getElementById("lightbox").addEventListener("click", function(e) {
+  if (e.target === this) closeLB();
 });
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") closeLB();
+  if (e.key === "ArrowLeft") navLB(-1);
+  if (e.key === "ArrowRight") navLB(1);
+});
+
 render();
 </script>
 </body>
