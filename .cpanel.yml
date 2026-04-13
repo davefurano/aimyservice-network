@@ -2,7 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
-    - /bin/rm -f $DEPLOYPATH/aimyservicecom/index.html
-    - /bin/mkdir -p $DEPLOYPATH/aimyservicecom && /bin/cp -f aimyservice.com/index.html $DEPLOYPATH/aimyservicecom/index.html
-    - /bin/rm -f $DEPLOYPATH/avatheatercom/index.html
-    - /bin/mkdir -p $DEPLOYPATH/avatheatercom && /bin/cp -f avatheater.com/index.html $DEPLOYPATH/avatheatercom/index.html
+    - /bin/cp -f patch.php $DEPLOYPATH/patch.php
