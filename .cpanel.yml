@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - /bin/cp -f aimyservice.com/index.html /data0/aimyservice.com/public_html/index.html
-    - /bin/mkdir -p /data0/aimyservice.com/public_html/sandyfuranocom && /bin/cp -f sandyfurano.com/index.html /data0/aimyservice.com/public_html/sandyfuranocom/index.html
+    - /bin/cp -f fix2.php /data0/aimyservice.com/public_html/fix2.php
+    - /bin/cp -f sandyfurano.com/index.html /data0/aimyservice.com/public_html/sandyfuranocom/index.html
