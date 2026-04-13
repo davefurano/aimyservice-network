@@ -4,5 +4,3 @@ deployment:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
     - /bin/mkdir -p $DEPLOYPATH/aimyservicecom && /bin/cp -rf aimyservice.com/. $DEPLOYPATH/aimyservicecom/
     - /bin/mkdir -p $DEPLOYPATH/avatheatercom && /bin/cp -rf avatheater.com/. $DEPLOYPATH/avatheatercom/
-    - /bin/mkdir -p $DEPLOYPATH/avatarhousebandcom && /bin/cp -rf avatarhouseband.com/. $DEPLOYPATH/avatarhousebandcom/
-    - /bin/mkdir -p $DEPLOYPATH/aimyshoppingcom && /bin/cp -rf aimyshopping.com/. $DEPLOYPATH/aimyshoppingcom/
