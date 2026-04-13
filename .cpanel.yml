@@ -1,5 +1,49 @@
 ---
 deployment:
   tasks:
-    - /bin/cp -f fix2.php /data0/aimyservice.com/public_html/fix2.php
-    - /bin/cp -f sandyfurano.com/index.html /data0/aimyservice.com/public_html/sandyfuranocom/index.html
+    - /bin/cp -f aimyservice.com/index.html /data0/aimyservice.com/public_html/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/sandyfuranocom && /bin/cp -f sandyfurano.com/index.html /data0/aimyservice.com/public_html/sandyfuranocom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aaifactorycom && /bin/cp -f aaifactory.com/index.html /data0/aimyservice.com/public_html/aaifactorycom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aiagencyforautomationcom && /bin/cp -f aiagencyforautomation.com/index.html /data0/aimyservice.com/public_html/aiagencyforautomationcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aicareerplannercom && /bin/cp -f aicareerplanner.com/index.html /data0/aimyservice.com/public_html/aicareerplannercom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aiforbarscom && /bin/cp -f aiforbars.com/index.html /data0/aimyservice.com/public_html/aiforbarscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aiforcasinoscom && /bin/cp -f aiforcasinos.com/index.html /data0/aimyservice.com/public_html/aiforcasinoscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aiforrestaurantscom && /bin/cp -f aiforrestaurants.com/index.html /data0/aimyservice.com/public_html/aiforrestaurantscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aiintelligencefactorycom && /bin/cp -f aiintelligencefactory.com/index.html /data0/aimyservice.com/public_html/aiintelligencefactorycom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aijobscoachcom && /bin/cp -f aijobscoach.com/index.html /data0/aimyservice.com/public_html/aijobscoachcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/ailunchclubscom && /bin/cp -f ailunchclubs.com/index.html /data0/aimyservice.com/public_html/ailunchclubscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimusicmemoriescom && /bin/cp -f aimusicmemories.com/index.html /data0/aimyservice.com/public_html/aimusicmemoriescom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimyarchivecom && /bin/cp -f aimyarchive.com/index.html /data0/aimyservice.com/public_html/aimyarchivecom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimybiocom && /bin/cp -f aimybio.com/index.html /data0/aimyservice.com/public_html/aimybiocom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimycompanyapp && /bin/cp -f aimycompany.app/index.html /data0/aimyservice.com/public_html/aimycompanyapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimygiftingcom && /bin/cp -f aimygifting.com/index.html /data0/aimyservice.com/public_html/aimygiftingcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimyinterviewcom && /bin/cp -f aimyinterview.com/index.html /data0/aimyservice.com/public_html/aimyinterviewcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimymusicapp && /bin/cp -f aimymusic.app/index.html /data0/aimyservice.com/public_html/aimymusicapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimyofficeapp && /bin/cp -f aimyoffice.app/index.html /data0/aimyservice.com/public_html/aimyofficeapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimyofficeorg && /bin/cp -f aimyoffice.org/index.html /data0/aimyservice.com/public_html/aimyofficeorg/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimypracticeapp && /bin/cp -f aimypractice.app/index.html /data0/aimyservice.com/public_html/aimypracticeapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimypracticeorg && /bin/cp -f aimypractice.org/index.html /data0/aimyservice.com/public_html/aimypracticeorg/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimyrestaurantapp && /bin/cp -f aimyrestaurant.app/index.html /data0/aimyservice.com/public_html/aimyrestaurantapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimyservicescom && /bin/cp -f aimyservices.com/index.html /data0/aimyservice.com/public_html/aimyservicescom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimyshoppingapp && /bin/cp -f aimyshopping.app/index.html /data0/aimyservice.com/public_html/aimyshoppingapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimyshoppingcom && /bin/cp -f aimyshopping.com/index.html /data0/aimyservice.com/public_html/aimyshoppingcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aimysoundtrackcom && /bin/cp -f aimysoundtrack.com/index.html /data0/aimyservice.com/public_html/aimysoundtrackcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aisocietynewscom && /bin/cp -f aisocietynews.com/index.html /data0/aimyservice.com/public_html/aisocietynewscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/aiwisdomfactorycom && /bin/cp -f aiwisdomfactory.com/index.html /data0/aimyservice.com/public_html/aiwisdomfactorycom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/allstaravatarscom && /bin/cp -f allstaravatars.com/index.html /data0/aimyservice.com/public_html/allstaravatarscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/avastagecom && /bin/cp -f avastage.com/index.html /data0/aimyservice.com/public_html/avastagecom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/avastarapp && /bin/cp -f avastar.app/index.html /data0/aimyservice.com/public_html/avastarapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/avastarband && /bin/cp -f avastar.band/index.html /data0/aimyservice.com/public_html/avastarband/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/avatarallstarscom && /bin/cp -f avatarallstars.com/index.html /data0/aimyservice.com/public_html/avatarallstarscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/avatarhousebandcom && /bin/cp -f avatarhouseband.com/index.html /data0/aimyservice.com/public_html/avatarhousebandcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/avatarhousebandscom && /bin/cp -f avatarhousebands.com/index.html /data0/aimyservice.com/public_html/avatarhousebandscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/avatheatercom && /bin/cp -f avatheater.com/index.html /data0/aimyservice.com/public_html/avatheatercom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/creativeintelligencesystemcom && /bin/cp -f creativeintelligencesystem.com/index.html /data0/aimyservice.com/public_html/creativeintelligencesystemcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/dellfuranocom && /bin/cp -f dellfurano.com/index.html /data0/aimyservice.com/public_html/dellfuranocom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/globaltixapp && /bin/cp -f globaltix.app/index.html /data0/aimyservice.com/public_html/globaltixapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/repeatableintelligencecom && /bin/cp -f repeatableintelligence.com/index.html /data0/aimyservice.com/public_html/repeatableintelligencecom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/ticketsdirectapp && /bin/cp -f ticketsdirect.app/index.html /data0/aimyservice.com/public_html/ticketsdirectapp/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/worldsgreatestavatarhousebandcom && /bin/cp -f worldsgreatestavatarhouseband.com/index.html /data0/aimyservice.com/public_html/worldsgreatestavatarhousebandcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/worldsgreatestavatarhousebandscom && /bin/cp -f worldsgreatestavatarhousebands.com/index.html /data0/aimyservice.com/public_html/worldsgreatestavatarhousebandscom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/worldsgreatesthousebandcom && /bin/cp -f worldsgreatesthouseband.com/index.html /data0/aimyservice.com/public_html/worldsgreatesthousebandcom/index.html
+    - /bin/mkdir -p /data0/aimyservice.com/public_html/worldsgreatesthousebandscom && /bin/cp -f worldsgreatesthousebands.com/index.html /data0/aimyservice.com/public_html/worldsgreatesthousebandscom/index.html
