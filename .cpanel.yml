@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/data0/aimyservice.com/public_html
-    - /bin/cp -f fix.php $DEPLOYPATH/fix.php
+    - /bin/cp -f clearcache.php $DEPLOYPATH/clearcache.php
