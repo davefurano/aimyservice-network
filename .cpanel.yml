@@ -2,6 +2,7 @@
 deployment:
   tasks:
     - /bin/cp -f aimyservice.com/index.html /data0/aimyservice.com/public_html/index.html
+    - /bin/cp -f aimyservice.com/.htaccess /data0/aimyservice.com/public_html/.htaccess
     - /bin/mkdir -p /data0/aimyservice.com/public_html/sandyfuranocom && /bin/cp -f sandyfurano.com/index.html /data0/aimyservice.com/public_html/sandyfuranocom/index.html
     - /bin/mkdir -p /data0/aimyservice.com/public_html/aaifactorycom && /bin/cp -f aaifactory.com/index.html /data0/aimyservice.com/public_html/aaifactorycom/index.html
     - /bin/mkdir -p /data0/aimyservice.com/public_html/aiagencyforautomationcom && /bin/cp -f aiagencyforautomation.com/index.html /data0/aimyservice.com/public_html/aiagencyforautomationcom/index.html
